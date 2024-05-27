@@ -1,0 +1,189 @@
+.container-fluid{
+    --bs-gutter-x: 0rem;
+}
+.black{
+    width: 100%;
+    height: 50px;
+    background-color: black;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.info{
+    width: 400px;
+    height: auto;
+    display: flex;
+    align-items: center;
+
+}
+.email{
+    width: 200px;
+    height:auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:white;
+}
+.email p{
+
+margin-top: 10px;
+}
+.email img{
+    width: 20px;
+    margin: 5px;
+}
+.location{
+    width: 200px;
+    height:auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:rgb(255, 255, 255);
+}
+.location p{
+
+margin-top: 10px;
+}
+.location img{
+    width: 20px;
+    margin: 5px;
+}
+.redes{
+    width: 200px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+ .red1{
+    width: 20px;
+    height: 20px;
+    margin: 10px;
+   background-image: url('../../assets/img/facebook_blanco.png');
+   background-size: cover;
+   cursor: pointer;
+ }
+ .red1:hover{
+    width: 20px;
+    height: 20px;
+    margin: 10px;
+   background-image: url('../../assets/img/facebook_naranja.png');
+   background-size: cover;
+ }
+ .red2{
+    width: 20px;
+    height: 20px;
+    margin: 10px;
+    background-image: url('../../assets/img/instagram_blanco.png');
+    background-size: cover;
+    cursor: pointer;
+ }
+ .red2:hover{
+    width: 20px;
+    height: 20px;
+    margin: 10px;
+    background-image: url('../../assets/img/instagram_naranja.png');
+    background-size: cover;
+    cursor: pointer;
+ }
+ .red3{
+    width: 20px;
+    height: 20px;
+    margin: 10px;
+    background-image: url('../../assets/img/youtube_blanco.png');
+    background-size: cover;
+    cursor: pointer;
+ }
+ .red3:hover{
+    width: 20px;
+    height: 20px;
+    margin: 10px;
+    background-image: url('../../assets/img/youtube_naranja.png');
+    background-size: cover;
+    cursor: pointer;
+ }
+.logo{
+    width:100px;
+    height: 100px;
+    background-image: url('../../assets/img/AVENTURA.png');
+    background-size: 150%;
+    background-position: center;
+    
+}
+
+nav{
+  
+    padding: 0px;
+}
+
+
+.navbar-nav{
+      font-size: 1.2em;
+    --bs-nav-link-padding-x: 0rem;
+    --bs-nav-link-padding-y: 2.3rem;
+    font-family: "Work Sans", sans-serif;
+}
+   .nav-link:hover {
+    background-color: #ff6619;
+    border-left:1px solid #ff6619;
+    border-right:1px solid #ff6619;
+    color:white;
+  }
+  
+  .nav-link{
+    border-left:1px solid rgb(237, 237, 237);
+    border-right:1px solid rgb(237, 237, 237);
+  }
+
+.empresa{
+    background-color: rgb(25, 135, 84);
+   font-size: 1.2em;
+  
+}
+
+.empresasA{
+    color:white;
+}
+
+
+  @media screen and (max-width: 980px){
+    .logo{
+        width:70px;
+        height: 70px;
+    
+    }
+    nav{
+        padding: 10px;
+    }
+    .navbar-nav{
+        --bs-nav-link-padding-x: 0;
+        --bs-nav-link-padding-y: 0.5rem;
+        --bs-nav-link-color: black;
+        --bs-nav-link-hover-color: black;
+    
+    }
+ 
+
+  }
+
+  @media screen and (max-width: 600px){
+    .black{
+        width: 100%;
+        height: auto;
+        background-color: black;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .info{
+        width: 350px;
+        height: auto;
+        display: flex;
+        align-items: center;
+
+    }
+   
+  }
