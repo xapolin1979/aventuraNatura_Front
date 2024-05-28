@@ -1,0 +1,106 @@
+.containerEventos{
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    background-color: black;
+}
+
+.eventosDestacados{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.eventosDestacados h3{
+    font-family: "Work Sans", sans-serif;
+    font-size: 2.5em;
+    color: white;
+}
+
+.eventosDestacados p{
+    font-family: "Libre Baskerville", serif;
+   font-weight: 400;
+   font-style: normal; 
+   color:rgb(255, 255, 255);
+   margin-top: 20px;
+}
+.eventosDestacados span{
+    font-family: "Work Sans", sans-serif;
+    color:#ff6619;
+    font-weight: bolder;
+}
+
+/* EVENTOS DESTACADOS */
+
+.contenedorCards{
+    margin-top: 50px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.linea{
+    width: 100px;
+    height: 3px;
+    background-color: #ff6619;
+    margin: 20px;
+}
+.target{
+    width: 300px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: "Work Sans", sans-serif;
+    margin: 30px;
+    cursor: pointer;
+}
+.imagen {
+    width: 300px;
+    height: 180px;
+    background-image: url('../../../assets/img/senderismo_evento.jpg');
+    background-size: cover;
+
+  }
+  
+  
+.target h4{
+  color:white;
+}
+.target h5 , p{
+    color:white
+}
+
+.eventosBTN{
+    margin-top: 20px;
+    padding: 20px;
+    border:none;
+    font-family: "Work Sans", sans-serif;
+    background-color: #ff6619;
+    color: white;
+}
+
+
+@media screen and (max-width: 980px){
+   
+    .containerEventos{
+        margin-top: 50px;
+    }
+    .eventosDestacados{
+        width: 100%;
+    }
+/* EVENTOS DESTACADOS */
+
+
+
+}

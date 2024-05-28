@@ -101,7 +101,7 @@
 }
 
 .servicios span{
-    color:#ff6619;
+    color:#000000;
     font-weight: bolder;
 }
 
@@ -122,7 +122,6 @@
 
 .organizadoresContainer{
     width: 100%;
-    background-color:rgb(235, 235, 235);
     margin-top: 100px;
     display: flex;
     flex-direction: column;
@@ -235,7 +234,7 @@
 }
 /* ORGANIZADORES */
 .organizadoresContainer{
-    margin-top: 50PX;
+    margin-top: 50px;
 }
 
 
@@ -306,6 +305,9 @@
 /* ORGANIZADORES */
  .organizadores{
     width: 100%;
+}
+.organizadoresContainer{
+    margin-top: 0px;
 }
 
 }
