@@ -8,6 +8,6 @@ import { Component } from '@angular/core';
   styleUrl: './nav-bar.component.css'
 })
 export class NavBarComponent {
-email:string='ginesti@gmail.com';
+email:string='ginesti@outlook.es';
 location:string='Sabadell (Barcelona)'
 }

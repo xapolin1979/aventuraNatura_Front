@@ -1,6 +1,6 @@
 .carousel-caption {
     text-align: center; 
-    top: 50%; 
+    top: 60%; 
     transform: translateY(-50%); 
 
 }
@@ -10,58 +10,302 @@
     max-height: 100vh;
 }
 
-h5{
-    font-family: "Permanent Marker", cursive;
+.carousel-caption h5{
+    font-family: "Bebas Neue", sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 5em;
+    font-size: 9em;
+    font-weight: 400;
     color: #ff6619;
 }
-p{
-   /*  font-family: "Libre Baskerville", serif;
-    font-weight: 400;
-    font-style: normal; */
-    font-family: "Work Sans", sans-serif;
+.carousel-caption p{
+    font-family: "Work Sans", sans-serif; 
     font-size: 1.5em;
    text-shadow: 0px 0px 5px rgb(0, 0, 0);
 }
-h3{
 
+
+/*SECCION INTRODUCCION*/
+
+.divIntroduccion{
+  margin-top: 100px;
+
+}
+.introduccionIMG{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-left:4px dashed rgb(222, 222, 222);
+
+
+}
+.introduccionIMG img{
+    max-width: 100%;
+    border-left:3px dashed rgb(222, 222, 222);
+    border-bottom:3px dashed rgb(222, 222, 222);
+    padding: 10px;
+}
+
+.introduccionTEXT{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+}
+
+.introduccionTEXT h1{
     font-family: "Work Sans", sans-serif;
-     text-shadow: 0px 0px 5px rgb(0, 0, 0);
-  }
+    font-size: 2.7em;
+}
+.introduccionTEXT h2{
+    font-family: "Work Sans", sans-serif;
+    font-size: 1.6em;
+    border-bottom: 3px solid #ff6619;
+}
+.introduccionTEXT p{
+     font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: normal; 
+    color:grey;
+}
+.introduccionTEXT span{
+ color:#ff6619;
+ font-weight: bold;
+}
 
-@media screen and (max-width: 980px){
+/* NUESTROS SERVICIOS */
+.nuestrosServicios{
+    margin-top: 100px; 
 
-    h5{
- 
-        font-size: 3em;
+}
+
+.servicios h3{
+    font-family: "Work Sans", sans-serif;
+    font-size: 2.5em;
     
-    }
-    p{
-        
-        font-size: 1.2em;
+}
+.servicios p{
+    font-family: "Libre Baskerville", serif;
+   font-weight: 400;
+   font-style: normal; 
+   color:grey;
+}
+
+.logoServicios{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.servicios span{
+    color:#ff6619;
+    font-weight: bolder;
+}
+
+.serviciosIMG{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right:4px dashed rgb(222, 222, 222);
+ }
+ .serviciosIMG img{
+    max-width: 100%;
+    border-right:3px dashed rgb(222, 222, 222);
+    border-bottom:3px dashed rgb(222, 222, 222);
+    padding: 10px;
+}
+
+/* paralos organizadores */
+
+.organizadoresContainer{
+    width: 100%;
+    background-color:rgb(235, 235, 235);
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+.organizadoresRow{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.organizadores{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  
+}
+
+.organizadores h3{
+    font-family: "Work Sans", sans-serif;
+    font-size: 2.5em;
+ 
+}
+.organizadores span{
+  color:#ff6619;
+  font-weight: bolder;
+}
+.organizadores p{
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: normal; 
+    color:rgb(0, 0, 0);
+    margin-top: 20px;
+    font-size: 1.3em;
+}
+.registrateBTN{
+    margin-top: 20px;
+    padding: 20px;
+    border:none;
+    font-family: "Work Sans", sans-serif;
+    background-color: rgb(36, 179, 112);
+    color: white;
+}
+.registrateBTN:hover{
+    margin-top: 20px;
+    padding: 20px;
+    border:none;
+    font-family: "Work Sans", sans-serif;
+    background-color: #ff6619;
+    color: white;
+}
+/* media queries*/
+
+@media screen and (max-width: 1050px){
+
+    .carousel-caption h5{
+        font-size: 7em;
     }
 
 }
+@media screen and (max-width: 980px){
+
+    .carousel-caption h5{
+ 
+        font-size: 5em;
+    
+    }
+    .carousel-caption p{
+        
+        font-size: 1.2em;
+    }
+    /* INTRODUCCION*/
+    .introduccionIMG{
+        display: flex;
+        justify-content: center;
+        align-items: start;
+       
+     }
+
+.divIntroduccion{
+    margin-top: 50px;
+  }
+  .introduccionTEXT h1{
+    font-size: 2.5em;
+}
+.introduccionTEXT h2{
+    font-size: 1.2em;
+    border:none;
+}
+
+/* NUESTROS SERVICIOS */
+.serviciosIMG{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+   
+ }
+.nuestrosServicios{
+    margin-top: 50px; 
+ 
+}
+.servicios h3{
+    font-size: 2em;
+  
+}
+/* ORGANIZADORES */
+.organizadoresContainer{
+    margin-top: 50PX;
+}
+
+
+}
+
+
+
+
+
+
+
 @media screen and (max-width: 600px){
     .carousel-caption {
         text-align: center; 
-        top: 40%; 
+        top: 50%; 
         transform: translateY(-50%); 
     
     }
- h3{
-    font-size:1em ;
- }
-    h5{
- 
-        font-size: 1.5em;
-    
+
+    .carousel-caption h5{
+        font-size: 2.5em;
     }
-    p{
+    .carousel-caption p{
         
         font-size: 1em;
     }
+/* Introduccion*/
+
+
+  .introduccionIMG{
+    border-left:none;
+ }
+ .introduccionTEXT{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 20px;
+    padding: 15px;
+}
+/* NUESTROS SERVICIOS */
+
+.servicios{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+}
+.nuestrosServicios{
+    margin-top: 50px; 
+ 
+}
+.servicios h3{
+    font-size: 2em;
+  
+}
+.logoServicios{
+    width: 100%;
+
+}
+
+.serviciosIMG{
+    border-right:none;
+ }
+/* ORGANIZADORES */
+ .organizadores{
+    width: 100%;
+}
 
 }
