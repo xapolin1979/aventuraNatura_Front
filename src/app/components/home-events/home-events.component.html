@@ -1,55 +1,65 @@
 <div class="container-fluid containerEventos">
     
     <div class="eventosDestacados">
-        <h3>¡Empieza tus <span>Aventura</span> Hoy!</h3>
+        <h3>¡Empieza tus <span>aventuras</span> hoy!</h3>
         <p>Explora nuestros eventos destacados y encuentra tu próxima gran aventura. <br>Ya sea que busques desafiarte a ti mismo en las montañas, explorar nuevos senderos o navegar por ríos turbulentos, <span>AVENTURA NATURA </span> es el lugar perfecto para comenzar.</p>
     </div>
 
      
-<div class="contenedorCards">
+<div class="contenedorCards" >
    <div class="target">
-    <div class="imagen"></div>
+    <div class="imagen">
+        <img src="http://localhost:3001/uploads/{{datosEventos[0].Photos[0].photo}}" alt="">
+    </div>
     <br>
-    <h4>Senderismo</h4>
-    <h5>Unio excursionista de sabadell</h5>
+    <h4>{{datosEventos[0].Category.name}}</h4>
+    <h5>{{datosEventos[0].User.name}}</h5>
     <div class="linea"></div>
-       <p>Recorrido por el parc natural del cadi</p>
-       <p>24-06-2024</p>
+       <p>{{datosEventos[0].name_event}}</p>
+       <p>{{datosEventos[0].start_date}}</p>
+   </div>
+   <div class="target">
+    <div class="imagen">
+        <img src="http://localhost:3001/uploads/{{datosEventos[2].Photos[0].photo}}" alt="">
+    </div>
+    <br>
+    <h4>{{datosEventos[2].Category.name}}</h4>
+    <h5>{{datosEventos[2].User.name}}</h5>
+    <div class="linea"></div>
+    <p>{{datosEventos[2].name_event}}</p>
+    <p>{{datosEventos[2].start_date}}</p>
+   </div>
+   <div class="target">
+    <div class="imagen">
+        <img src="http://localhost:3001/uploads/{{datosEventos[4].Photos[0].photo}}" alt="">
+    </div>
+    <br>
+    <h4>{{datosEventos[4].Category.name}}</h4>
+    <h5>{{datosEventos[4].User.name}}</h5>
+    <div class="linea"></div>
+    <p>{{datosEventos[4].name_event}}</p>
+    <p>{{datosEventos[4].start_date}}</p>
+   </div>
+   <div class="target">
+    <div class="imagen">
+        <img src="http://localhost:3001/uploads/{{datosEventos[6].Photos[0].photo}}" alt="">
+    </div>
+    <br>
+    <h4>{{datosEventos[6].Category.name}}</h4>
+    <h5>{{datosEventos[6].User.name}}</h5>
+    <div class="linea"></div>
+    <p>{{datosEventos[6].name_event}}</p>
+    <p>{{datosEventos[6].start_date}}</p>
    </div>
 
-   <div class="target">
-    <div class="imagen"></div>
-    <br>
-    <h4>Senderismo</h4>
-    <h5>Unio excursionista de sabadell</h5>
-    <div class="linea"></div>
-       <p>Recorrido por el parc natural del cadi</p>
-       <p>24-06-2024</p>
-   </div>
-
-   <div class="target">
-    <div class="imagen"></div>
-    <br>
-    <h4>Senderismo</h4>
-    <h5>Unio excursionista de sabadell</h5>
-    <div class="linea"></div>
-       <p>Recorrido por el parc natural del cadi</p>
-       <p>24-06-2024</p>
-   </div>
-
-   <div class="target">
-    <div class="imagen"></div>
-    <br>
-    <h4>Senderismo</h4>
-    <h5>Unio excursionista de sabadell</h5>
-    <div class="linea"></div>
-       <p>Recorrido por el parc natural del cadi</p>
-       <p>24-06-2024</p>
-   </div>
-
-
+   
 
 
 </div>
-<button class="eventosBTN">Ver mas eventos</button>
+
+</div>
+
+<div class="container explorar">
+    <h4>¿Listo para tu próxima <span>aventura</span>? ¡Explora, inscribite y Disfruta!</h4>
+    <button class="eventosBTN">Explorar Eventos</button>
 </div>

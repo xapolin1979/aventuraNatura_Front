@@ -1,0 +1,12 @@
+.container-fluid{
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ff6619;
+}
+p{
+    margin-top: 15px;
+    color:white;
+    font-family: "Work Sans", sans-serif;
+}

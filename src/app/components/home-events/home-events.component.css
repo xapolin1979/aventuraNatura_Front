@@ -67,11 +67,13 @@
 }
 .imagen {
     width: 300px;
-    height: 180px;
-    background-image: url('../../../assets/img/senderismo_evento.jpg');
-    background-size: cover;
-
-  }
+    height: 200px;
+    overflow: hidden;
+}
+.imagen img{
+   max-width: 100%;
+   object-fit: cover;
+}
   
   
 .target h4{
@@ -82,12 +84,36 @@
 }
 
 .eventosBTN{
-    margin-top: 20px;
+    margin-bottom: 100px;
     padding: 20px;
     border:none;
     font-family: "Work Sans", sans-serif;
-    background-color: #ff6619;
+    background-color: rgb(36, 179, 112);
     color: white;
+}
+.eventosBTN:hover{
+    margin-bottom: 100px;
+    padding: 20px;
+    border:none;
+    font-family: "Work Sans", sans-serif;
+    background-color: rgb(33, 158, 100);
+    color: white;
+}
+
+.explorar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.explorar h4{
+    font-family: "Work Sans", sans-serif;
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+.explorar span{
+    color:#ff6619;
 }
 
 
