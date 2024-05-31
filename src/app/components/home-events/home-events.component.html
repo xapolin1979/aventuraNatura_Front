@@ -1,56 +1,71 @@
 <div class="container-fluid containerEventos">
     
     <div class="eventosDestacados">
-        <h3>¡Empieza tus <span>aventuras</span> hoy!</h3>
+        <h4>¡Empieza tus <span>aventuras</span> hoy!</h4>
         <p>Explora nuestros eventos destacados y encuentra tu próxima gran aventura. <br>Ya sea que busques desafiarte a ti mismo en las montañas, explorar nuevos senderos o navegar por ríos turbulentos, <span>AVENTURA NATURA </span> es el lugar perfecto para comenzar.</p>
     </div>
 
      
 <div class="contenedorCards" >
-   <div class="target">
-    <div class="imagen">
-        <img src="http://localhost:3001/uploads/{{datosEventos[0].Photos[0].photo}}" alt="">
-    </div>
-    <br>
-    <h4>{{datosEventos[0].Category.name}}</h4>
-    <h5>{{datosEventos[0].User.name}}</h5>
-    <div class="linea"></div>
-       <p>{{datosEventos[0].name_event}}</p>
-       <p>{{datosEventos[0].start_date}}</p>
-   </div>
-   <div class="target">
-    <div class="imagen">
-        <img src="http://localhost:3001/uploads/{{datosEventos[2].Photos[0].photo}}" alt="">
-    </div>
-    <br>
-    <h4>{{datosEventos[2].Category.name}}</h4>
-    <h5>{{datosEventos[2].User.name}}</h5>
-    <div class="linea"></div>
-    <p>{{datosEventos[2].name_event}}</p>
-    <p>{{datosEventos[2].start_date}}</p>
-   </div>
-   <div class="target">
-    <div class="imagen">
-        <img src="http://localhost:3001/uploads/{{datosEventos[4].Photos[0].photo}}" alt="">
-    </div>
-    <br>
-    <h4>{{datosEventos[4].Category.name}}</h4>
-    <h5>{{datosEventos[4].User.name}}</h5>
-    <div class="linea"></div>
-    <p>{{datosEventos[4].name_event}}</p>
-    <p>{{datosEventos[4].start_date}}</p>
-   </div>
-   <div class="target">
-    <div class="imagen">
-        <img src="http://localhost:3001/uploads/{{datosEventos[6].Photos[0].photo}}" alt="">
-    </div>
-    <br>
-    <h4>{{datosEventos[6].Category.name}}</h4>
-    <h5>{{datosEventos[6].User.name}}</h5>
-    <div class="linea"></div>
-    <p>{{datosEventos[6].name_event}}</p>
-    <p>{{datosEventos[6].start_date}}</p>
-   </div>
+  
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="http://localhost:3001/uploads/{{datosEventos[0].Photos[0].photo}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{datosEventos[0].User.name}}</h5>
+          <p class="card-text">{{datosEventos[0].Category.name}}<br>{{datosEventos[0].name_event}}<br>{{datosEventos[0].start_date}}
+             @if(datosEventos[0].price_per_person !=0){
+                <p> precio: {{datosEventos[0].price_per_person}} eur</p> 
+            }
+            @else {
+                <p>precio: gratis</p>
+            }
+          <a href="#" class="btn btn-primary">ver evento</a>
+        </div>
+      </div>
+
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="http://localhost:3001/uploads/{{datosEventos[2].Photos[0].photo}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{datosEventos[2].User.name}}</h5>
+          <p class="card-text">{{datosEventos[2].Category.name}}<br>{{datosEventos[2].name_event}}<br>{{datosEventos[2].start_date}}
+             @if(datosEventos[2].price_per_person !=0){
+                <p> precio: {{datosEventos[2].price_per_person}} eur</p> 
+            }
+            @else {
+                <p>precio: gratis</p>
+            }
+          <a href="#" class="btn btn-primary">ver evento</a>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="http://localhost:3001/uploads/{{datosEventos[4].Photos[0].photo}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{datosEventos[4].User.name}}</h5>
+          <p class="card-text">{{datosEventos[4].Category.name}}<br>{{datosEventos[4].name_event}}<br>{{datosEventos[4].start_date}}
+             @if(datosEventos[4].price_per_person !=0){
+                <p> precio: {{datosEventos[4].price_per_person}} eur</p> 
+            }
+            @else {
+                <p>precio: gratis</p>
+            }
+          <a href="#" class="btn btn-primary">ver evento</a>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="http://localhost:3001/uploads/{{datosEventos[6].Photos[0].photo}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{datosEventos[6].User.name}}</h5>
+          <p class="card-text">{{datosEventos[6].Category.name}}<br>{{datosEventos[6].name_event}}<br>{{datosEventos[6].start_date}}
+             @if(datosEventos[6].price_per_person !=0){
+                <p> precio: {{datosEventos[6].price_per_person}} eur</p> 
+            }
+            @else {
+                <p>precio: gratis</p>
+            }
+          <a href="#" class="btn btn-primary">ver evento</a>
+        </div>
+      </div>
+
 
    
 
@@ -60,6 +75,6 @@
 </div>
 
 <div class="container explorar">
-    <h4>¿Listo para tu próxima <span>aventura</span>? ¡Explora, inscribite y Disfruta!</h4>
+    <h4>¿Listo para tu próxima <span>aventura</span>? ¡Explora, inscribite a los eventos y Disfruta!</h4>
     <button class="eventosBTN">Explorar Eventos</button>
 </div>

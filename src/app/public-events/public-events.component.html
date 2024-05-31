@@ -1,1 +1,31 @@
-<p>public-events works!</p>
+<div class="container-fluid portada">
+   <h3>Explora Eventos de aventura</h3>
+   <h4>Encuentra y únete a las mejores experiencias al aire libre</h4>
+</div>
+
+<div class="container">
+    <div class="buscador">
+            <h1>Buscador de Actividades al Aire Libre</h1>
+            <form action="/search" method="post">
+                <label for="category">Categoría:</label>
+                <select id="category" name="category" required>
+                    <option value="senderismo">Senderismo</option>
+                    <option value="alpinismo">Alpinismo</option>
+                    <option value="escalada">Escalada</option>
+                    <option value="esqui">Esquí</option>
+                    <option value="snowboard">Snowboard</option>
+                    <option value="barranquismo">Barranquismo</option>
+                    <option value="rafting">Rafting</option>
+                    <option value="kayak">Kayak</option>
+                </select>
+    
+                <label for="start_date">Fecha de inicio:</label>
+                <input type="datetime-local" id="start_date" name="start_date" required>
+    
+                <label for="end_date">Fecha de fin:</label>
+                <input type="datetime-local" id="end_date" name="end_date" required>
+    
+                <button type="submit">Buscar</button>
+            </form>
+    </div>
+</div>

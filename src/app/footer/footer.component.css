@@ -3,7 +3,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #ff6619;
+    background-color: #000000;
+    text-align: center;
+ 
 }
 p{
     margin-top: 15px;
