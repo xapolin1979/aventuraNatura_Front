@@ -20,7 +20,7 @@
 
 .eventosDestacados h4{
     font-family: "Work Sans", sans-serif;
-
+    font-size: 2.3em;
  
 }
 
@@ -29,6 +29,7 @@
    font-weight: 400;
    font-style: normal; 
    margin-top: 20px;
+   font-size: 1.3em;
 }
 .eventosDestacados span{
     font-family: "Work Sans", sans-serif;
@@ -53,12 +54,18 @@
     margin: 30px;
     border:none;
     background-color: rgb(248, 248, 248);
-
+     cursor: pointer;
+  --bs-card-border-radius:none;
 }
-
-.btn{
-    background-color: #ff6619;
-    border:none
+.card-img, .card-img-top {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+.card h5{
+    color: #ff6619;
+}
+a{
+    text-decoration: none;
 }
 
 .eventosBTN{
@@ -66,7 +73,7 @@
     padding: 20px;
     border:none;
     font-family: "Work Sans", sans-serif;
-    background-color: rgb(36, 179, 112);
+    background-color: #ff6619;
     color: white;
 }
 .eventosBTN:hover{

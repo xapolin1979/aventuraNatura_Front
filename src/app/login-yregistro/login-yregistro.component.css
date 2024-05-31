@@ -63,17 +63,18 @@
    
 }
 
+.modal-header{
+    border-bottom: 1px solid #ff6619;
+}
 
-
-
-
+.btn{
+background-color: #ff6619;
+border: none;
+}
 @media screen and (max-width: 1050px){
 
-  
-
-  
-  
-
+ 
+    
 }
 @media screen and (max-width: 980px){
 

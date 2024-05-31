@@ -137,12 +137,23 @@ nav{
   }
 
 .empresa{
-    background-color: rgb(36, 179, 112);
+    background-color: #ff6619;
    font-size: 1.2em;
-  
+  border-left: none;
 }
-
-
+.empresa .nav-link:hover{
+    background-color: rgb(30, 167, 103);
+    border-left: none;
+}
+.administrarEventos .nav-link{
+    background-color: rgb(30, 167, 103);
+    border-right: none;
+    color:white
+}
+.administrarEventos .nav-link:hover{
+    background-color: #ff6619;
+    border-right: none;
+}
 .empresasA{
     color:white;
 }
