@@ -49,62 +49,87 @@
       </div>
       <div class="modal-body">
        
-        <form class="row g-3">
+        <form class="row g-3" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
           <div class="col-md-6">
-            <label for="validationServer01" class="form-label">Nombre de los organizadores</label>
-            <input type="text" class="form-control " id="validationServer01" value="" required placeholder="">
+            <label for="nombreOrganizador" class="form-label">Nombre del organizador</label>
+            <input type="text" formControlName="nombreOrganizador" id="nombreOrganizador" class="form-control"
+              [ngClass]="{'is-valid': registerForm.controls.nombreOrganizador.valid && (registerForm.controls.nombreOrganizador.dirty || registerForm.controls.nombreOrganizador.touched),
+                          'is-invalid': registerForm.controls.nombreOrganizador.invalid && (registerForm.controls.nombreOrganizador.dirty || registerForm.controls.nombreOrganizador.touched)}"
+              required>
             <div class="valid-feedback">
-              Looks good!
+              Nombre correcto
+            </div>
+            <div class="invalid-feedback">
+              Escribe el nombre del organizador
             </div>
           </div>
+          
           <div class="col-md-6">
-            <label for="validationServerUsername" class="form-label">email</label>
+            <label for="email" class="form-label">Email</label>
             <div class="input-group has-validation">
-              <span class="input-group-text" id="inputGroupPrepend3">{{logoEmail}}</span>
-              <input type="text" class="form-control " id="validationServerUsername" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" required>
-              <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                Please choose a username.
+              <span class="input-group-text" id="inputGroupPrepend3">{{ logoEmail }}</span>
+              <input type="email" formControlName="email" id="email" class="form-control"
+                [ngClass]="{'is-valid': registerForm.controls.email.valid && (registerForm.controls.email.dirty || registerForm.controls.email.touched),
+                            'is-invalid': registerForm.controls.email.invalid && (registerForm.controls.email.dirty || registerForm.controls.email.touched)}"
+                required>
+              <div id="emailFeedback" class="invalid-feedback">
+                Por favor ingresa un correo electrónico válido.
               </div>
             </div>
           </div>
-    
+          
           <div class="col-md-6">
-            <label for="validationServer03" class="form-label">Password</label>
-            <input type="password" class="form-control " id="validationServer03" aria-describedby="validationServer03Feedback" required>
-            <div id="validationServer03Feedback" class="invalid-feedback">
-              Please provide a valid city.
+            <label for="password" class="form-label">Password</label>
+            <input type="password" formControlName="password" id="password" class="form-control"
+              [ngClass]="{'is-valid': registerForm.controls.password.valid && (registerForm.controls.password.dirty || registerForm.controls.password.touched),
+                          'is-invalid': registerForm.controls.password.invalid && (registerForm.controls.password.dirty || registerForm.controls.password.touched)}"
+              required>
+            <div id="passwordFeedback" class="invalid-feedback">
+              Por favor proporciona una contraseña válida.
             </div>
           </div>
+          
           <div class="col-md-6">
-            <label for="validationServer03" class="form-label">Repetir Password</label>
-            <input type="password" class="form-control " id="validationServer03" aria-describedby="validationServer03Feedback" required>
-            <div id="validationServer03Feedback" class="invalid-feedback">
-              Please provide a valid city.
+            <label for="rePassword" class="form-label">Repetir Password</label>
+            <input type="password" formControlName="rePassword" id="rePassword" class="form-control"
+              [ngClass]="{'is-valid': registerForm.controls.rePassword.valid && (registerForm.controls.rePassword.dirty || registerForm.controls.rePassword.touched),
+                          'is-invalid': registerForm.controls.rePassword.invalid && (registerForm.controls.rePassword.dirty || registerForm.controls.rePassword.touched)}"
+              required>
+            <div id="rePasswordFeedback" class="invalid-feedback">
+              Las contraseñas no coinciden.
             </div>
           </div>
+          
           <div class="col-md-6">
-            <label for="validationServer03" class="form-label">Telefono</label>
-            <input type="number" class="form-control " id="validationServer03" aria-describedby="validationServer03Feedback" required>
-            <div id="validationServer03Feedback" class="invalid-feedback">
-              Please provide a valid city.
+            <label for="phone" class="form-label">Teléfono</label>
+            <input type="tel" formControlName="phone" id="phone" class="form-control"
+              [ngClass]="{'is-valid': registerForm.controls.phone.valid && (registerForm.controls.phone.dirty || registerForm.controls.phone.touched),
+                          'is-invalid': registerForm.controls.phone.invalid && (registerForm.controls.phone.dirty || registerForm.controls.phone.touched)}"
+              required>
+            <div id="phoneFeedback" class="invalid-feedback">
+              Por favor proporciona un número de teléfono válido.
             </div>
           </div>
+          
           <div class="col-12">
             <div class="form-check">
-              <input class="form-check-input " type="checkbox" value="" id="invalidCheck3" aria-describedby="invalidCheck3Feedback" required>
+              <input class="form-check-input" type="checkbox" formControlName="aceptarTerminos"  [ngClass]="{'is-valid': registerForm.controls.aceptarTerminos.valid && (registerForm.controls.aceptarTerminos.dirty || registerForm.controls.aceptarTerminos.touched),
+              'is-invalid': registerForm.controls.aceptarTerminos.invalid && (registerForm.controls.aceptarTerminos.dirty || registerForm.controls.aceptarTerminos.touched)}"
+               id="invalidCheck3" required>
               <label class="form-check-label" for="invalidCheck3">
                 Aceptar términos y condiciones
               </label>
               <div id="invalidCheck3Feedback" class="invalid-feedback">
-                Debes aceptar antes de enviar.
+                Debes aceptar los términos y condiciones antes de enviar.
               </div>
             </div>
           </div>
+          
           <div class="col-12">
             <button class="btn btn-primary" type="submit">Registrarse</button>
           </div>
         </form>
-
+        
 
         
       </div>

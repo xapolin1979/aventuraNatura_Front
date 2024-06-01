@@ -1,5 +1,6 @@
 .container-fluid{
     --bs-gutter-x: 0rem;
+
 }
 .black{
     width: 100%;
@@ -136,22 +137,21 @@ nav{
     border-right:1px solid rgb(237, 237, 237);
   }
 
-.empresa{
-    background-color: #ff6619;
-   font-size: 1.2em;
-  border-left: none;
+.empresa .nav-link{
+    background-color: #2E7D32;
+     border-left: none;
 }
 .empresa .nav-link:hover{
-    background-color: rgb(30, 167, 103);
+    background-color: #1B5E20;
     border-left: none;
 }
 .administrarEventos .nav-link{
-    background-color: rgb(30, 167, 103);
+    background-color: #3F51B5;
     border-right: none;
-    color:white
+    color:white;
 }
 .administrarEventos .nav-link:hover{
-    background-color: #ff6619;
+    background-color: #303F9F;
     border-right: none;
 }
 .empresasA{

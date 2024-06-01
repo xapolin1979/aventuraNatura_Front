@@ -5,7 +5,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url('../../assets/img/login2.jpg');
+    background-image: url('../../assets/img/login.jpg');
     background-size: cover;
     background-position: bottom;
     position: relative;
@@ -24,7 +24,7 @@
 }
 .portada h3{
     font-family: "Bebas Neue", sans-serif;
-    color:#ff6619;
+    color:white;
     margin-bottom: 50px;
     text-align: center;
     position: relative; 
@@ -47,7 +47,7 @@
 .formulario{
     background-color: white;
     padding: 30px;
-    border-radius: 5px;
+    
 }
 
 .formulario span{
@@ -62,7 +62,10 @@
     align-items: center;
    
 }
-
+.modal-content{
+    border-radius: 0px;
+    padding: 10px;
+}
 .modal-header{
     border-bottom: 1px solid #ff6619;
 }
@@ -70,7 +73,22 @@
 .btn{
 background-color: #ff6619;
 border: none;
+border-radius: 0px;
 }
+.btn:hover{
+    background-color: rgb(30, 167, 103);
+    border-radius: 0px;
+}
+
+
+.submitted .form-control:invalid {
+    border-color: #dc3545;
+    padding-right: calc(1.5em + .75rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-exclamation-triangle-fill' viewBox='0 0 16 16'%3e%3cpath d='M.223 14.224c-.522.335-.223.776.292.776h15.97c.514 0 .813-.44.292-.776L8.293.776c-.52-.335-.954-.335-1.474 0L.223 14.224z'/%3e%3cpath d='M8 12.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2zM7.93 9.643c.484-.34.903-.886 1.206-1.643h-2.34c.303.757.722 1.303 1.207 1.643zM8 6a.25.25 0 0 0 .25-.25v-3.5a.25.25 0 0 0-.5 0v3.5A.25.25 0 0 0 8 6zM8 13a.25.25 0 0 1-.25-.25v-.25a.25.25 0 0 1 .5 0v.25A.25.25 0 0 1 8 13z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(.375em + .1875rem) center;
+    background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+  }
 @media screen and (max-width: 1050px){
 
  
