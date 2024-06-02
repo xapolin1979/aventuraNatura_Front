@@ -7,10 +7,10 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  private url = 'http://localhost:3001/auth'; 
+  private url = 'http://localhost:3001/auth';
 
   constructor(private http: HttpClient) {
-    this.isAuthenticated = !!localStorage.getItem('isAuthenticated'); 
+    this.isAuthenticated = !!localStorage.getItem('isAuthenticated');
   }
 
   registrarUsuario(registroData: any): Observable<any> {
