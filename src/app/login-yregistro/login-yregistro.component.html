@@ -2,29 +2,32 @@
     <h3>Conviértete en un organizador de aventuras y comparte tus experiencias con el mundo.</h3>
 
 <div class="container containerForm">
-    <form class="row g-3 formulario">
+
+    <form class="row g-3 formulario" [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()">
+   
        <h4>Iniciar sesión</h4>
-        <div class="col-md-6">
+       <div class="alert alert-danger" role="alert" *ngIf="this.loginIncorrecto">
+        correo o contraseña incorrectos
+       </div>
+        <div class="col-md-12 ">
             <label for="validationServerUsername" class="form-label">email</label>
-            <div class="input-group has-validation">
+            <div class="input-group has-validation ">
               <span class="input-group-text" id="inputGroupPrepend3">{{logoEmail}}</span>
-              <input type="text" class="form-control" id="validationServerUsername" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" required>
-              <div class="valid-feedback">
-                Looks good!
-              </div>
+              <input type="text" class="form-control" formControlName="email" id="validationServerUsername" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" [ngClass]="{'is-valid': loginForm.controls.email.valid && (loginForm.controls.email.dirty || loginForm.controls.email.touched),
+              'is-invalid': loginForm.controls.email.invalid && (loginForm.controls.email.dirty || loginForm.controls.email.touched)}"  required>
+         
               <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                Please choose a username.
+                Por favor ingresa un correo electrónico válido.
               </div>
             </div>
           </div>
-        <div class="col-md-6">
+        <div class="col-md-12 ">
           <label for="validationServer01" class="form-label">Password</label>
-          <input type="text" class="form-control " id="validationServer01" value="" required>
-          <div class="valid-feedback">
-            Looks good!
-          </div>
+          <input type="password" class="form-control "  formControlName="password" id="validationServer01" value="" [ngClass]="{'is-valid': loginForm.controls.password.valid && (loginForm.controls.password.dirty || loginForm.controls.password.touched),
+          'is-invalid': loginForm.controls.password.invalid && (loginForm.controls.password.dirty || loginForm.controls.password.touched)}"   required>
+    
           <div id="validationServer03Feedback" class="invalid-feedback">
-            Please provide a valid city.
+            Por favor proporciona tu contraseña.
           </div>
         </div>
        
@@ -48,17 +51,19 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
+    
+          <div class="alert alert-success" role="alert" *ngIf="this.registradoCorrectamente">
+            Registrado correctamente
+           </div>
+  
        
-        <form class="row g-3" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <form class="row g-3" [formGroup]="registerForm" (ngSubmit)="onSubmitRegister()">
           <div class="col-md-6">
-            <label for="nombreOrganizador" class="form-label">Nombre del organizador</label>
-            <input type="text" formControlName="nombreOrganizador" id="nombreOrganizador" class="form-control"
-              [ngClass]="{'is-valid': registerForm.controls.nombreOrganizador.valid && (registerForm.controls.nombreOrganizador.dirty || registerForm.controls.nombreOrganizador.touched),
-                          'is-invalid': registerForm.controls.nombreOrganizador.invalid && (registerForm.controls.nombreOrganizador.dirty || registerForm.controls.nombreOrganizador.touched)}"
+            <label for="name" class="form-label">Nombre del organizador</label>
+            <input type="text" formControlName="name" id="name" class="form-control"
+              [ngClass]="{'is-valid': registerForm.controls.name.valid && (registerForm.controls.name.dirty || registerForm.controls.name.touched),
+                          'is-invalid': registerForm.controls.name.invalid && (registerForm.controls.name.dirty || registerForm.controls.name.touched)}"
               required>
-            <div class="valid-feedback">
-              Nombre correcto
-            </div>
             <div class="invalid-feedback">
               Escribe el nombre del organizador
             </div>
@@ -96,13 +101,13 @@
                           'is-invalid': registerForm.controls.rePassword.invalid && (registerForm.controls.rePassword.dirty || registerForm.controls.rePassword.touched)}"
               required>
             <div id="rePasswordFeedback" class="invalid-feedback">
-              Las contraseñas no coinciden.
+             Las contraseñas no coinciden
             </div>
           </div>
           
           <div class="col-md-6">
             <label for="phone" class="form-label">Teléfono</label>
-            <input type="tel" formControlName="phone" id="phone" class="form-control"
+            <input type="text" formControlName="phone" id="phone" class="form-control" 
               [ngClass]="{'is-valid': registerForm.controls.phone.valid && (registerForm.controls.phone.dirty || registerForm.controls.phone.touched),
                           'is-invalid': registerForm.controls.phone.invalid && (registerForm.controls.phone.dirty || registerForm.controls.phone.touched)}"
               required>

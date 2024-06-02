@@ -137,13 +137,15 @@ nav{
     border-right:1px solid rgb(237, 237, 237);
   }
 
-.empresa .nav-link{
+.empresa .empresasA{
     background-color: #2E7D32;
      border-left: none;
+     border-right: none;
 }
-.empresa .nav-link:hover{
+.empresa .empresasA:hover{
     background-color: #1B5E20;
     border-left: none;
+    border-right: none;
 }
 .administrarEventos .nav-link{
     background-color: #3F51B5;
@@ -153,11 +155,24 @@ nav{
 .administrarEventos .nav-link:hover{
     background-color: #303F9F;
     border-right: none;
+    border-left: none;
 }
 .empresasA{
     color:white;
 }
-
+.empresasB{
+    color:white;
+}
+.empresa .empresasB{
+    background-color: #ff0000;
+     border-left: none;
+     border-right: none;
+}
+.empresa .empresasB:hover{
+    background-color: #eb0000;
+    border-left: none;
+    border-right: none;
+}
 
   @media screen and (max-width: 980px){
     .logo{

@@ -35,7 +35,7 @@
 
 
 .containerForm{
-    width: 100%;
+    width: 40%;
     height: auto;
     display: flex;
     justify-content: center;
@@ -45,9 +45,10 @@
 
 }
 .formulario{
+    width: 100%;
     background-color: white;
-    padding: 30px;
-    
+    padding: 10px;
+    font-family: "Work Sans", sans-serif;
 }
 
 .formulario span{
@@ -89,20 +90,27 @@ border-radius: 0px;
     background-position: right calc(.375em + .1875rem) center;
     background-size: calc(.75em + .375rem) calc(.75em + .375rem);
   }
+  
 @media screen and (max-width: 1050px){
 
- 
+    .containerForm{
+        width: 60%;
+    }
     
 }
 @media screen and (max-width: 980px){
 
-  
+    .containerForm{
+        width: 80%;
+    }
 
 
 }
 
 @media screen and (max-width: 600px){
    
-    
+    .containerForm{
+        width: 100%;
+    }
 }
 
