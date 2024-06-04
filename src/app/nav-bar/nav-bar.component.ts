@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../services/auth.service';
-import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-nav-bar',
   standalone: true,
@@ -12,15 +12,18 @@ import { Router } from '@angular/router';
 export class NavBarComponent {
 email:string='ginesti@outlook.es';
 location:string='Sabadell (Barcelona)'
-   constructor(public  authService: AuthService,private router: Router) {}
+   constructor(public  authService: AuthService) {}
 
 
 cerrarSesion(){
-  this.authService.closeSesion().subscribe(() => {
-    this.authService.logout();
-    this.router.navigate(['/']);
-  });
- 
+  this.authService.logout().subscribe({
+    next:(response)=>{
+      console.log(response)
+    },
+    error:(error)=>{
+      console.log('Nose pudo hacer logout'+ error)
+    }
+  })
 }
 
 

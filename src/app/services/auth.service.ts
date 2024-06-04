@@ -7,11 +7,11 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  private url = 'http://localhost:3001/auth';
+   url = 'http://localhost:3001/auth';
+  localStorageKey = 'token';
+  isAuthenticated: boolean = false;
 
-  constructor(private http: HttpClient) {
-    this.isAuthenticated = !!localStorage.getItem('isAuthenticated');
-  }
+  constructor(public http: HttpClient) { }
 
   registrarUsuario(registroData: any): Observable<any> {
     return this.http.post(`${this.url}/register`, registroData);
@@ -19,40 +19,27 @@ export class AuthService {
 
   loginUsuario(loginData: any): Observable<any> {
     return this.http.post(`${this.url}/login`, loginData).pipe(
-      tap(() => {
-        localStorage.setItem('isAuthenticated', 'true');
+      tap((response: any) => {
+        localStorage.setItem(this.localStorageKey, response.token);
         this.isAuthenticated = true;
       })
     );
   }
 
-  closeSesion(): Observable<any> {
+  logout(): Observable<any> {
     return this.http.get(`${this.url}/logout`).pipe(
-      tap(() => {
-        localStorage.removeItem('isAuthenticated');
+      tap((response: any) => {
+        localStorage.removeItem(this.localStorageKey);
         this.isAuthenticated = false;
       })
     );
   }
 
-  get isAuthenticated(): boolean {
-    return !!localStorage.getItem('isAuthenticated');
-  }
-
-  set isAuthenticated(value: boolean) {
-    if (value) {
-      localStorage.setItem('isAuthenticated', 'true');
-    } else {
-      localStorage.removeItem('isAuthenticated');
-    }
-  }
-
   isLoggedIn(): boolean {
-    return this.isAuthenticated;
+   
+    return !!localStorage.getItem(this.localStorageKey);
   }
 
-  logout(): void {
-    localStorage.removeItem('isAuthenticated');
-    this.isAuthenticated = false;
-  }
+
+  
 }

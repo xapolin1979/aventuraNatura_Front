@@ -1,74 +1,188 @@
-<div class="container-fluid">
-    <div class="formulario">
-        <form class="row g-3">
-            <div class="col-md-4">
-              <label for="validationServer01" class="form-label">First name</label>
-              <input type="text" class="form-control is-valid" id="validationServer01" value="Mark" required>
-              <div class="valid-feedback">
-                Looks good!
-              </div>
-            </div>
-            <div class="col-md-4">
-              <label for="validationServer02" class="form-label">Last name</label>
-              <input type="text" class="form-control is-valid" id="validationServer02" value="Otto" required>
-              <div class="valid-feedback">
-                Looks good!
-              </div>
-            </div>
-            <div class="col-md-4">
-              <label for="validationServerUsername" class="form-label">Username</label>
-              <div class="input-group has-validation">
-                <span class="input-group-text" id="inputGroupPrepend3">{{logoEmail}}</span>
-                <input type="text" class="form-control is-invalid" id="validationServerUsername" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" required>
-                <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                  Please choose a username.
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <label for="validationServer03" class="form-label">City</label>
-              <input type="text" class="form-control is-invalid" id="validationServer03" aria-describedby="validationServer03Feedback" required>
-              <div id="validationServer03Feedback" class="invalid-feedback">
-                Please provide a valid city.
-              </div>
-            </div>
-            <div class="col-md-3">
-              <label for="validationServer04" class="form-label">State</label>
-              <select class="form-select is-invalid" id="validationServer04" aria-describedby="validationServer04Feedback" required>
-                <option selected disabled value="">Choose...</option>
-                <option>...</option>
-              </select>
-              <div id="validationServer04Feedback" class="invalid-feedback">
-                Please select a valid state.
-              </div>
-            </div>
-            <div class="col-md-3">
-              <label for="validationServer05" class="form-label">Zip</label>
-              <input type="text" class="form-control is-invalid" id="validationServer05" aria-describedby="validationServer05Feedback" required>
-              <div id="validationServer05Feedback" class="invalid-feedback">
-                Please provide a valid zip.
-              </div>
-            </div>
-            <div class="col-12">
-                <div id="map-mapbox"></div>
-            </div>
-            <div class="col-12">
-              <div class="form-check">
-                <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" aria-describedby="invalidCheck3Feedback" required>
-                <label class="form-check-label" for="invalidCheck3">
-                  Agree to terms and conditions
-                </label>
-                <div id="invalidCheck3Feedback" class="invalid-feedback">
-                  You must agree before submitting.
-                </div>
-              </div>
-            </div>
-            
-            <div class="col-12">
-              <button class="btn btn-primary" type="submit">Submit form</button>
-            </div>
-          </form>
-    </div>
+<div class="container-fluid containerFormulario" >
+  
 
+  <div class="formulario"[style.display]="! nextCreateEvent ? 'block' : 'none'" >
     
+    <form class="row g-3" [formGroup]="registerEvent" (ngSubmit)=" onSubmitEvent()">
+      <div class="titulo_form">
+        <h4>Paso 1</h4>
+        <h3>Rellena el formulario</h3>
+      </div>
+          <!-- Titulo del del evento -->
+      <div class="col-md-6">
+        <label for="name_event" class="form-label">Titulo del evento</label>
+        <input type="text" formControlName="name_event" id="name_event" class="form-control" placeholder="Indica el titulo de tu evento"
+          [ngClass]="{'is-valid': registerEvent.controls.name_event.valid && (registerEvent.controls.name_event.dirty || registerEvent.controls.name_event.touched),
+                      'is-invalid': registerEvent.controls.name_event.invalid && (registerEvent.controls.name_event.dirty || registerEvent.controls.name_event.touched)}"
+          required>
+        <div class="invalid-feedback">
+          Escribe el titulo de tu evento
+        </div>
+      </div>
+       <!-- Categorias -->
+  <div class="col-md-6">
+    <label for="category_id" class="form-label">Categoria</label>
+    <select formControlName="category_id" id="category_id" class="form-select"
+      [ngClass]="{'is-valid': registerEvent.controls.category_id.valid && (registerEvent.controls.category_id.dirty || registerEvent.controls.category_id.touched),
+                  
+  'is-invalid': registerEvent.controls.category_id.invalid && (registerEvent.controls.category_id.dirty || registerEvent.controls.category_id.touched)}" required>
+     <option value="1">Senderismo</option>
+      <option value="2">Alpinismo</option>
+      <option value="3">Escalada</option>
+      <option value="4">Esqui</option>
+      <option value="5">Snowboard</option>
+      <option value="6">Barranquism</option>
+      <option value="7">Rafting</option>
+      <option value="8">Kayak</option>
+      <option value="9">Otros</option>
+    </select>
+    <div class="invalid-feedback">
+      Selecciona una categoria para del evento
+    </div>
+  </div>
+        <!-- Información del evento -->
+  <div class="col-12">
+    <label for=" info_event" class="form-label">Información del evento</label>
+    <textarea formControlName="info_event" id="info_event" class="form-control" placeholder="Escribe aqui toda la información que quieras que sepan sobre tu evento"
+    [ngClass]="{'is-valid': registerEvent.controls.info_event.valid && (registerEvent.controls.info_event.dirty || registerEvent.controls.info_event.touched),
+                'is-invalid': registerEvent.controls.info_event.invalid && (registerEvent.controls.info_event.dirty || registerEvent.controls.info_event.touched)}" rows="5" required></textarea>
+  
+    <div class="invalid-feedback">
+      Ingresa la información del evento
+    </div>
+  </div>
+
+       <!-- Dificultad -->
+  <div class="col-md-6">
+    <label for="difficulty" class="form-label">Dificultad</label>
+    <select formControlName="difficulty" id="difficulty" class="form-select"
+      [ngClass]="{'is-valid': registerEvent.controls.difficulty.valid && (registerEvent.controls.difficulty.dirty || registerEvent.controls.difficulty.touched),
+                  'is-invalid': registerEvent.controls.difficulty.invalid && (registerEvent.controls.difficulty.dirty || registerEvent.controls.difficulty.touched)}" required>
+      <option value="1">Baja</option>
+      <option value="2">Media</option>
+      <option value="3">Alta</option>
+    </select>
+    <div class="invalid-feedback">
+      Selecciona la dificultad del evento
+    </div>
+  </div>
+
+  <!-- Número máximo de personas -->
+  <div class="col-md-6">
+    <label for="max_persons" class="form-label">Máximo de personas que se pueden apuntar</label>
+    <input type="number" formControlName="max_persons" id="max_persons" class="form-control"
+      [ngClass]="{'is-valid': registerEvent.controls.max_persons.valid && (registerEvent.controls.max_persons.dirty || registerEvent.controls.max_persons.touched),
+                  'is-invalid': registerEvent.controls.max_persons.invalid && (registerEvent.controls.max_persons.dirty || registerEvent.controls.max_persons.touched)}" required>
+    <div class="invalid-feedback">
+      Ingresa el número máximo de personas
+    </div>
+  </div>
+
+  <!-- Fecha de inicio del evento -->
+  <div class="col-md-6">
+    <label for="start_date" class="form-label">Fecha de inicio del evento</label>
+    <input type="datetime-local" formControlName="start_date" id="start_date" class="form-control"
+      [ngClass]="{'is-valid': registerEvent.controls.start_date.valid && (registerEvent.controls.start_date.dirty || registerEvent.controls.start_date.touched),
+                  'is-invalid': registerEvent.controls.start_date.invalid && (registerEvent.controls.start_date.dirty || registerEvent.controls.start_date.touched)}" required>
+    <div class="invalid-feedback">
+      Selecciona la fecha de inicio del evento
+    </div>
+  </div>
+
+  <!-- Fecha de fin del evento -->
+  <div class="col-md-6">
+    <label for="end_date" class="form-label">Fecha de fin del evento</label>
+    <input type="datetime-local" formControlName="end_date" id="end_date" class="form-control"
+      [ngClass]="{'is-valid': registerEvent.controls.end_date.valid && (registerEvent.controls.end_date.dirty || registerEvent.controls.end_date.touched),
+                  'is-invalid': registerEvent.controls.end_date.invalid && (registerEvent.controls.end_date.dirty || registerEvent.controls.end_date.touched)}" required>
+    <div class="invalid-feedback">
+      Selecciona la fecha de fin del evento
+    </div>
+  </div>
+
+
+
+  <!-- Público objetivo -->
+  <div class="col-md-6">
+    <label for=" for_whom" class="form-label">Quien puede participar</label>
+    <select formControlName="for_whom" id="for_whom" class="form-select"
+      [ngClass]="{'is-valid': registerEvent.controls.for_whom.valid && (registerEvent.controls.for_whom.dirty || registerEvent.controls.for_whom.touched),
+                  
+  'is-invalid': registerEvent.controls.for_whom.invalid && (registerEvent.controls.for_whom.dirty || registerEvent.controls.for_whom.touched)}" required>
+     <option value="1">Todas las edades</option>
+      <option value="2">A partir de 6 años</option>
+      <option value="3">A partir de 14 años</option>
+      <option value="4">A partir de 18 años</option>
+    </select>
+    <div class="invalid-feedback">
+      Selecciona el público objetivo del evento
+    </div>
+  </div>
+
+  <!-- Precio por persona -->
+  <div class="col-md-6">
+    <label for="price_per_person" class="form-label">Precio por persona (si el evento es gratuito indicalo con el numero 0)</label>
+    <input type="number" formControlName="price_per_person" id="price_per_person" class="form-control"
+      [ngClass]="{'is-valid': registerEvent.controls.price_per_person.valid && (registerEvent.controls.price_per_person.dirty || registerEvent.controls.price_per_person.touched),
+                  'is-invalid': registerEvent.controls.price_per_person.invalid && (registerEvent.controls.price_per_person.dirty || registerEvent.controls.price_per_person.touched)}" required>
+    <div class="invalid-feedback">
+      Ingresa el precio por persona
+    </div>
+  </div>
+
+  <!-- Materiales necesarios -->
+  <div class="col-12">
+    <label for="material" class="form-label">Materiales necesarios</label>
+    <textarea formControlName="material" id="material" class="form-control"
+      [ngClass]="{'is-valid':registerEvent.controls.material.valid && (registerEvent.controls.material.dirty || registerEvent.controls.material.touched),
+                  'is-invalid':registerEvent.controls.material.invalid && (registerEvent.controls.material.dirty || registerEvent.controls.material.touched)}" rows="5" required></textarea>
+    <div class="invalid-feedback">
+      Ingresa los materiales necesarios para el evento
+    </div>
+  </div>
+      
+      <div class="col-12">
+        <button class="btn btn-primary" type="submit">Siguiente</button>
+      </div>
+    </form>
 </div>
+</div>
+
+<div class="container-fluid containerMapbox" [style.display]="mapBoxEvento ? 'block' : 'none'" >
+
+  <div class="titulo">
+    <div class="tipografia">
+      <h4>Paso 2</h4>
+      <h3>Elige el lugar de tu evento</h3>
+      <div class="alert alert-danger" role="alert" [style.display]="localizacionEvento ? 'block' : 'none'">
+        Debes indicar la localización del evento
+      </div>
+      
+    </div>
+      <button class="btn btn-primary" (click)="registrarEvento(geoLocation)">Siguiente</button>
+   </div>
+      <div id="map-mapbox"></div>
+</div>
+<!-- [style.display]="nextCreateEvent ? 'block' : 'none'" -->
+
+
+
+<div class="containerFotos" [style.display]="fotosEvento ? 'block' : 'none'">
+  
+  <div class="tituloFotos">
+    <h4>Paso 3</h4>
+    <h3>Sube las fotografías de tu evento </h3>
+  </div>
+
+  <form  id="formFotos">
+    <div class="form-group col-12">
+      <label for="photo" class="form-label">Fotos (opcional)</label>
+      <input type="file" id="photo" formControlName="photo" class="form-control">
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Crear evento</button>
+    </div>
+  </form>
+  
+</div>
+<!-- [style.display]="fotosEvento ? 'block' : 'none'" -->

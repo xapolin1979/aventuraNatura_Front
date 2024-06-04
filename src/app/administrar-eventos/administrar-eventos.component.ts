@@ -32,13 +32,6 @@ export class AdministrarEventosComponent {
     this.calendar=false;
     this.finance=false;
    }
-   participantes=()=>{
-    this.participants=true;
-    this.createEvent=false;
-    this.updateEvent=false;
-    this.calendar=false;
-    this.finance=false;
-   }
 
    calendario=()=>{
   this.calendar=true;

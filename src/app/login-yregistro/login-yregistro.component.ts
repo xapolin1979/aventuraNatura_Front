@@ -19,7 +19,13 @@ import { Router } from '@angular/router';
 export class LoginYregistroComponent {
   logoEmail: string = '@';
   registradoCorrectamente: boolean = false;
- loginIncorrecto:boolean=false;
+   loginIncorrecto:boolean=false;
+   alertRegistro:boolean=false;
+
+
+
+
+
   registerForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required]),
@@ -36,7 +42,7 @@ export class LoginYregistroComponent {
 
   })
 
-  constructor(private AuthService: AuthService, private router: Router) {}
+  constructor(public AuthService: AuthService, public router: Router) {}
 
   onSubmitRegister() {
     if (this.registerForm.valid) {
@@ -68,6 +74,10 @@ export class LoginYregistroComponent {
           }, 5000);
         },
         error: (error) => {
+          this.alertRegistro=true;
+          setTimeout(() => {
+            this.alertRegistro = false;
+          }, 5000);
           console.error('Error al registrar usuario:', error);
         },
       });
@@ -91,6 +101,7 @@ export class LoginYregistroComponent {
         next: (response) => {
           console.log(response);
           this.router.navigate(['/usuario']);
+       
         },
         error: (error) => {
           console.error('Error al iniciar sesión:', error);
@@ -105,6 +116,10 @@ export class LoginYregistroComponent {
       console.log('Login inválido. Revise los campos resaltados.');
       this.loginForm.markAllAsTouched();
     }
+
+
+
+    
 
   }
 

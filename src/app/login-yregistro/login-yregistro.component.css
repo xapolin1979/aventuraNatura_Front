@@ -90,7 +90,9 @@ border-radius: 0px;
     background-position: right calc(.375em + .1875rem) center;
     background-size: calc(.75em + .375rem) calc(.75em + .375rem);
   }
-  
+  .form-control.is-valid{
+     background-image: none !important;
+  }
 @media screen and (max-width: 1050px){
 
     .containerForm{
