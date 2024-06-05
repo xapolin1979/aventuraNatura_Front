@@ -11,7 +11,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { EventsService } from '../../services/events.service';
-
+import { PhotosService } from '../../services/photos.service';
 import { UserService } from '../../services/user.service';
 @Component({
   selector: 'app-crear-eventos',
@@ -32,7 +32,8 @@ export class CrearEventosComponent {
   fotosEvento:boolean=false;
   crearEvento:any;
 
-
+  id_user?:number;
+  event_id?:number;
 
  registerEvent = new FormGroup({
   name_event: new FormControl('', Validators.required),
@@ -48,9 +49,10 @@ export class CrearEventosComponent {
 
 });
 
-
-
-constructor(private EventsService:EventsService, public UserService:UserService){}
+insertarPhotos = new FormGroup({
+  photo: new FormControl('', Validators.required),
+});
+constructor(private EventsService:EventsService, public UserService:UserService,private PhotosService:PhotosService){}
 
 
 
@@ -70,7 +72,8 @@ ngOnInit(): void {
     this.UserService.getUser().subscribe({
 
       next:(response)=>{
-        console.log(response)
+        this.id_user=response.data.id_user;
+        console.log('id del usuario ' + response.data.id_user)
       },
       error:(error)=>{
         console.log('usuario no encontrado' +error)
@@ -97,15 +100,13 @@ ngOnInit(): void {
     geocoder.on('result', (event) => {
       const lngLat = event.result.geometry.coordinates;
       this.geoLocation = lngLat; 
-      console.log(this.geoLocation);
       this.map.flyTo({ center: lngLat, zoom: 12 });
 
-       
         if (this.marker) {
           this.marker.remove();
         }
 
-     
+        console.log(this.geoLocation);
       this.marker = this.addMarker(lngLat[0], lngLat[1]);
     });
 
@@ -123,7 +124,7 @@ ngOnInit(): void {
     
     marker.on('dragend', () => {
       const newLngLat = marker.getLngLat(); 
-      this.geoLocation = [newLngLat.lng, newLngLat.lat]; 
+      this.geoLocation = [ newLngLat.lng,newLngLat.lat]; 
       console.log(this.geoLocation);
       this.registrarEvento(this.geoLocation)
     });
@@ -163,15 +164,18 @@ ngOnInit(): void {
       return;
     }
     
+// Formatear las fechas
+const formattedStartDate = this.formatDate(this.registerEvent.value.start_date);
+const formattedEndDate = this.formatDate(this.registerEvent.value.end_date);
 
-
-    const enviar={
+    const nuevoEvento={
+      user_id:this.id_user,
       category_id:this.registerEvent.value.category_id,
       name_event: this.registerEvent.value.name_event ,
       difficulty: this.registerEvent.value.difficulty,
       max_persons:this.registerEvent.value.max_persons,
-      start_date: this.registerEvent.value.start_date,
-      end_date: this.registerEvent.value.end_date,
+      start_date: formattedStartDate,
+      end_date: formattedEndDate ,
       lat: geolocation[1], 
       lng: geolocation[0] ,  
       info_event:this.registerEvent.value.info_event ,
@@ -181,25 +185,52 @@ ngOnInit(): void {
     
 
     }
+console.log(nuevoEvento)
+
+      this.EventsService.creaateEvent(nuevoEvento).subscribe({
+
+      next:(response)=>{
+
+        console.log(response.data.id_event);
+        this.event_id=response.data.id_event;
+      },
+      error:(error)=>{
+
+        console.log('El evento no se a creado correctamente', error)
+      }
+    }) 
+     this.mapBoxEvento=false;
+    this.fotosEvento=true; 
+}
 
 
-     this.EventsService.creaateEvent(enviar).subscribe({
+formatDate(date: any): string {
+  const d = new Date(date);
+  return d.toISOString().slice(0, 19).replace('T', ' ');
+}
+
+ eventoCreado(){
+
+    this.PhotosService.insertPhotos(this.event_id!,this.insertarPhotos.value.photo).subscribe({
 
       next:(response)=>{
 
         console.log(response);
+      
       },
       error:(error)=>{
 
-        console.log('El evento no se a insertado correctamente'+ error)
+        console.log('No se inserto la photo', error)
       }
     }) 
-    this.mapBoxEvento=false;
-    this.fotosEvento=true;
+   
 }
 
 
+ }
 
 
 
-}
+
+
+

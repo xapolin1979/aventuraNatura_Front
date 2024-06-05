@@ -42,7 +42,7 @@
   </div>
         <!-- Información del evento -->
   <div class="col-12">
-    <label for=" info_event" class="form-label">Información del evento</label>
+    <label for=" info_event" class="form-label">Información del evento (maximo 1000 caracteres)</label>
     <textarea formControlName="info_event" id="info_event" class="form-control" placeholder="Escribe aqui toda la información que quieras que sepan sobre tu evento"
     [ngClass]="{'is-valid': registerEvent.controls.info_event.valid && (registerEvent.controls.info_event.dirty || registerEvent.controls.info_event.touched),
                 'is-invalid': registerEvent.controls.info_event.invalid && (registerEvent.controls.info_event.dirty || registerEvent.controls.info_event.touched)}" rows="5" required></textarea>
@@ -132,7 +132,7 @@
 
   <!-- Materiales necesarios -->
   <div class="col-12">
-    <label for="material" class="form-label">Materiales necesarios</label>
+    <label for="material" class="form-label">Materiales necesarios  (maximo 600 caracteres)</label>
     <textarea formControlName="material" id="material" class="form-control"
       [ngClass]="{'is-valid':registerEvent.controls.material.valid && (registerEvent.controls.material.dirty || registerEvent.controls.material.touched),
                   'is-invalid':registerEvent.controls.material.invalid && (registerEvent.controls.material.dirty || registerEvent.controls.material.touched)}" rows="5" required></textarea>
@@ -175,7 +175,7 @@
   </div>
 
   <form  id="formFotos">
-    <div class="form-group col-12">
+    <div class="form-group col-12" (ngSubmit)="eventoCreado()">
       <label for="photo" class="form-label">Fotos (opcional)</label>
       <input type="file" id="photo" formControlName="photo" class="form-control">
     </div>
