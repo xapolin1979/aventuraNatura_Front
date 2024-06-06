@@ -166,23 +166,33 @@
 <!-- [style.display]="nextCreateEvent ? 'block' : 'none'" -->
 
 
-
 <div class="containerFotos" [style.display]="fotosEvento ? 'block' : 'none'">
-  
-  <div class="tituloFotos">
-    <h4>Paso 3</h4>
-    <h3>Sube las fotografías de tu evento </h3>
-  </div>
-
-  <form  id="formFotos">
-    <div class="form-group col-12" (ngSubmit)="eventoCreado()">
-      <label for="photo" class="form-label">Fotos (opcional)</label>
-      <input type="file" id="photo" formControlName="photo" class="form-control">
+    <div class="tituloFotos">
+         <h4>Paso 3</h4>
+          <h3>Sube las fotografías de tu evento </h3>
     </div>
-    <div class="col-12">
-      <button type="submit" class="btn btn-primary">Crear evento</button>
-    </div>
-  </form>
-  
+    <div id="formFotos">
+           <form [formGroup]="insertarPhotos" (ngSubmit)="subirFoto()">
+            <div class="form-group col-12">
+              <label for="photo" class="form-label">Foto (opcional)</label>
+              <input type="file" id="photo" formControlName="photo" class="form-control" (change)="onFileSelected($event)" multiple name="file">
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Subir Imagen</button>
+            </div>
+            </form>
+            <div class="imagenes" >
+              <div class="imgTarget" *ngFor="let photos of verFotos">
+                <img  src="http://localhost:3001/uploads/{{photos.photo}}" alt="">
+                <p>Eliminar</p>
+              </div>
+             
+            </div> 
+           <div class="crearEvento">
+              <button class="btnCancelar">Cancelar evento</button>
+              <button class="btnCrear">Crear evento</button>
+           </div>
+     </div>
 </div>
+
 <!-- [style.display]="fotosEvento ? 'block' : 'none'" -->

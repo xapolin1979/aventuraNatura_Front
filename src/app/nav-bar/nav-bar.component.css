@@ -110,14 +110,14 @@ margin-top: 10px;
     background-image: url('../../assets/img/AVENTURA2.png');
     background-size: cover;
     background-position: center;
-    background-color: rgb(239, 239, 239);
      margin: 0px;
-
+ background-color: rgb(239, 239, 239);
 }
 
 nav{
   
     padding: 0px;
+
 }
 
 
@@ -135,29 +135,30 @@ nav{
   }
   
   .nav-link{
-    border-left:1px solid rgb(237, 237, 237);
-    border-right:1px solid rgb(237, 237, 237);
+    border-left:1px solid rgb(239, 239, 239);
+    border-right:1px solid rgb(239, 239, 239);
   }
 
 .empresa .empresasA{
-    background-color:#303F9F ;
+    background-color:#e85e19;
      border-left: none;
      border-right: none;
 }
 .empresa .empresasA:hover{
-    background-color:#3F51B5 ;
+    background-color:#d65718;
     border-left: none;
     border-right: none;
 }
 .administrarEventos .nav-link{
-    background-color:#303F9F ;
-    border-right: none;
-    color:white;
+    background-color:rgb(255, 255, 255) ;
+    border-right: 2px solid rgb(239, 239, 239);
+    color:grey;
 }
 .administrarEventos .nav-link:hover{
-    background-color: #3F51B5;
+    background-color: #e85e19;
     border-right: none;
     border-left: none;
+    color:white;
 }
 .empresasA{
     color:white;
@@ -166,12 +167,12 @@ nav{
     color:white;
 }
 .empresa .empresasB{
-    background-color: #ff0000;
+    background-color:#5F9F6E;
      border-left: none;
      border-right: none;
 }
 .empresa .empresasB:hover{
-    background-color: #eb0000;
+    background-color: #579265; ;
     border-left: none;
     border-right: none;
 }

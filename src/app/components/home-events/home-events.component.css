@@ -20,7 +20,7 @@
 
 .eventosDestacados h4{
     font-family: "Work Sans", sans-serif;
-    font-size: 2.3em;
+    font-size: 2.5em;
  
 }
 
@@ -34,7 +34,7 @@
 .eventosDestacados span{
     font-family: "Work Sans", sans-serif;
     color:#ff6619;
-    font-weight: bolder;
+    
 }
 
 /* EVENTOS DESTACADOS */
@@ -63,6 +63,7 @@
 }
 .card h5{
     color: #ff6619;
+    
 }
 a{
     text-decoration: none;
@@ -73,7 +74,7 @@ a{
     padding: 20px;
     border:none;
     font-family: "Work Sans", sans-serif;
-    background-color: #303F9F;
+    background-color: rgb(27, 94, 32);
     color: white;
 }
 .eventosBTN:hover{
@@ -81,7 +82,7 @@ a{
     padding: 20px;
     border:none;
     font-family: "Work Sans", sans-serif;
-    background-color: #3F51B5;
+    background-color: rgb(31, 106, 36);
     color: white;
 }
 

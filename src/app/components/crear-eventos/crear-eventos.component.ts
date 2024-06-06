@@ -34,6 +34,7 @@ export class CrearEventosComponent {
 
   id_user?:number;
   event_id?:number;
+ verFotos:any;
 
  registerEvent = new FormGroup({
   name_event: new FormControl('', Validators.required),
@@ -52,6 +53,8 @@ export class CrearEventosComponent {
 insertarPhotos = new FormGroup({
   photo: new FormControl('', Validators.required),
 });
+
+selectedFiles: File[] = [];
 constructor(private EventsService:EventsService, public UserService:UserService,private PhotosService:PhotosService){}
 
 
@@ -116,7 +119,7 @@ ngOnInit(): void {
 
   addMarker(lng: number, lat: number): void {
     const marker = new mapboxgl.Marker({
-      draggable: true,
+      draggable: false,
     })
       .setLngLat([lng, lat])
       .addTo(this.map);
@@ -209,22 +212,38 @@ formatDate(date: any): string {
   return d.toISOString().slice(0, 19).replace('T', ' ');
 }
 
- eventoCreado(){
-
-    this.PhotosService.insertPhotos(this.event_id!,this.insertarPhotos.value.photo).subscribe({
-
-      next:(response)=>{
-
-        console.log(response);
-      
-      },
-      error:(error)=>{
-
-        console.log('No se inserto la photo', error)
-      }
-    }) 
-   
+onFileSelected(event: any): void {
+  this.selectedFiles = Array.from(event.target.files);
 }
+
+subirFoto() {
+  const formData = new FormData();
+
+  for (let file of this.selectedFiles) {
+    formData.append('file', file);
+  }
+
+  this.PhotosService.insertPhotos(this.event_id!, formData).subscribe({
+    next: (response) => {
+      console.log(response);
+
+      // Después de insertar las fotos, intento verlas aqui
+      this.PhotosService.verFotosEvento(this.event_id!).subscribe({
+        next: (response) => {
+          console.log(response);
+          this.verFotos=response.data;
+        },
+        error: (error) => {
+          console.log('No se puede ver la foto', error);
+        }
+      });
+    },
+    error: (error) => {
+      console.log('No se inserto la photo', error);
+    }
+  });
+}
+
 
 
  }

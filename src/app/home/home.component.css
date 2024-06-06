@@ -86,7 +86,7 @@
 }
 .introduccionTEXT span{
  color:#ff6619;
- font-weight: bold;
+
 }
 
 /* NUESTROS SERVICIOS */
@@ -98,7 +98,7 @@
 .servicios h3{
     font-family: "Work Sans", sans-serif;
     font-size: 2.5em;
-    
+    color:#ff6619;
 }
 .servicios p{
     font-family: "Libre Baskerville", serif;
@@ -169,7 +169,7 @@
 }
 .organizadores span{
   color:#ff6619;
-  font-weight: bolder;
+ 
 }
 .organizadores p{
     font-family: "Libre Baskerville", serif;
@@ -183,7 +183,7 @@
     padding: 20px;
     border:none;
     font-family: "Work Sans", sans-serif;
-    background-color:#303F9F ;
+    background-color:rgb(27, 94, 32);
     color: white;
 }
 .registrateBTN:hover{
@@ -191,7 +191,7 @@
     padding: 20px;
     border:none;
     font-family: "Work Sans", sans-serif;
-    background-color: #3F51B5;
+    background-color: rgb(31, 106, 36);
     color: white;
 }
 /* media queries*/
