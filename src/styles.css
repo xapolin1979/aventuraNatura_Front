@@ -3,3 +3,33 @@ body{
     margin: 0px;
     padding: 0px;
 }
+
+::view-transition-old(root){
+
+    animation: exit 1s ease 0s 1 normal forwards;
+    
+    }
+    
+    ::view-transition-new(root){
+        animation: enter 1s ease 0s 1 normal forwards;
+    }
+    
+    @keyframes exit {
+        0% {
+            opacity: 1;
+        }
+    
+        100% {
+            opacity: 0;
+        }
+    }
+    
+    @keyframes enter {
+        0% {
+            opacity: 0;
+        }
+    
+        100% {
+            opacity: 1;
+        }
+    }

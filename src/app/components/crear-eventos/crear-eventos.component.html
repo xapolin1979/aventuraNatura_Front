@@ -31,7 +31,7 @@
       <option value="3">Escalada</option>
       <option value="4">Esqui</option>
       <option value="5">Snowboard</option>
-      <option value="6">Barranquism</option>
+      <option value="6">Barranquismo</option>
       <option value="7">Rafting</option>
       <option value="8">Kayak</option>
       <option value="9">Otros</option>
@@ -163,7 +163,8 @@
    </div>
       <div id="map-mapbox"></div>
 </div>
-<!-- [style.display]="nextCreateEvent ? 'block' : 'none'" -->
+
+
 
 
 <div class="containerFotos" [style.display]="fotosEvento ? 'block' : 'none'">
@@ -184,15 +185,37 @@
             <div class="imagenes" >
               <div class="imgTarget" *ngFor="let photos of verFotos">
                 <img  src="http://localhost:3001/uploads/{{photos.photo}}" alt="">
-                <p>Eliminar</p>
+                <p (click)="eliminarFoto(photos.id_photos)">Eliminar</p>
               </div>
              
             </div> 
            <div class="crearEvento">
-              <button class="btnCancelar">Cancelar evento</button>
+              <button class="btnCancelar" data-bs-toggle="modal" data-bs-target="#modalCancelarEvento">Cancelar evento</button>
               <button class="btnCrear">Crear evento</button>
            </div>
      </div>
 </div>
 
-<!-- [style.display]="fotosEvento ? 'block' : 'none'" -->
+
+
+
+
+<!-- Modal cancelar el evento -->
+
+<div class="modal fade" id="modalCancelarEvento" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">¿Está seguro de que desea cancelar el evento?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Esta acción no se puede deshacer.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+        <button type="button" class="btn btn-danger" (click)="cancelarEvento()" data-bs-dismiss="modal">Sí</button>
+      </div>
+    </div>
+  </div>
+</div>

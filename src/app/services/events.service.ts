@@ -17,7 +17,7 @@ export class EventsService {
    }
 
   
-  getEventId(id: string): Observable<any> {
+  getEventId(id: number): Observable<any> {
     return this.http.get<any>(`${this.url}/${id}`);
   }
 
@@ -27,12 +27,12 @@ export class EventsService {
   }
 
  
-  updateEvent(id: string, evento: any): Observable<any> {
+  updateEvent(id: number, evento: any): Observable<any> {
     return this.http.put<any>(`${this.url}/${id}`, evento);
   }
 
   
-  deleteEvent(id: string): Observable<any> {
+  deleteEvent(id?: number): Observable<any> {
     return this.http.delete<any>(`${this.url}/${id}`);
   }
 }

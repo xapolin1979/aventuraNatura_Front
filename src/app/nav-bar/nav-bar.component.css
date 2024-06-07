@@ -140,12 +140,12 @@ nav{
   }
 
 .empresa .empresasA{
-    background-color:#e85e19;
+    background-color:rgb(27, 94, 32);
      border-left: none;
      border-right: none;
 }
 .empresa .empresasA:hover{
-    background-color:#d65718;
+    background-color:rgb(31, 106, 36);
     border-left: none;
     border-right: none;
 }
@@ -167,12 +167,12 @@ nav{
     color:white;
 }
 .empresa .empresasB{
-    background-color:#5F9F6E;
+    background-color:rgb(63, 81, 181);
      border-left: none;
      border-right: none;
 }
 .empresa .empresasB:hover{
-    background-color: #579265; ;
+    background-color: rgb(68, 87, 192); ;
     border-left: none;
     border-right: none;
 }

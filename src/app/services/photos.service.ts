@@ -23,5 +23,12 @@ export class PhotosService {
 }
 
 
+deletePhoto(id: number): Observable<any> {
+  return this.http.delete<any>(`${this.url}/${id}`);
+}
+
+
 
 }
+
+
