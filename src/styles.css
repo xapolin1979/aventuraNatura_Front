@@ -3,34 +3,38 @@ body {
     padding: 0px;
  
 }
-
-/* Transición de salida */
-::view-transition-old(root){
-    animation: exit 1s ease-out 0s 1 normal forwards;
-}
-
-/* Transición de entrada */
-::view-transition-new(root){
-    animation: enter 1s ease-out 0s 1 normal forwards;
-}
-
 /* Animación de salida */
 @keyframes exit {
-    0% {
+    from {
+        transform: translateY(0%);
         opacity: 1;
     }
-    100% {
+    to {
+        transform: translateY(-1%);
         opacity: 0;
     }
 }
 
 /* Animación de entrada */
 @keyframes enter {
-    0% {
+    from {
+        transform: translateY(1%);
         opacity: 0;
     }
-    100% {
+    to {
+        transform: translateY(0%);
         opacity: 1;
     }
 }
+
+/* Transición de salida */
+::view-transition-old(root) {
+    animation: exit 0.5s ease-out forwards;
+}
+
+/* Transición de entrada */
+::view-transition-new(root) {
+    animation: enter 0.5s ease-out forwards;
+}
+
 

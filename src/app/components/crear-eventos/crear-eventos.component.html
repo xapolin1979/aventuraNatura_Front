@@ -131,7 +131,7 @@
 
   <!-- Materiales necesarios -->
   <div class="col-12">
-    <label for="material" class="form-label">Materiales necesarios  (maximo 600 caracteres)</label>
+    <label for="material" class="form-label">Materiales necesarios que hay que traer para el evento (maximo 600 caracteres)</label>
     <textarea formControlName="material" id="material" class="form-control"
       [ngClass]="{'is-valid':registerEvent.controls.material.valid && (registerEvent.controls.material.dirty || registerEvent.controls.material.touched),
                   'is-invalid':registerEvent.controls.material.invalid && (registerEvent.controls.material.dirty || registerEvent.controls.material.touched)}" rows="5" required></textarea>

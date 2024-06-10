@@ -78,7 +78,11 @@ export class PublicEventsComponent implements OnInit {
   }
   
 
-
+    verEvento(id_event:number){
+     console.log(id_event)
+     const url = `/event/${id_event}`;
+     window.open(url, '_blank');
+    }
 
    
   }

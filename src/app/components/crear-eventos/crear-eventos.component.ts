@@ -130,6 +130,8 @@ export class CrearEventosComponent implements OnInit {
     }
   }
 
+  
+
   registrarEvento(geolocation: any): void {
     if (!geolocation || geolocation.length < 2) {
       console.log('Faltan coordenadas de geolocalización');
@@ -139,10 +141,10 @@ export class CrearEventosComponent implements OnInit {
       }, 4000);
       return;
     }
-
+  
     const formattedStartDate = this.formatDate(this.registerEvent.value.start_date);
     const formattedEndDate = this.formatDate(this.registerEvent.value.end_date);
-
+  
     const nuevoEvento = {
       user_id: this.id_user,
       category_id: this.registerEvent.value.category_id,
@@ -158,9 +160,9 @@ export class CrearEventosComponent implements OnInit {
       price_per_person: this.registerEvent.value.price_per_person,
       material: this.registerEvent.value.material,
     };
-
+  
     console.log('Datos del nuevo evento:', nuevoEvento);
-
+  
     this.eventsService.createEvent(nuevoEvento).subscribe({
       next: (response) => {
         console.log('Evento creado con ID:', response.data.id_event);
@@ -173,11 +175,15 @@ export class CrearEventosComponent implements OnInit {
       },
     });
   }
+  
 
   formatDate(date: any): string {
     const d = new Date(date);
+    const offset = d.getTimezoneOffset();
+    d.setMinutes(d.getMinutes() - offset);
     return d.toISOString().slice(0, 19).replace('T', ' ');
   }
+  
 
   onFileSelected(event: any): void {
     this.selectedFiles = Array.from(event.target.files);

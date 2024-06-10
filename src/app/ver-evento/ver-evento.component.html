@@ -1,0 +1,69 @@
+<div class="container-fluid p-0" id="containerSlider">
+    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <ng-container *ngFor="let photo of infoEvento.Photos; let i = index">
+                <div class="carousel-item" [class.active]="i === 0">
+                    <img src="http://localhost:3001/uploads/{{photo.photo}}" class="d-block w-100" alt="...">
+                </div>
+            </ng-container>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+
+
+<div class="container-fluid p-0">
+    <div class="row">
+      <div class="col-sm-12 col-mg-12 col-lg-8 info">
+         
+        <div class="targetInfo">
+            <h2>{{infoEvento.name_event}}</h2>
+            <h4>Organizador</h4>
+            <p>{{infoEvento.User.name}}</p>
+            <div class="varios">
+            <div class="variosTarget">
+                <h5>Categoria</h5>
+                <p>{{infoEvento.Category.name}}</p>
+            </div>
+           <div class="variosTarget">
+            <h5>Didicultad</h5>
+            <p>{{niveles[infoEvento.difficulty]}}</p>
+           </div>
+           <div class="variosTarget">
+            <h5>Quien puede participar</h5>
+            <p>{{edades[infoEvento.for_whom]}}</p>
+           </div>
+           <div class="variosTarget">
+            <h5>Max personas</h5>
+            <p>{{ infoEvento.max_persons}} personas</p>
+           </div>
+            </div>
+            <h4>Precio</h4>
+            @if(infoEvento.price_per_person > 0){
+                <p>{{infoEvento.price_per_person}} eur</p>
+            }
+            @else {
+                Gratis
+            }
+            
+            <h4>Fecha y hora</h4>
+            <p>{{formatDate(infoEvento.start_date)}} h</p>
+            <h4>Ubicación</h4>
+            <div id="map-mapbox"></div>
+            <h4>Acerca de este evento</h4>
+            <p>{{infoEvento.info_event}}</p>
+            <h4>Material</h4>
+            <p>{{infoEvento.material}}</p>
+        </div>
+
+      </div>
+      <div class="col-sm-12 col-mg-12 col-lg-4 registrarse"></div>
+    </div>
+</div>

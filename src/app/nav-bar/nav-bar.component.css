@@ -140,12 +140,12 @@ nav{
   }
 
 .empresa .empresasA{
-    background-color:rgb(27, 94, 32);
+    background-color:#1d6e40;
      border-left: none;
      border-right: none;
 }
 .empresa .empresasA:hover{
-    background-color:rgb(31, 106, 36);
+    background-color:#195d37;
     border-left: none;
     border-right: none;
 }

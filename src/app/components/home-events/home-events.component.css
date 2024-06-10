@@ -78,7 +78,7 @@ a{
     padding: 20px;
     border:none;
     font-family: "Work Sans", sans-serif;
-    background-color: rgb(27, 94, 32);
+    background-color: #1d6e40;
     color: white;
 }
 .eventosBTN:hover{
@@ -86,7 +86,7 @@ a{
     padding: 20px;
     border:none;
     font-family: "Work Sans", sans-serif;
-    background-color: rgb(31, 106, 36);
+    background-color: #195d37;
     color: white;
 }
 
