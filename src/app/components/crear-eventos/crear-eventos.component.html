@@ -110,9 +110,8 @@
                   
   'is-invalid': registerEvent.controls.for_whom.invalid && (registerEvent.controls.for_whom.dirty || registerEvent.controls.for_whom.touched)}" required>
      <option value="1">Todas las edades</option>
-      <option value="2">A partir de 6 años</option>
-      <option value="3">A partir de 14 años</option>
-      <option value="4">A partir de 18 años</option>
+      <option value="2">A partir de 12 años</option>
+      <option value="3">A partir de 18 años</option>
     </select>
     <div class="invalid-feedback">
       Selecciona el público objetivo del evento
@@ -191,7 +190,7 @@
             </div> 
            <div class="crearEvento">
               <button class="btnCancelar" data-bs-toggle="modal" data-bs-target="#modalCancelarEvento">Cancelar evento</button>
-              <button class="btnCrear">Crear evento</button>
+              <button class="btnCrear" (click)="finalizarCreacionDelEvento()">Crear evento</button>
            </div>
      </div>
 </div>

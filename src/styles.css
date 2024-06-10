@@ -1,35 +1,36 @@
-/* You can add global styles to this file, and also import other style files */
-body{
+body {
     margin: 0px;
     padding: 0px;
+ 
 }
 
+/* Transición de salida */
 ::view-transition-old(root){
+    animation: exit 1s ease-out 0s 1 normal forwards;
+}
 
-    animation: exit 1s ease 0s 1 normal forwards;
-    
+/* Transición de entrada */
+::view-transition-new(root){
+    animation: enter 1s ease-out 0s 1 normal forwards;
+}
+
+/* Animación de salida */
+@keyframes exit {
+    0% {
+        opacity: 1;
     }
-    
-    ::view-transition-new(root){
-        animation: enter 1s ease 0s 1 normal forwards;
+    100% {
+        opacity: 0;
     }
-    
-    @keyframes exit {
-        0% {
-            opacity: 1;
-        }
-    
-        100% {
-            opacity: 0;
-        }
+}
+
+/* Animación de entrada */
+@keyframes enter {
+    0% {
+        opacity: 0;
     }
-    
-    @keyframes enter {
-        0% {
-            opacity: 0;
-        }
-    
-        100% {
-            opacity: 1;
-        }
+    100% {
+        opacity: 1;
     }
+}
+

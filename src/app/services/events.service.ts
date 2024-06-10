@@ -22,7 +22,7 @@ export class EventsService {
   }
 
  
-  creaateEvent(evento: any): Observable<any> {
+  createEvent(evento: any): Observable<any> {
     return this.http.post<any>(this.url, evento);
   }
 

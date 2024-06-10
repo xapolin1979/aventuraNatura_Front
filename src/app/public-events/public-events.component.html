@@ -1,31 +1,54 @@
 <div class="container-fluid portada">
-   <h3>Explora Eventos de aventura</h3>
+   <h3>Eventos de aventura</h3>
    <h4>Encuentra y únete a las mejores experiencias al aire libre</h4>
 </div>
 
-<div class="container">
-    <div class="buscador">
-            <h1>Buscador de Actividades al Aire Libre</h1>
-            <form action="/search" method="post">
-                <label for="category">Categoría:</label>
-                <select id="category" name="category" required>
-                    <option value="senderismo">Senderismo</option>
-                    <option value="alpinismo">Alpinismo</option>
-                    <option value="escalada">Escalada</option>
-                    <option value="esqui">Esquí</option>
-                    <option value="snowboard">Snowboard</option>
-                    <option value="barranquismo">Barranquismo</option>
-                    <option value="rafting">Rafting</option>
-                    <option value="kayak">Kayak</option>
-                </select>
+<div class="container-fluid containerBuscador">
+    <div class="input-group mt-5 containerForm ">
+        <div class="input-group buscador">
+            <select [(ngModel)]="selectedCategoria" (change)="filtrarPorCategoria()">
+                <option value="">Todas las categorias</option>
+                <option value="1">Senderismo</option>
+                <option value="2">Alpinismo</option>
+                <option value="3">Escalada</option>
+                <option value="4">Esquí</option>
+                <option value="5">Snowboard</option>
+                <option value="6">Barranquismo</option>
+                <option value="7">Rafting</option>
+                <option value="8">Kayak</option>
+                <option value="9">Otros</option>
+            </select>
+            
+              
+            <button type="button" (click)=" ordenarData()" class="btn btn-link">Fecha</button>
+            <button type="button" (click)=" ordenarPrecio()" class="btn btn-link">Precio</button>
+          
+          </div>
+      </div>
+</div>
+
+
+<div class="container-fluid cardsContainer">
+<div class="contenedorCards" *ngFor="let eventos of datosEventos">
+    <a href="#">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top"  src="http://localhost:3001/uploads/{{eventos.Photos[0].photo}}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{eventos.User.name}}</h5>
+                <p class="card-text">{{eventos.Category.name}}<br>{{eventos.name_event}}<br>{{formatDate(eventos.start_date)}}
+                   @if(eventos.price_per_person !=0){
+                      <p> precio: {{eventos.price_per_person}} eur</p> 
+                  }
+                  @else {
+                      <p>precio: gratis</p>
+                  }
+            
+            </div>
+          </div>
+      </a>
+
+
+
+  </div>
     
-                <label for="start_date">Fecha de inicio:</label>
-                <input type="datetime-local" id="start_date" name="start_date" required>
-    
-                <label for="end_date">Fecha de fin:</label>
-                <input type="datetime-local" id="end_date" name="end_date" required>
-    
-                <button type="submit">Buscar</button>
-            </form>
-    </div>
 </div>

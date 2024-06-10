@@ -1,30 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { environment } from '../../../environments/environments.map-box';
 import mapboxgl from 'mapbox-gl';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import { CommonModule } from '@angular/common';
-import {
-  FormsModule,
-  ReactiveFormsModule,
-  FormGroup,
-  FormControl,
-  Validators,
-} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { EventsService } from '../../services/events.service';
 import { PhotosService } from '../../services/photos.service';
 import { UserService } from '../../services/user.service';
+
 @Component({
   selector: 'app-crear-eventos',
   standalone: true,
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './crear-eventos.component.html',
-  styleUrl: './crear-eventos.component.css',
+  styleUrls: ['./crear-eventos.component.css'],
 })
-export class CrearEventosComponent {
+export class CrearEventosComponent implements OnInit {
   logoEmail: string = '@';
   map: any;
   geoLocation?: number[];
-  marker: any; //
+  marker: any;
   nextCreateEvent: boolean = false;
   localizacionEvento: boolean = false;
   mapBoxEvento: boolean = false;
@@ -53,14 +48,14 @@ export class CrearEventosComponent {
   });
 
   selectedFiles: File[] = [];
+
   constructor(
-    private EventsService: EventsService,
-    public UserService: UserService,
-    private PhotosService: PhotosService
+    private eventsService: EventsService,
+    public userService: UserService,
+    private photosService: PhotosService
   ) {}
 
   ngOnInit(): void {
-    //Mapa mapBox
     mapboxgl.accessToken = environment.mapboxKey;
     this.map = new mapboxgl.Map({
       container: 'map-mapbox',
@@ -71,18 +66,16 @@ export class CrearEventosComponent {
 
     this.addGeocoder();
 
-    this.UserService.getUser().subscribe({
+    this.userService.getUser().subscribe({
       next: (response) => {
         this.id_user = response.data.id_user;
-        console.log('id del usuario ' + response.data.id_user);
+        console.log('ID del usuario: ' + response.data.id_user);
       },
       error: (error) => {
-        console.log('usuario no encontrado' + error);
+        console.log('Usuario no encontrado: ' + error);
       },
     });
   }
-
-  // Buscador del mapa
 
   addGeocoder(): void {
     const geocoder = new MapboxGeocoder({
@@ -109,11 +102,8 @@ export class CrearEventosComponent {
     });
   }
 
-  //Marker de la geolocalización
   addMarker(lng: number, lat: number): void {
-    const marker = new mapboxgl.Marker({
-      draggable: false,
-    })
+    const marker = new mapboxgl.Marker({ draggable: false })
       .setLngLat([lng, lat])
       .addTo(this.map);
 
@@ -126,10 +116,8 @@ export class CrearEventosComponent {
     return marker;
   }
 
-  //Almacena los datos del formulario
   onSubmitEvent() {
     if (this.registerEvent.invalid) {
-      // Marca todos los controles como tocados para mostrar errores
       Object.keys(this.registerEvent.controls).forEach((field) => {
         const control = this.registerEvent.get(field);
         if (control) {
@@ -137,13 +125,10 @@ export class CrearEventosComponent {
         }
       });
     } else {
-      // Procesa el formulario si es válido
       this.nextCreateEvent = true;
       this.mapBoxEvento = true;
     }
   }
-
-  //Registro del evento con los datos almacenados del formulario y las cordenadas del mapa
 
   registrarEvento(geolocation: any): void {
     if (!geolocation || geolocation.length < 2) {
@@ -154,10 +139,8 @@ export class CrearEventosComponent {
       }, 4000);
       return;
     }
-    // Formatear las fechas
-    const formattedStartDate = this.formatDate(
-      this.registerEvent.value.start_date
-    );
+
+    const formattedStartDate = this.formatDate(this.registerEvent.value.start_date);
     const formattedEndDate = this.formatDate(this.registerEvent.value.end_date);
 
     const nuevoEvento = {
@@ -168,43 +151,38 @@ export class CrearEventosComponent {
       max_persons: this.registerEvent.value.max_persons,
       start_date: formattedStartDate,
       end_date: formattedEndDate,
-      lat: geolocation[1],
-      lng: geolocation[0],
+      lat: parseFloat(geolocation[1].toFixed(8)),  
+      lng: parseFloat(geolocation[0].toFixed(8)),
       info_event: this.registerEvent.value.info_event,
       for_whom: this.registerEvent.value.for_whom,
       price_per_person: this.registerEvent.value.price_per_person,
       material: this.registerEvent.value.material,
     };
 
-    console.log(nuevoEvento);
- // crea el evento
-    this.EventsService.creaateEvent(nuevoEvento).subscribe({
+    console.log('Datos del nuevo evento:', nuevoEvento);
+
+    this.eventsService.createEvent(nuevoEvento).subscribe({
       next: (response) => {
-        console.log(response.data.id_event);
+        console.log('Evento creado con ID:', response.data.id_event);
         this.event_id = response.data.id_event;
-      
+        this.mapBoxEvento = false;
+        this.fotosEvento = true;
       },
       error: (error) => {
-        console.log('El evento no se a creado correctamente', error);
+        console.log('Error al crear el evento:', error);
       },
     });
-   
-    this.mapBoxEvento = false;
-    this.fotosEvento = true;
   }
 
-  // Funcion para formatear las fechas
   formatDate(date: any): string {
     const d = new Date(date);
     return d.toISOString().slice(0, 19).replace('T', ' ');
   }
 
-  //archivos seleccionados en el input
   onFileSelected(event: any): void {
     this.selectedFiles = Array.from(event.target.files);
   }
 
-  // Subir fotos al servidor
   subirFoto() {
     const formData = new FormData();
 
@@ -212,35 +190,33 @@ export class CrearEventosComponent {
       formData.append('file', file);
     }
 
-    this.PhotosService.insertPhotos(this.event_id!, formData).subscribe({
+    this.photosService.insertPhotos(this.event_id!, formData).subscribe({
       next: (response) => {
         console.log(response);
         this.cargarFotos();
         this.insertarPhotos.reset();
       },
       error: (error) => {
-        console.log('No se inserto la photo', error);
+        console.log('No se insertó la foto:', error);
       },
     });
   }
 
-  // cargar las fotos del servidor
   cargarFotos(): void {
     if (this.event_id) {
-      this.PhotosService.verFotosEvento(this.event_id).subscribe({
+      this.photosService.verFotosEvento(this.event_id).subscribe({
         next: (response) => {
           this.verFotos = response.data;
         },
         error: (error) => {
-          console.log('No se puede ver la foto', error);
+          console.log('No se pueden ver las fotos:', error);
         },
       });
     }
   }
 
-  //Borrar las fotos del servidor y actualizar imagenes en el front
   eliminarFoto(id_photo: number): void {
-    this.PhotosService.deletePhoto(id_photo).subscribe({
+    this.photosService.deletePhoto(id_photo).subscribe({
       next: (response) => {
         console.log(response);
         this.verFotos = this.verFotos.filter(
@@ -248,46 +224,57 @@ export class CrearEventosComponent {
         );
       },
       error: (error) => {
-        console.log('No se puede borrar la foto', error);
+        console.log('No se puede borrar la foto:', error);
       },
     });
   }
 
+  cancelarEvento() {
+    if (!this.event_id) return;
 
-//Borrar el evento y sus fotos 
+    this.eventsService.deleteEvent(this.event_id).subscribe({
+      next: (response) => {
+        console.log(response);
+        alert('Evento cancelado correctamente');
+        this.verFotos = [];
+        this.registerEvent.reset();
 
-cancelarEvento(){
+        if (this.marker) {
+          this.marker.remove();
+        }
 
-   this.EventsService.deleteEvent(this.event_id).subscribe({
-    next: (response) => {
-      console.log(response);
-      this.verFotos=[]
-      this.registerEvent.reset();
-      // Eliminar marcador actual
-      if (this.marker) {
-        this.marker.remove();
-      }
-
-      // Restablecer geocodificador
-      this.resetGeocoder();
-      this.nextCreateEvent = false;
-      this.mapBoxEvento = false;
-      this.fotosEvento = false;
-
-    },
-    error: (error) => {
-      console.log('No se puede borrar el evento', error);
-    },
-  });
-}
-
-
-resetGeocoder() {
-  const geocoderContainer = document.querySelector('.mapboxgl-ctrl-geocoder');
-  if (geocoderContainer) {
-    geocoderContainer.remove();
+        this.resetGeocoder();
+        this.nextCreateEvent = false;
+        this.mapBoxEvento = false;
+        this.fotosEvento = false;
+      },
+      error: (error) => {
+        console.log('No se puede borrar el evento:', error);
+      },
+    });
   }
-  this.addGeocoder(); 
+
+  resetGeocoder() {
+    const geocoderContainer = document.querySelector('.mapboxgl-ctrl-geocoder');
+    if (geocoderContainer) {
+      geocoderContainer.remove();
+    }
+    this.addGeocoder();
+  }
+
+  finalizarCreacionDelEvento() {
+    alert('Evento creado correctamente');
+    this.registerEvent.reset();
+
+    if (this.marker) {
+      this.marker.remove();
+    }
+
+    this.resetGeocoder();
+    this.nextCreateEvent = false;
+    this.mapBoxEvento = false;
+    this.fotosEvento = false;
+  }
 }
 
 
@@ -295,5 +282,8 @@ resetGeocoder() {
 
 
 
-}
+
+
+
+
 
