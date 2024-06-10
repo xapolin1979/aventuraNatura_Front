@@ -1,27 +1,19 @@
 # AventuraNatura
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.0.
+Este proyecto es una aplicación de eventos de montaña. Para utilizarlo, primero debes descargar el backend llamado aventuraNatura_Back. Una vez configurado el backend, puedes clonar el repositorio [aventuraNatura_Front](https://github.com/xapolin1979/aventuraNatura_Front.git). Luego, ve a la carpeta 'environments' y agrega tu Key de MapBox. Sin esta configuración, la creación de eventos no funcionará. Para iniciar el proyecto de Angular, ejecuta `ng serve`.
 
-## Development server
+## Desarrollo del servidor
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Ejecuta `ng serve` para iniciar un servidor de desarrollo. Navega a `http://localhost:4200/`. La aplicación se recargará automáticamente si cambias alguno de los archivos fuente.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Compilación
 
-## Build
+Ejecuta `ng build` para compilar el proyecto. Los archivos compilados se almacenarán en el directorio `dist/`.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Ayuda adicional
 
-## Running end-to-end tests
+Para obtener más ayuda sobre Angular CLI, usa `ng help` o visita la [Página de Resumen y Referencia de Comandos de Angular CLI](https://angular.io/cli).
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
