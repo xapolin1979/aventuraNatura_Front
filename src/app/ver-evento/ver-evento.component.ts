@@ -4,10 +4,11 @@ import { EventosGeneralService } from '../services/eventos-general.service';
 import { CommonModule } from '@angular/common';
 import { environment } from '../../environments/environments.map-box';
 import mapboxgl from 'mapbox-gl';
+import { FormsModule, ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 @Component({
   selector: 'app-ver-evento',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,FormsModule, ReactiveFormsModule],
   templateUrl: './ver-evento.component.html',
   styleUrl: './ver-evento.component.css'
 })
@@ -26,6 +27,20 @@ edades:any = {
   3: 'A partir de 18 años'
 };
 map: any;
+
+logoEmail: string = '@';
+registerForm = new FormGroup({
+  name: new FormControl('', Validators.required),
+  surname: new FormControl('', Validators.required),
+  email: new FormControl('', [Validators.required, Validators.email]),
+  phone: new FormControl('', [Validators.required]),
+  persons: new FormControl('', Validators.required),
+  aceptarTerminos: new FormControl(false, Validators.requiredTrue),
+});
+
+
+
+
 constructor(private route: ActivatedRoute ,private eventosGeneralService:EventosGeneralService) { }
 
 ngOnInit():void{
@@ -48,8 +63,12 @@ ngOnInit():void{
 
 
 }
-
-
+onSubmit() {
+  if (this.registerForm.invalid) {
+    this.registerForm.markAllAsTouched();
+    return;
+  }
+}
 
 formatDate(date: string): string {
   const options: Intl.DateTimeFormatOptions = {

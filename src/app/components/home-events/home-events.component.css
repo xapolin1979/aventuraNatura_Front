@@ -57,6 +57,7 @@
      cursor: pointer;
   --bs-card-border-radius:none;
   transition: 0.5s;
+  font-family: "Work Sans", sans-serif;
 }
 .card:hover{
     box-shadow: 0px 0px 10px grey;;

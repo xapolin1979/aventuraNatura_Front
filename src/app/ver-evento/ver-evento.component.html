@@ -29,19 +29,19 @@
             <p>{{infoEvento.User.name}}</p>
             <div class="varios">
             <div class="variosTarget">
-                <h5>Categoria</h5>
+                <h6>Categoria</h6>
                 <p>{{infoEvento.Category.name}}</p>
             </div>
            <div class="variosTarget">
-            <h5>Didicultad</h5>
+            <h6>Didicultad</h6>
             <p>{{niveles[infoEvento.difficulty]}}</p>
            </div>
            <div class="variosTarget">
-            <h5>Quien puede participar</h5>
+            <h6>Quien puede participar</h6>
             <p>{{edades[infoEvento.for_whom]}}</p>
            </div>
            <div class="variosTarget">
-            <h5>Max personas</h5>
+            <h6>Max personas</h6>
             <p>{{ infoEvento.max_persons}} personas</p>
            </div>
             </div>
@@ -64,6 +64,87 @@
         </div>
 
       </div>
-      <div class="col-sm-12 col-mg-12 col-lg-4 registrarse"></div>
+      <div class="col-sm-12 col-mg-12 col-lg-4 registrarse">
+          <h3>Inscríbete al Evento</h3>
+        <form class="row g-3 p-3 needs-validation" [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate >
+            <div class="col-md-12">
+              <label for="name" class="form-label">Nombre</label>
+              <input type="text" formControlName="name" id="name" class="form-control"
+                [ngClass]="{'is-valid': registerForm.controls.name.valid && (registerForm.controls.name.dirty || registerForm.controls.name.touched),
+                            'is-invalid': registerForm.controls.name.invalid && (registerForm.controls.name.dirty || registerForm.controls.name.touched)}"
+                required>
+              <div class="invalid-feedback">
+                Escribe tu nombre
+              </div>
+            </div>
+            <div class="col-md-12">
+                <label for="surname" class="form-label">Apellido</label>
+                <input type="text" formControlName="surname" id="surname" class="form-control"
+                  [ngClass]="{'is-valid': registerForm.controls.surname.valid && (registerForm.controls.surname.dirty || registerForm.controls.surname.touched),
+                              'is-invalid': registerForm.controls.surname.invalid && (registerForm.controls.surname.dirty || registerForm.controls.surname.touched)}"
+                  required>
+                <div class="invalid-feedback">
+                  Escribe tu apellido
+                </div>
+              </div>
+            
+            <div class="col-md-12">
+              <label for="email" class="form-label">Email</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text" id="inputGroupPrepend3">{{ logoEmail }}</span>
+                <input type="email" formControlName="email" id="email" class="form-control"
+                  [ngClass]="{'is-valid': registerForm.controls.email.valid && (registerForm.controls.email.dirty || registerForm.controls.email.touched),
+                              'is-invalid': registerForm.controls.email.invalid && (registerForm.controls.email.dirty || registerForm.controls.email.touched)}"
+                  required>
+                <div id="emailFeedback" class="invalid-feedback">
+                  Por favor ingresa un correo electrónico válido.
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-12">
+              <label for="phone" class="form-label">Teléfono</label>
+              <input type="text" formControlName="phone" id="phone" class="form-control" 
+                [ngClass]="{'is-valid': registerForm.controls.phone.valid && (registerForm.controls.phone.dirty || registerForm.controls.phone.touched),
+                            'is-invalid': registerForm.controls.phone.invalid && (registerForm.controls.phone.dirty || registerForm.controls.phone.touched)}"
+                required>
+              <div id="phoneFeedback" class="invalid-feedback">
+                Por favor proporciona un número de teléfono válido.
+              </div>
+            </div>
+            <div class="col-md-12">
+                <label for="persons" class="form-label">Número de asistentes</label>
+                <input type="number" formControlName="persons" id="persons" class="form-control"
+                  [ngClass]="{'is-valid': registerForm.controls.persons.valid && (registerForm.controls.persons.dirty || registerForm.controls.persons.touched),
+                              'is-invalid': registerForm.controls.persons.invalid && (registerForm.controls.persons.dirty || registerForm.controls.persons.touched)}"
+                  required>
+                <div class="invalid-feedback">
+                  Escribe tu nombre
+                </div>
+              </div>
+            
+            <div class="col-12">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" formControlName="aceptarTerminos"  [ngClass]="{'is-valid': registerForm.controls.aceptarTerminos.valid && (registerForm.controls.aceptarTerminos.dirty || registerForm.controls.aceptarTerminos.touched),
+                'is-invalid': registerForm.controls.aceptarTerminos.invalid && (registerForm.controls.aceptarTerminos.dirty || registerForm.controls.aceptarTerminos.touched)}"
+                 id="invalidCheck3" required>
+                <label class="form-check-label" for="invalidCheck3">
+                  Aceptar términos y condiciones
+                </label>
+                <div id="invalidCheck3Feedback" class="invalid-feedback">
+                  Debes aceptar los términos y condiciones antes de enviar.
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-12">
+              <button class="btn btn-primary" type="submit">Inscribirse</button>
+            </div>
+          </form>
+  
+  
+
+
+      </div>
     </div>
 </div>

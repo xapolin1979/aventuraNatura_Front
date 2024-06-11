@@ -76,6 +76,7 @@ select{
     justify-content: center;
     align-items: start;
    margin-top: 50px;
+   font-family: "Work Sans", sans-serif;
 }
 
 .card{
