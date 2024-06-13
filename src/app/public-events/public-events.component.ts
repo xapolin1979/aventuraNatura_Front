@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EventosGeneralService } from '../services/eventos-general.service';
 import { FormsModule } from '@angular/forms';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-public-events',
   standalone: true,
@@ -18,7 +18,7 @@ export class PublicEventsComponent implements OnInit {
   ordenName: boolean = true;
   selectedCategoria: string = ''; 
 
-  constructor(public eventosGeneralService: EventosGeneralService) {}
+  constructor(public eventosGeneralService: EventosGeneralService,public router: Router) {}
 
   ngOnInit(): void {
     this.eventosGeneralService.eventosGeneral().subscribe({
@@ -26,6 +26,7 @@ export class PublicEventsComponent implements OnInit {
         this.datosEventos = response.data;
         this.infoEventos = [...this.datosEventos]; 
         console.log(this.infoEventos);
+       
       },
       error: (error) => {
         console.log('Hay algún error', error);
@@ -78,11 +79,6 @@ export class PublicEventsComponent implements OnInit {
   }
   
 
-    verEvento(id_event:number){
-     console.log(id_event)
-     const url = `/event/${id_event}`;
-     window.open(url, '_blank');
-    }
 
    
   }

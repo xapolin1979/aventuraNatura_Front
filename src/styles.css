@@ -1,40 +1,8 @@
 body {
     margin: 0px;
     padding: 0px;
- 
-}
-/* Animación de salida */
-@keyframes exit {
-    from {
-        transform: translateY(0%);
-        opacity: 1;
-    }
-    to {
-        transform: translateY(-1%);
-        opacity: 0;
-    }
+   
 }
 
-/* Animación de entrada */
-@keyframes enter {
-    from {
-        transform: translateY(1%);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0%);
-        opacity: 1;
-    }
-}
-
-/* Transición de salida */
-::view-transition-old(root) {
-    animation: exit 0.5s ease-out forwards;
-}
-
-/* Transición de entrada */
-::view-transition-new(root) {
-    animation: enter 0.5s ease-out forwards;
-}
 
 

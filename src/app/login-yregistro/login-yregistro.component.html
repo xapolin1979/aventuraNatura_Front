@@ -1,14 +1,11 @@
 <div class="container-fluid portada">
-    <h3>Conviértete en un organizador de aventuras y <br> comparte tus experiencias con el mundo.</h3>
+    <h3>Conviértete en un organizador de aventuras y comparte tus experiencias.</h3>
 
 <div class="container containerForm">
 
     <form class="row g-3 formulario" [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()">
    
        <h4>Iniciar sesión</h4>
-       <div class="alert alert-danger" role="alert" *ngIf="this.loginIncorrecto">
-        correo o contraseña incorrectos
-       </div>
         <div class="col-md-12 ">
             <label for="validationServerUsername" class="form-label">email</label>
             <div class="input-group has-validation ">
@@ -34,7 +31,7 @@
         <div class="col-12">
           <button class="btn btn-primary" type="submit">Iniciar sesión</button>
         </div>
-        <p>¿No tienes una cuenta? <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal">Regístrate aquí</a>.</p>
+        <p >¿No tienes una cuenta? <span class="spanRegistro" (click)="modalRegistroOpen()">Regístrate aquí</span></p>
       </form>
     
     </div>
@@ -43,22 +40,14 @@
 
 
 
-<div class="modal " id="registerModal" tabindex="-1"  aria-labelledby="registerModalLabel" aria-hidden="true">
+<div class="modal modalRegistro" id="registerModal" tabindex="-1"  aria-labelledby="registerModalLabel" aria-hidden="true" [style.display]="this.modalRegister ? 'block' : 'none'">
   <div class="modal-dialog modalForm">
-    <div class="modal-content">
+    <div class="modal-content ">
       <div class="modal-header">
-        <h5 class="modal-title">Regístrate </h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h4 class="modal-title">Regístrate </h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modalRegistroClose()"></button>
       </div>
       <div class="modal-body">
-    
-          <div class="alert alert-success" role="alert" *ngIf="this.registradoCorrectamente">
-            Registrado correctamente
-           </div>
-           <div class="alert alert-danger" role="alert" *ngIf="this.alertRegistro">
-            Esta dirección de correo ya existe en nuestro sistema
-           </div>
-       
         <form class="row g-3" [formGroup]="registerForm" (ngSubmit)="onSubmitRegister()">
           <div class="col-md-6">
             <label for="name" class="form-label">Nombre del organizador</label>
@@ -141,6 +130,47 @@
         
       </div>
      
+    </div>
+  </div>
+</div>
+
+
+
+ <div class="modal alerta" [style.display]="registradoCorrectamente ? 'block' : 'none'" >
+  <div class="modal-dialog">
+    <div class="modal-content modalLoginSuccess">
+      <div class="modal-body ">
+        <img src="../../assets/img/AVENTURA2.png" alt="">
+        <h5 class="modal-title">Felicidades te has Registrado Correctamente</h5>
+        <p>Inicia sesión para continuar.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal alerta" [style.display]="this.alertRegistro ? 'block' : 'none'" >
+  <div class="modal-dialog">
+    <div class="modal-content modalLoginDanger">
+      <div class="modal-body">
+        <img src="../../assets/img/AVENTURA2.png" alt="">
+        <h5 class="modal-title">Correo no valido</h5>
+        <p>Esta dirección de correo ya existe en nuestro sistema.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal alerta" [style.display]="this.loginIncorrecto ? 'block' : 'none'" >
+  <div class="modal-dialog">
+    <div class="modal-content modalLoginDanger">
+      <div class="modal-body ">
+        <img src="../../assets/img/AVENTURA2.png" alt="">
+        <h5 class="modal-title">Error de Autenticación</h5>
+        <p>Correo o contraseña incorrectos.</p>
+      </div>
+
     </div>
   </div>
 </div>

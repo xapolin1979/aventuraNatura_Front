@@ -1,4 +1,4 @@
-<div class="container-fluid portada">
+<div class="container-fluid portada ">
    <h3>Eventos de aventura</h3>
    <h4>Encuentra y únete a las mejores experiencias al aire libre</h4>
    <div class="container-fluid containerBuscador">
@@ -28,11 +28,11 @@
 
 
 
-
 <div class="container-fluid cardsContainer">
 <div class="contenedorCards" *ngFor="let eventos of datosEventos">
-        <div class="card" style="width: 18rem;"  (click)="verEvento(eventos.id_event)">
-            <img class="card-img-top"  src="http://localhost:3001/uploads/{{eventos.Photos[0].photo}}" alt="Card image cap">
+  <a href="/event/{{eventos.id_event}}">
+        <div class="card" style="width: 18rem;">
+            <img mat-card-image  class="card-img-top"  src="http://localhost:3001/uploads/{{eventos.Photos[0].photo}}" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">{{eventos.User.name}}</h5>
                 <p class="card-text">{{eventos.Category.name}}<br>{{eventos.name_event}}<br>{{formatDate(eventos.start_date)}} h
@@ -44,8 +44,8 @@
                   }
             
             </div>
-          </div>
-
+        </div>
+      </a>
   </div>
     
 </div>

@@ -2,82 +2,80 @@
     width: 100%;
     height: auto;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
- background-image: url(../../assets/img/fondo_evento.jpg);
- background-size: cover;
+   background-image: url('../../assets/img/fondo3.jpg');
+   background-size: cover;
+   background-position: bottom;
 }
+
+
 #carouselExample {
-    width: 900px;
-    height: 400px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-  
+    width: 50%;
+    height: auto;
+   
 }
 
 .carousel-inner img {
    width: 100%; 
     height: 400px;
     object-fit: cover;
- 
+   border-left: 10px solid #ffffff;
+   border-right: 10px solid #ffffff;
 }
 
 .info{
-  
     display: flex;
     justify-content: center;
     align-items: center;
+   
 }
 .registrarse {
     max-width: 100%;
-    background-color: rgb(239, 239, 239);
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-items: center;
-    font-family: "Work Sans", sans-serif;
+    background-color:rgb(239, 239, 239) ;
 }
 .registrarse h3{
-    margin-top: 20px;
-  
+    margin-top: 50px;
+    color:#ff6619;
+    font-family: "Bebas Neue", sans-serif; 
    
 }
 form {
     width: 80%;
-    background-color: rgb(255, 255, 255);
+   background-color: white;
     padding: 20px; 
     margin-top: 30px;
     margin-bottom: 30px;
-   
+    font-family: "Work Sans", sans-serif; 
 }
 
 .form-control.is-valid, .was-validated .form-control:valid {
- 
-    background-image:none;
-   
+    background-image:none; 
 }
 .targetInfo{
     width: 90%;
     height: auto;
   padding: 20px;
-  font-family: "Work Sans", sans-serif;
+  font-family: "Work Sans", sans-serif; 
 }
-.targetInfo h2{
+ h2{
     font-size: 3em;
-    margin-bottom: 50px;
     color:#ff6619;
-  
+   font-family: "Bebas Neue", sans-serif;
+   margin-top: 30px;
+ 
+
 }
 .targetInfo p{
-  
     color:grey;
   
 }
-.targetInfo h6{
-  
-    color:#ff6619;
-  
-}
+
 #map-mapbox{
     max-width:100%;
     height: 300px;
@@ -90,22 +88,63 @@ form {
     height: auto;
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     justify-content: space-between;
     margin-top: 50px;
+  
 }
 h4{
     margin-top: 50px;
+
 }
+
 .variosTarget{
-    width: 150px
+    width: auto;
+    height: auto;
  
 }
 
-@media screen and (max-width: 980px){
 
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1050;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+   
+  }
+  
+.modal-body img{
+    width: 30%;
+}
+
+.modalLoginSuccess{
+    background-color: rgb(209, 231, 221);
+   
+}
+
+@media screen and (max-width: 1050px){
     #carouselExample {
-        width: 600px; /* Ancho fijo para el carrusel */
-        height: 300px;
+        width: 70%; 
+        height: auto;
+    }
+
+
+}
+@media screen and (max-width: 980px){
+    #containerSlider {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    
     }
     
     .carousel-inner img {
@@ -115,4 +154,18 @@ h4{
     }
 
 
+}
+@media screen and (max-width: 600px){
+
+
+    #carouselExample {
+        width: 100%; 
+        height: auto;
+    }
+    .carousel-inner img {
+    
+        border-left: 0px;
+        border-right: 0px;
+     }
+   
 }

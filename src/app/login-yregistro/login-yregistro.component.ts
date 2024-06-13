@@ -21,7 +21,7 @@ export class LoginYregistroComponent {
   registradoCorrectamente: boolean = false;
    loginIncorrecto:boolean=false;
    alertRegistro:boolean=false;
-
+   modalRegister:boolean=false;
 
 
 
@@ -65,19 +65,21 @@ export class LoginYregistroComponent {
       this.AuthService.registrarUsuario(registroData).subscribe({
         next: (response) => {
           console.log(response);
-
+          this.modalRegistroClose()
           this.registerForm.reset();
           this.registradoCorrectamente = true;
-
+         
           setTimeout(() => {
             this.registradoCorrectamente = false;
-          }, 5000);
+          }, 3000);
         },
         error: (error) => {
           this.alertRegistro=true;
+          this.modalRegistroClose()
           setTimeout(() => {
+            this.modalRegistroOpen();
             this.alertRegistro = false;
-          }, 5000);
+          }, 3000);
           console.error('Error al registrar usuario:', error);
         },
       });
@@ -101,6 +103,7 @@ export class LoginYregistroComponent {
         next: (response) => {
           console.log(response);
           this.router.navigate(['/usuario']);
+          window.scrollTo(0, 0);
        
         },
         error: (error) => {
@@ -109,7 +112,7 @@ export class LoginYregistroComponent {
           this.loginIncorrecto = true;
           setTimeout(() => {
             this.loginIncorrecto = false;
-          }, 5000);
+          }, 3000);
         },
       });
     } else {
@@ -119,12 +122,16 @@ export class LoginYregistroComponent {
 
 
 
-    
-
   }
 
+  modalRegistroOpen():void{
+this.modalRegister=true;  
+  }
+      
 
-
+  modalRegistroClose():void{
+    this.modalRegister=false;  
+  }
 
 
 

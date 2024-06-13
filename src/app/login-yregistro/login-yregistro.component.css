@@ -23,15 +23,55 @@
    
 }
 .portada h3{
-    font-family: "Work Sans", sans-serif;
     color:white;
+    font-family: "Bebas Neue", sans-serif;
     margin-bottom: 50px;
     text-align: center;
     position: relative; 
-    font-size: 2.3em;
+    font-size: 3em;
     z-index: 1; 
 }
+/* modal de alertas */
+.spanRegistro{
+    color:rgb(13, 110, 253);
+    cursor: pointer;
+    border-bottom: 1px solid rgb(13, 110, 253) ;
+}
+.modalRegistro{
+    display: none; 
+    position: fixed;
+    z-index: 1050;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.5);
+   
+}
+.alerta {
+    display: none; 
+    position: fixed;
+    z-index: 1050;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+   
+  }
+  .modal-body img{
+    width: 30%;
+}
+.modalLoginDanger{
+    background-color: rgb(248, 215, 218);
+}
+.modalLoginSuccess{
+    background-color: rgb(209, 231, 221);
 
+}
 
 
 .containerForm{
@@ -51,11 +91,9 @@
     font-family: "Work Sans", sans-serif;
 }
 
-.formulario span{
+h4 {
     color:#ff6619;
 }
-
-
 /* login */
 .containLogin{
     display: flex;
@@ -72,12 +110,12 @@
 }
 
 .btn{
-background-color: #ff6619;
+background-color: #1d6e40;
 border: none;
 border-radius: 0px;
 }
 .btn:hover{
-    background-color: rgb(30, 167, 103);
+    background-color: #195d37;
     border-radius: 0px;
 }
 

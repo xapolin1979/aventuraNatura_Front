@@ -5,6 +5,8 @@ import { CommonModule } from '@angular/common';
 import { environment } from '../../environments/environments.map-box';
 import mapboxgl from 'mapbox-gl';
 import { FormsModule, ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
+import { ParticipantsService } from '../services/participants.service';
+
 @Component({
   selector: 'app-ver-evento',
   standalone: true,
@@ -38,37 +40,111 @@ registerForm = new FormGroup({
   aceptarTerminos: new FormControl(false, Validators.requiredTrue),
 });
 
+personasApuntadas:any;
+disponibilidad:any;
+modal:boolean=false;
 
+constructor(private route: ActivatedRoute ,private eventosGeneralService:EventosGeneralService,private participantsService:ParticipantsService) { }
 
-
-constructor(private route: ActivatedRoute ,private eventosGeneralService:EventosGeneralService) { }
-
-ngOnInit():void{
-
+ngOnInit(): void {
   this.route.paramMap.subscribe(params => {
-     this.id_event=params.get('id');
+    this.id_event = params.get('id');
   });
-  
-  this.eventosGeneralService.getEventoId( this.id_event).subscribe({
-    next:(response)=>{
-      this.infoEvento=response.data;
-      console.log( this.infoEvento);
-      this.initializeMap()
+
+  this.eventosGeneralService.getEventoId(this.id_event).subscribe({
+    next: (response) => {
+      this.infoEvento = response.data;
+      console.log(this.infoEvento);
+      this.initializeMap();
     },
-    error:(error)=>{
-      console.log('Algo a fallado',error)
+    error: (error) => {
+      console.log('Algo a fallado', error);
     }
-  })
+  });
 
+  this.participantsService.getParticipantesdelEvento(this.id_event).subscribe({
+    next: (response) => {
+      this.personasApuntadas = response.data;
+      console.log(this.personasApuntadas);
 
+      let sumaInscritos = 0;
+      this.personasApuntadas.forEach((persona: any) => {
+        sumaInscritos += persona.persons;
+      });
 
+      const maxPersonas = Number(this.infoEvento.max_persons);
+      this.disponibilidad = maxPersonas - sumaInscritos;
+
+      if (this.disponibilidad <= 0) {
+        this.disponibilidad = 'No quedan plazas disponibles';
+      } else {
+        this.disponibilidad = 'Quedan ' + this.disponibilidad + ' plazas';
+      }
+    },
+    error: (error) => {
+      console.log('Algo a fallado', error);
+    }
+  });
 }
+
+
+
 onSubmit() {
   if (this.registerForm.invalid) {
     this.registerForm.markAllAsTouched();
     return;
   }
+// Obtener participantes del evento
+      let sumaInscritos = 0;
+      this.personasApuntadas.forEach((persona: any) => {
+        sumaInscritos += persona.persons;
+      });
+
+      // Verificar disponibilidad de plazas
+      const maxPersonas = Number(this.infoEvento.max_persons);
+      const plazasDisponibles = maxPersonas - sumaInscritos;
+      
+      if (plazasDisponibles <= 0) {
+        alert('No quedan plazas disponibles para este evento.');
+        this.registerForm.reset();
+        return;
+      }
+
+      // Verificar si se excede el límite de plazas
+      const inscritos: any = {
+        event_id: this.id_event,
+        name: this.registerForm.value.name,
+        surname: this.registerForm.value.surname,
+        email: this.registerForm.value.email,
+        phone: this.registerForm.value.phone,
+        persons: this.registerForm.value.persons,
+      };
+
+      if (inscritos.persons > plazasDisponibles) {
+        alert(`Solo quedan ${plazasDisponibles} plazas para apuntarse al evento.`);
+        return;
+      }
+
+      // Inscribir participante si hay plazas disponibles
+      this.participantsService.inscribirParticipante(inscritos).subscribe({
+        next: (response) => {
+          console.log(response);
+          this.modal=true;
+          setTimeout(() => {
+            this.modal=false;
+            this.registerForm.reset();
+            window.location.reload();
+          }, 4000);
+
+         
+        },
+        error: (error) => {
+          console.log('Algo a fallado', error);
+        }
+      });
+    
 }
+
 
 formatDate(date: string): string {
   const options: Intl.DateTimeFormatOptions = {
@@ -104,7 +180,6 @@ initializeMap(): void {
     window.open(`https://www.google.com/maps?q=${lat},${lng}`, '_blank');
   });
 }
-
 
 
 

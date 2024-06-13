@@ -48,7 +48,8 @@ export class CrearEventosComponent implements OnInit {
   });
 
   selectedFiles: File[] = [];
-
+  creadoCorrectamente:boolean = false;
+  borradoCorrectamente:boolean = false;
   constructor(
     private eventsService: EventsService,
     public userService: UserService,
@@ -241,7 +242,10 @@ export class CrearEventosComponent implements OnInit {
     this.eventsService.deleteEvent(this.event_id).subscribe({
       next: (response) => {
         console.log(response);
-        alert('Evento cancelado correctamente');
+        this.borradoCorrectamente = true;
+       setTimeout(() => {
+          this.borradoCorrectamente = false;
+   },3000);
         this.verFotos = [];
         this.registerEvent.reset();
 
@@ -269,7 +273,10 @@ export class CrearEventosComponent implements OnInit {
   }
 
   finalizarCreacionDelEvento() {
-    alert('Evento creado correctamente');
+   this.creadoCorrectamente = true;
+   setTimeout(() => {
+    this.creadoCorrectamente = false;
+   },3000);
     this.registerEvent.reset();
 
     if (this.marker) {

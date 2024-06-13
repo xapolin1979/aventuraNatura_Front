@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-
+import { CommonModule } from '@angular/common';
+declare var $: any; 
 @Component({
   selector: 'app-editar-eventos',
   standalone: true,
@@ -9,4 +10,10 @@ import { Component } from '@angular/core';
 })
 export class EditarEventosComponent {
 
-}
+
+
+  
+
+
+
+  }

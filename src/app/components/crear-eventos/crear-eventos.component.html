@@ -218,3 +218,32 @@
     </div>
   </div>
 </div>
+
+
+
+<div class="modal alerta" [style.display]="creadoCorrectamente ? 'block' : 'none'" >
+  <div class="modal-dialog">
+    <div class="modal-content modalLoginSuccess">
+      <div class="modal-body ">
+        <img src="../../assets/img/AVENTURA2.png" alt="">
+        <h5 class="modal-title">Felicidades </h5>
+        <p>Has creado tu evento correctamente.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="modal alerta" [style.display]="this.borradoCorrectamente ? 'block' : 'none'" >
+  <div class="modal-dialog">
+    <div class="modal-content modalLoginDanger">
+      <div class="modal-body">
+        <img src="../../assets/img/AVENTURA2.png" alt="">
+        <h5 class="modal-title">Evento cancelado</h5>
+        <p>El evento se a cancelado correctamente.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
