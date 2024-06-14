@@ -1,37 +1,61 @@
+@if(!iraParticipantes && !mostrarUbicacion){
+
 <div class="container-fluid p-0">
-<div class="ContainEvent">
-    <table class="table" >
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>twitter</td>
-          </tr>
-        </tbody>
-      </table>
-
-
+  <div class="ContainEvent">
+    <div class="buscar">
+      <h3>Eventos que has creado</h3>
+      <div class="filtros">
+        <input type="text" [(ngModel)]="filtroNombre" placeholder="Buscar por Titulo">
+        <button class="btn btn-primary ordenar" (click)="cambiarOrden()">Ordenar Alfabéticamente</button>
+      </div>
+    </div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Titulo</th>
+          <th scope="col">Categoria</th>
+          <th scope="col">Dificultad</th>
+          <th scope="col">Edades</th>
+          <th scope="col">Max pers</th>
+          <th scope="col">Fecha.I</th>
+          <th scope="col">Fecha.f</th>
+          <th scope="col">Info evento</th>
+          <th scope="col">Precio</th>
+          <th scope="col">Material</th>
+          <th scope="col">Ubicacción</th>
+          <th scope="col">Participantes</th>
+          <th scope="col">Editar</th>
+          <th scope="col">Borrar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let evento of buscar(); let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ evento.name_event }}</td>
+          <td>{{ evento.Category.name }}</td>
+          <td>{{ niveles[evento.difficulty] }}</td>
+          <td>{{ edades[evento.for_whom] }}</td>
+          <td>{{ evento.max_persons }}</td>
+          <td>{{ formatDate(evento.start_date) }}</td>
+          <td>{{ formatDate(evento.end_date) }}</td>
+          <td>{{ truncarTexto(evento.info_event, 50) }}</td> 
+          <td>{{ evento.price_per_person}}</td>
+          <td>{{ truncarTexto(evento.material, 50) }}</td>
+          <td><button class="btn btn-success"(click)="recogerIdEventoUbicacion(evento.id_event)" >Ubicacción</button></td>
+          <td><button class="btn btn-info" (click)="recogerIdEvento(evento.id_event)">Participantes</button></td>
+          <td><button class="btn btn-warning">Editar</button></td>
+          <td><button class="btn btn-danger">Borrar</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
-   
 
-</div>
+}
+@if(iraParticipantes && !mostrarUbicacion){
+  <app-ver-participantes [event_id]="enviarId"  (volver)="cambiarVista()"></app-ver-participantes>
+} 
+@if(mostrarUbicacion && !iraEventos){
+  <app-ubicacion [ubicaccion_id]="enviarId"  (volver)="cambiarUbicacion()"></app-ubicacion>
+}

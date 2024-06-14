@@ -34,8 +34,9 @@
         <div class="card" style="width: 18rem;">
             <img mat-card-image  class="card-img-top"  src="http://localhost:3001/uploads/{{eventos.Photos[0].photo}}" alt="Card image cap">
             <div class="card-body">
-                <h5 class="card-title">{{eventos.User.name}}</h5>
-                <p class="card-text">{{eventos.Category.name}}<br>{{eventos.name_event}}<br>{{formatDate(eventos.start_date)}} h
+                <h5 class="card-title">{{eventos.Category.name}}</h5>
+                <h6 class="card-title">{{eventos.User.name}}</h6>
+                <p class="card-text">{{eventos.name_event}}<br>{{formatDate(eventos.start_date)}} h
                    @if(eventos.price_per_person !=0){
                       <p> precio: {{eventos.price_per_person}} eur</p> 
                   }

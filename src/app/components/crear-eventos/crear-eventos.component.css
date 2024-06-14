@@ -68,7 +68,7 @@ h3 {
   }
   #formFotos{
     width: 100%;
-    height: auto;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;

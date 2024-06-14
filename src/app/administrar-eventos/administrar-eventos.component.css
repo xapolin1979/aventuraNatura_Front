@@ -7,25 +7,25 @@
 }
 
 .userEvents{
-    width: 85%;
+    width: 90%;
     height: auto;
     background-color: rgb(240, 240, 240);
 
 }
 .sidebar {
     height: auto;
-    width: 15%;
+    width: 10%;
+    height: auto;
    background-color:#1d6e40;
     transition: 0.5s;
    display: flex;
    flex-wrap: wrap;
    flex-direction: column;
-   padding: 30px;
+padding: 20px;
   }
   
   .sidebar p{
     text-decoration: none;
-    font-size: 1.2em;
     color: white;
     display: block;
     margin-top: 20px;
@@ -36,7 +36,6 @@
   .sidebar h6{
     color: #ffffff;
     display: block;
-    font-size: 1.4em;
     transition: 0.3s;
     margin-bottom: 20px;
     font-family: "Work Sans", sans-serif;

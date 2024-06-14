@@ -19,20 +19,21 @@
 }
 
 .eventosDestacados h4{
-    font-family: "Work Sans", sans-serif;
-    font-size: 2.5em;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 3em;
  
 }
 
+
 .eventosDestacados p{
-    font-family: "Libre Baskerville", serif;
+    font-family: "Work Sans", sans-serif;
    font-weight: 400;
    font-style: normal; 
    margin-top: 20px;
    font-size: 1.3em;
 }
 .eventosDestacados span{
-    font-family: "Work Sans", sans-serif;
+   
     color:#ff6619;
     
 }
@@ -46,7 +47,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    align-items: start;
   
 }
 
@@ -67,7 +68,13 @@
     border-top-right-radius: 0px;
 }
 .card h5{
+ font-weight: bolder;
     color: #ff6619;
+    
+}
+.card h6{
+    color:#1d6e40;
+    font-weight: bolder;
     
 }
 a{
@@ -79,16 +86,20 @@ a{
     padding: 20px;
     border:none;
     font-family: "Work Sans", sans-serif;
-    background-color: #1d6e40;
-    color: white;
+    background-color:#ffffff;
+    color: rgb(0, 0, 0);
+    border:2px solid black;
+  
 }
 .eventosBTN:hover{
     margin-bottom: 100px;
     padding: 20px;
     border:none;
     font-family: "Work Sans", sans-serif;
-    background-color: #195d37;
+    background-color: #ff6619;
     color: white;
+    border:2px solid rgb(255, 255, 255);
+  
 }
 
 .explorar{

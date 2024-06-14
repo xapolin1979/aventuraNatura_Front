@@ -1,4 +1,4 @@
-.container-fluid{
+.container2{
     width: 100%;
     min-height: 100vh;
     display: flex;
@@ -7,11 +7,12 @@
     background-color: rgb(240, 240, 240);
     overflow: auto;
 }
+
 .ContainEvent{
     width: 100%;
     height: auto;
     margin-top: 20px;
-   
+
 }
 
 .buscar{
@@ -22,7 +23,7 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-  
+ 
 }
 
 input{
@@ -34,26 +35,22 @@ input{
 margin: 20px;
 }
 
+.volver{
+    width: 100%;
+    margin-left: 20px;
+
+}
 h3{
     margin: 20px;
     color: #ff6619;
 }
+
 @media screen and (max-width: 980px){
     .container-fluid{
         width: 100%;
         height: auto;
         overflow: none;
     }
-    .buscar{
-        width: 100%;
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        justify-content: start;
-        align-items: start;
-        margin-bottom: 20px;
-      
-    }
+ 
 
 }

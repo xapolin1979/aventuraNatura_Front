@@ -25,29 +25,29 @@
          
         <div class="targetInfo">
           <h2>{{infoEvento.name_event}}</h2>
-            <h4>Organizador del evento</h4>
-            <p>{{infoEvento.User.name}}</p>
+            <h4>Organizador del evento :</h4>
+            <h3>{{infoEvento.User.name}}</h3>
             <div class="varios">
             <div class="variosTarget">
-                <h5>Categoria :</h5>
+                <h6>Categoria :</h6>
                 <p>{{infoEvento.Category.name}}</p>
             </div>
            <div class="variosTarget">
-            <h5>Didicultad :</h5>
+            <h6>Didicultad :</h6>
             <p>{{niveles[infoEvento.difficulty]}}</p>
            </div>
            <div class="variosTarget">
-            <h5>Quiénes pueden participar :</h5>
+            <h6>Quiénes pueden participar :</h6>
             <p>{{edades[infoEvento.for_whom]}}</p>
            </div>
            <div class="variosTarget">
-            <h5>Max :</h5>
+            <h6>Max :</h6>
             <p>{{ infoEvento.max_persons}} personas</p>
            </div>
             </div>
-            <h4>Plazas disponibles</h4>
+            <h5>Plazas disponibles :</h5>
             <p>{{disponibilidad}}</p>
-            <h4>Precio</h4>
+            <h5>Precio :</h5>
             @if(infoEvento.price_per_person > 0){
                 <p>{{infoEvento.price_per_person}} eur</p>
             }
@@ -55,13 +55,13 @@
                 Gratis
             }
             
-            <h4>Fecha y hora</h4>
+            <h5>Fecha y hora :</h5>
             <p>{{formatDate(infoEvento.start_date)}} h</p>
-            <h4>Ubicación :</h4>
+            <h5>Ubicación :</h5>
             <div id="map-mapbox"></div>
-            <h4>Acerca de este evento</h4>
+            <h5>Acerca de este evento :</h5>
             <p>{{infoEvento.info_event}}</p>
-            <h4>Material</h4>
+            <h5>Material :</h5>
             <p>{{infoEvento.material}}</p>
         </div>
 
@@ -80,13 +80,13 @@
               </div>
             </div>
             <div class="col-md-12">
-                <label for="surname" class="form-label">Apellido</label>
+                <label for="surname" class="form-label">Apellidos</label>
                 <input type="text" formControlName="surname" id="surname" class="form-control"
                   [ngClass]="{'is-valid': registerForm.controls.surname.valid && (registerForm.controls.surname.dirty || registerForm.controls.surname.touched),
                               'is-invalid': registerForm.controls.surname.invalid && (registerForm.controls.surname.dirty || registerForm.controls.surname.touched)}"
                   required>
                 <div class="invalid-feedback">
-                  Escribe tu apellido
+                  Escribe tus apellidos
                 </div>
               </div>
             
@@ -156,7 +156,6 @@
   <div class="modal-dialog">
     <div class="modal-content modalLoginSuccess">
       <div class="modal-body">
-        <img src="../../assets/img/AVENTURA2.png" alt="">
         <h5 class="modal-title">Felicidades te has inscrito correctamente</h5>
         <p>En breve recibiras un correo electrónico de confirmación.</p>
       </div>

@@ -25,7 +25,7 @@ export class VerEventoComponent {
 };
 edades:any = {
   1: 'Todas las edades',
-  2: 'A partir de 12 años',
+  2: 'A partir de 14 años',
   3: 'A partir de 18 años'
 };
 map: any;
