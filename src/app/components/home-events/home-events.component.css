@@ -68,13 +68,15 @@
     border-top-right-radius: 0px;
 }
 .card h5{
- font-weight: bolder;
-    color: #ff6619;
-    
+
+    color: black;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 1.2em;
 }
 .card h6{
-    color:rgb(11, 94, 215);
-    font-weight: bolder;
+    color:#ff6619;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 1.8em;
     
 }
 a{

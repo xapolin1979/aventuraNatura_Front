@@ -37,9 +37,11 @@ margin: 20px;
 
 .volver{
     width: 100%;
-    margin-left: 20px;
-
 }
+.volver button{
+    margin-left: 20px;
+}
+
 h3{
     margin: 20px;
     color: #000000;
