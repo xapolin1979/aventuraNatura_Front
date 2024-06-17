@@ -139,8 +139,12 @@
  <div class="modal alerta" [style.display]="registradoCorrectamente ? 'block' : 'none'" >
   <div class="modal-dialog">
     <div class="modal-content modalLoginSuccess">
+      <div class="modal-header">
+        <h5 class="modal-title">Usuario Registrado Correctamente</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modalRegistroClose()"></button>
+      </div>
       <div class="modal-body ">
-        <h5 class="modal-title">Felicidades te has Registrado Correctamente</h5>
+        <img src="../../assets/img/AVENTURA2.png" alt="">
         <p>Inicia sesión para continuar.</p>
       </div>
 
@@ -151,8 +155,12 @@
 <div class="modal alerta" [style.display]="this.alertRegistro ? 'block' : 'none'" >
   <div class="modal-dialog">
     <div class="modal-content modalLoginDanger">
-      <div class="modal-body">
+      <div class="modal-header">
         <h5 class="modal-title">Correo no valido</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="alertClose()"></button>
+      </div>
+      <div class="modal-body">
+        <img src="../../assets/img/AVENTURA2.png" alt="">
         <p>Esta dirección de correo ya existe en nuestro sistema.</p>
       </div>
 
@@ -163,8 +171,12 @@
 <div class="modal alerta" [style.display]="this.loginIncorrecto ? 'block' : 'none'" >
   <div class="modal-dialog">
     <div class="modal-content modalLoginDanger">
-      <div class="modal-body ">
+      <div class="modal-header">
         <h5 class="modal-title">Error de Autenticación</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="alertClose()"></button>
+      </div>
+      <div class="modal-body ">
+        <img src="../../assets/img/AVENTURA2.png" alt="">
         <p>Correo o contraseña incorrectos.</p>
       </div>
 

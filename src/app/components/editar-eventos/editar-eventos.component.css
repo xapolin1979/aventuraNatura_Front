@@ -6,6 +6,7 @@
     align-items: start;
     background-color: rgb(240, 240, 240);
     overflow: auto;
+    font-family: "Work Sans", sans-serif;
 }
 .ContainEvent{
     width: 100%;
@@ -36,8 +37,29 @@ margin: 20px;
 
 h3{
     margin: 20px;
-    color: #ff6619;
+    color: #000000;
+    font-size: 2.5em;
+    font-family: "Bebas Neue", sans-serif;
 }
+.dropdown-menu {
+    --bs-dropdown-bg: white;
+    --bs-dropdown-link-hover-bg:rgb(11, 94, 215);
+   --bs-dropdown-link-hover-color:white; 
+    border:2px solid black;
+ 
+}
+.borrarEvent{
+    --bs-dropdown-link-hover-bg:red ;
+}
+span{
+   color:rgb(0, 0, 0);
+   font-weight: bolder;
+}
+h6{
+color: #ff6619;
+    font-size: 1.1em;
+}
+
 @media screen and (max-width: 980px){
     .container-fluid{
         width: 100%;

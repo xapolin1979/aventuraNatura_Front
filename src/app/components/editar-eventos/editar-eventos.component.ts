@@ -4,10 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { EventsService } from '../../services/events.service';
 import { VerParticipantesComponent } from '../ver-participantes/ver-participantes.component';
 import { UbicacionComponent } from '../ubicacion/ubicacion.component';
+import { UploadEventComponent } from '../upload-event/upload-event.component';
+import { FotografiasComponent } from '../fotografias/fotografias.component';
 @Component({
   selector: 'app-editar-eventos',
   standalone: true,
-  imports: [CommonModule,FormsModule,VerParticipantesComponent,UbicacionComponent],
+  imports: [CommonModule,FormsModule,VerParticipantesComponent,UbicacionComponent,UploadEventComponent,FotografiasComponent],
   templateUrl: './editar-eventos.component.html',
   styleUrl: './editar-eventos.component.css'
 })
@@ -19,6 +21,7 @@ export class EditarEventosComponent {
   iraParticipantes:boolean = false;
   iraEventos:boolean = false;
   mostrarUbicacion = false;
+  mostrarEditar = false;
   niveles:any = {
     1: 'Baja',
     2: 'Media',
@@ -99,6 +102,12 @@ recogerIdEventoUbicacion(id:number){
   this.enviarId=id;
   this.cambiarUbicacion()
 }
+recogerIdEvent(id:number){
+  this.enviarId=id;
+  this.cambiarEvento();
+}
+
+
 cambiarVista(): void {
   this.iraParticipantes = !this.iraParticipantes;
   this.iraEventos = !this.iraEventos;
@@ -106,6 +115,13 @@ cambiarVista(): void {
 cambiarUbicacion(){
   this.iraParticipantes = !this.iraParticipantes;
   this.mostrarUbicacion = !this.mostrarUbicacion;
+  
 }
+cambiarEvento(){
+  this.iraEventos = !this.iraEventos;
+  this.mostrarEditar = !this.mostrarEditar;
+}
+
+
 
 }

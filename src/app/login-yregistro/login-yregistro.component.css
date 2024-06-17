@@ -110,7 +110,11 @@ h4 {
     padding: 10px;
 }
 .modal-header{
-    border-bottom: 1px solid #ff6619;
+
+    border-bottom: 1px solid #000000;
+}
+.modal-body  img{
+width: 150px;
 }
 
 .btn{
@@ -135,6 +139,8 @@ border-radius: 0px;
   .form-control.is-valid{
      background-image: none !important;
   }
+
+
 @media screen and (max-width: 1050px){
 
     .containerForm{

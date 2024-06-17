@@ -1,0 +1,30 @@
+.containerFormulario{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+     padding: 10px;
+     font-family: "Work Sans", sans-serif;
+     background-color: rgb(240, 240, 240);
+
+}
+
+
+.form-control.is-valid{
+    background-image: none !important;
+ }
+
+ .form-select.is-valid{
+    background-image: none !important;
+ }
+ .formulario{
+   padding: 20px;
+}
+
+ .titulo_form h3{
+   color: #000000;
+   font-size: 2.5em;
+   font-family: "Bebas Neue", sans-serif;
+}

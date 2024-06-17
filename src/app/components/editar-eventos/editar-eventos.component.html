@@ -1,51 +1,48 @@
-@if(!iraParticipantes && !mostrarUbicacion){
+@if(!iraParticipantes && !mostrarUbicacion && !mostrarEditar){
 
 <div class="container-fluid p-0">
   <div class="ContainEvent">
     <div class="buscar">
-      <h3>Eventos que has creado</h3>
+      <h3>Tus eventos creados</h3>
       <div class="filtros">
         <input type="text" [(ngModel)]="filtroNombre" placeholder="Buscar por Titulo">
         <button class="btn btn-primary ordenar" (click)="cambiarOrden()">Ordenar Alfabéticamente</button>
       </div>
     </div>
-    <table class="table table-bordered">
+    <table class="table table-striped">
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Titulo</th>
-          <th scope="col">Categoria</th>
-          <th scope="col">Dificultad</th>
-          <th scope="col">Edades</th>
-          <th scope="col">Max pers</th>
-          <th scope="col">Fecha.I</th>
-          <th scope="col">Fecha.f</th>
+          <th scope="col">Evento</th>
+          <th scope="col">Fecha</th>
           <th scope="col">Info evento</th>
-          <th scope="col">Precio</th>
           <th scope="col">Material</th>
-          <th scope="col">Ubicacción</th>
-          <th scope="col">Participantes</th>
-          <th scope="col">Editar</th>
-          <th scope="col">Borrar</th>
+          <th scope="col">Acciones</th>
+        
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let evento of buscar(); let i = index">
           <th scope="row">{{ i + 1 }}</th>
-          <td>{{ evento.name_event }}</td>
-          <td>{{ evento.Category.name }}</td>
-          <td>{{ niveles[evento.difficulty] }}</td>
-          <td>{{ edades[evento.for_whom] }}</td>
-          <td>{{ evento.max_persons }}</td>
-          <td>{{ formatDate(evento.start_date) }}</td>
-          <td>{{ formatDate(evento.end_date) }}</td>
+          <td><h6>{{ evento.name_event }}</h6> <p><span>Categoria: </span>{{ evento.Category.name }}</p> <p> <span>Dificultatd: </span> {{ niveles[evento.difficulty] }}</p>  <p><span>Para: </span> {{edades[evento.for_whom] }}</p> <p> <span>Max.</span> {{ evento.max_persons }} personas</p><p> <span> Precio:</span> {{ evento.price_per_person}} eur</p></td>
+          <td><p><img src="../../../assets/img/fecha.png" alt=""> Inicio:</p> <p>{{ formatDate(evento.start_date) }}</p> <p><img src="../../../assets/img/fecha.png" alt=""> Fin: </p> <p>{{ formatDate(evento.end_date) }}</p></td>
           <td>{{ truncarTexto(evento.info_event, 50) }}</td> 
-          <td>{{ evento.price_per_person}}</td>
-          <td>{{ truncarTexto(evento.material, 50) }}</td>
-          <td><button class="btn btn-success"(click)="recogerIdEventoUbicacion(evento.id_event)" >Ubicacción</button></td>
-          <td><button class="btn btn-info" (click)="recogerIdEvento(evento.id_event)">Participantes</button></td>
-          <td><button class="btn btn-warning">Editar</button></td>
-          <td><button class="btn btn-danger">Borrar</button></td>
+          <td>{{ truncarTexto(evento.material,50) }}</td>
+          <td>
+            <div class="dropdown">
+              <button id="dropdownAcciones" type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                Acciones
+              </button>
+              <div class="dropdown-menu" [attr.aria-labelledby]="'dropdownAcciones' + i">
+                <button class="dropdown-item " (click)="recogerIdEvent(evento.id_event)">Editar Evento</button>
+                <button class="dropdown-item " (click)="recogerIdEventoUbicacion(evento.id_event)">Cambiar Ubicación</button>
+                <button class="dropdown-item" >Fotos</button>
+                <button class="dropdown-item" (click)="recogerIdEvento(evento.id_event)">Ver Participantes</button>
+               
+                <button class="dropdown-item borrarEvent">Borrar Evento</button>
+              </div>
+            </div>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -53,9 +50,14 @@
 </div>
 
 }
-@if(iraParticipantes && !mostrarUbicacion){
+@if(iraParticipantes && !mostrarUbicacion && !mostrarEditar){
   <app-ver-participantes [event_id]="enviarId"  (volver)="cambiarVista()"></app-ver-participantes>
 } 
-@if(mostrarUbicacion && !iraEventos){
+@if(mostrarUbicacion && iraParticipantes && !mostrarEditar){
   <app-ubicacion [ubicaccion_id]="enviarId"  (volver)="cambiarUbicacion()"></app-ubicacion>
 }
+@if(mostrarEditar && !iraParticipantes && !mostrarUbicacion){
+  <app-upload-event [editar_id]="enviarId"  (volver)="cambiarEvento()"></app-upload-event>
+}
+
+<app-fotografias></app-fotografias>

@@ -130,12 +130,6 @@ onSubmit() {
         next: (response) => {
           console.log(response);
           this.modal=true;
-          setTimeout(() => {
-            this.modal=false;
-            this.registerForm.reset();
-            window.location.reload();
-          }, 4000);
-
          
         },
         error: (error) => {
@@ -181,8 +175,10 @@ initializeMap(): void {
   });
 }
 
-
-
-
+modalClose():void{
+  this.modal=false;
+  this.registerForm.reset();
+  window.location.reload();
+}
 
 }

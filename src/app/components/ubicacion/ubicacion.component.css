@@ -23,7 +23,9 @@
     align-items: center;
 }
 .titulo h3 {
-    color:#ff6619;
+    color: #000000;
+    font-size: 2.5em;
+    font-family: "Bebas Neue", sans-serif;
     margin: 20px;
 }
 

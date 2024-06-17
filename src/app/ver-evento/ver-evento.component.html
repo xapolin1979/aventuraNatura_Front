@@ -155,8 +155,12 @@
 <div class="modal" [style.display]="modal ? 'block' : 'none'" >
   <div class="modal-dialog">
     <div class="modal-content modalLoginSuccess">
-      <div class="modal-body">
+      <div class="modal-header">
         <h5 class="modal-title">Felicidades te has inscrito correctamente</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modalClose()"></button>
+      </div>
+      <div class="modal-body">
+        <img src="../../assets/img/AVENTURA2.png" alt="">
         <p>En breve recibiras un correo electrónico de confirmación.</p>
       </div>
 

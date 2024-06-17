@@ -17,6 +17,8 @@
 
 .titulo_form h3{
     color:#ff6619;
+    font-size: 2.5em;
+    font-family: "Bebas Neue", sans-serif;
 }
 
 .containerMapbox{
@@ -54,7 +56,9 @@
     padding: 20px;
 }
 h3 {
-    color:#ff6619;
+  color:#ff6619;
+  font-size: 2.5em;
+  font-family: "Bebas Neue", sans-serif;
 }
 
 .containerFotos {

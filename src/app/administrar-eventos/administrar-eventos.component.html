@@ -1,10 +1,14 @@
 <div class="container-fluid">
 <div class="sidebar" id="sidebar">
     <h6>Bienvenido <br>usuario</h6>
-    <p (click)="crearEvento()"><img src="../../assets/img/crear.png" alt=""><br> Crear Evento</p>
-    <p (click)="editarEvento()"><img src="../../assets/img/editar.png" alt=""><br> Gestionar Eventos</p>
-    <p (click)="calendario()"><img src="../../assets/img/calendario.png" alt=""><br> Calendario</p>
-    <p (click)="finanzas()"><img src="../../assets/img/barra-grafica.png" alt=""> <br>Finanzas</p>
+    <img src="../../assets/img/crear.png" alt="">
+    <p (click)="crearEvento()"> Crear Evento</p>
+    <img src="../../assets/img/editar.png" alt="">
+    <p (click)="editarEvento()">Tus Eventos</p>
+    <img src="../../assets/img/calendario.png" alt=""> 
+    <p (click)="calendario()">Calendario</p>
+    <img src="../../assets/img/barra-grafica.png" alt="">
+    <p (click)="finanzas()">Finanzas</p>
   </div>
   <div class="userEvents">
     @if(createEvent){

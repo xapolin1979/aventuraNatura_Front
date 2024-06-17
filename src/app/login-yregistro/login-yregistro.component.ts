@@ -65,21 +65,13 @@ export class LoginYregistroComponent {
       this.AuthService.registrarUsuario(registroData).subscribe({
         next: (response) => {
           console.log(response);
-          this.modalRegistroClose()
           this.registerForm.reset();
           this.registradoCorrectamente = true;
          
-          setTimeout(() => {
-            this.registradoCorrectamente = false;
-          }, 3000);
+        
         },
         error: (error) => {
           this.alertRegistro=true;
-          this.modalRegistroClose()
-          setTimeout(() => {
-            this.modalRegistroOpen();
-            this.alertRegistro = false;
-          }, 3000);
           console.error('Error al registrar usuario:', error);
         },
       });
@@ -110,9 +102,7 @@ export class LoginYregistroComponent {
           console.error('Error al iniciar sesión:', error);
           this.loginForm.reset();
           this.loginIncorrecto = true;
-          setTimeout(() => {
-            this.loginIncorrecto = false;
-          }, 3000);
+       
         },
       });
     } else {
@@ -128,9 +118,14 @@ export class LoginYregistroComponent {
 this.modalRegister=true;  
   }
       
-
+alertClose():void{
+  this.alertRegistro=false;
+  this.loginIncorrecto = false;
+}
   modalRegistroClose():void{
     this.modalRegister=false;  
+    this.registradoCorrectamente=false;
+  
   }
 
 

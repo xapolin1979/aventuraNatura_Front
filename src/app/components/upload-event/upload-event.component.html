@@ -1,0 +1,147 @@
+<div class="container-fluid containerFormulario" >
+  
+
+    <div class="formulario"[style.display]="! nextCreateEvent ? 'block' : 'none'" >
+      
+      <form class="row g-3" [formGroup]="registerEvent" (ngSubmit)=" onSubmitEvent()">
+        <div class="titulo_form">
+          <h3>Editar el Evento</h3>
+        </div>
+            <!-- Titulo del del evento -->
+        <div class="col-md-6">
+          <label for="name_event" class="form-label">Titulo del evento</label>
+          <input type="text" formControlName="name_event" id="name_event" class="form-control" placeholder="Indica el titulo de tu evento"
+            [ngClass]="{'is-valid': registerEvent.controls.name_event.valid && (registerEvent.controls.name_event.dirty || registerEvent.controls.name_event.touched),
+                        'is-invalid': registerEvent.controls.name_event.invalid && (registerEvent.controls.name_event.dirty || registerEvent.controls.name_event.touched)}"
+            required>
+          <div class="invalid-feedback">
+            Escribe el titulo de tu evento
+          </div>
+        </div>
+         <!-- Categorias -->
+    <div class="col-md-6">
+      <label for="category_id" class="form-label">Categoria</label>
+      <select formControlName="category_id" id="category_id" class="form-select"
+        [ngClass]="{'is-valid': registerEvent.controls.category_id.valid && (registerEvent.controls.category_id.dirty || registerEvent.controls.category_id.touched),
+                    
+    'is-invalid': registerEvent.controls.category_id.invalid && (registerEvent.controls.category_id.dirty || registerEvent.controls.category_id.touched)}" required>
+       <option value="1">Senderismo</option>
+        <option value="2">Alpinismo</option>
+        <option value="3">Escalada</option>
+        <option value="4">Esqui</option>
+        <option value="5">Snowboard</option>
+        <option value="6">Barranquismo</option>
+        <option value="7">Rafting</option>
+        <option value="8">Kayak</option>
+        <option value="9">Otros</option>
+      </select>
+      <div class="invalid-feedback">
+        Selecciona una categoria para del evento
+      </div>
+    </div>
+          <!-- Información del evento -->
+    <div class="col-12">
+      <label for=" info_event" class="form-label">Información del evento (maximo 1000 caracteres)</label>
+      <textarea formControlName="info_event" id="info_event" class="form-control" placeholder="Escribe aqui toda la información que quieras que sepan sobre tu evento"
+      [ngClass]="{'is-valid': registerEvent.controls.info_event.valid && (registerEvent.controls.info_event.dirty || registerEvent.controls.info_event.touched),
+                  'is-invalid': registerEvent.controls.info_event.invalid && (registerEvent.controls.info_event.dirty || registerEvent.controls.info_event.touched)}" rows="5" required></textarea>
+    
+      <div class="invalid-feedback">
+        Ingresa la información del evento
+      </div>
+    </div>
+  
+         <!-- Dificultad -->
+    <div class="col-md-6">
+      <label for="difficulty" class="form-label">Dificultad</label>
+      <select formControlName="difficulty" id="difficulty" class="form-select"
+        [ngClass]="{'is-valid': registerEvent.controls.difficulty.valid && (registerEvent.controls.difficulty.dirty || registerEvent.controls.difficulty.touched),
+                    'is-invalid': registerEvent.controls.difficulty.invalid && (registerEvent.controls.difficulty.dirty || registerEvent.controls.difficulty.touched)}" required>
+        <option value="1">Baja</option>
+        <option value="2">Media</option>
+        <option value="3">Alta</option>
+      </select>
+      <div class="invalid-feedback">
+        Selecciona la dificultad del evento
+      </div>
+    </div>
+  
+    <!-- Número máximo de personas -->
+    <div class="col-md-6">
+      <label for="max_persons" class="form-label">Máximo de personas que se pueden apuntar</label>
+      <input type="number" formControlName="max_persons" id="max_persons" class="form-control"
+        [ngClass]="{'is-valid': registerEvent.controls.max_persons.valid && (registerEvent.controls.max_persons.dirty || registerEvent.controls.max_persons.touched),
+                    'is-invalid': registerEvent.controls.max_persons.invalid && (registerEvent.controls.max_persons.dirty || registerEvent.controls.max_persons.touched)}" required>
+      <div class="invalid-feedback">
+        Ingresa el número máximo de personas
+      </div>
+    </div>
+  
+    <!-- Fecha de inicio del evento -->
+    <div class="col-md-6">
+      <label for="start_date" class="form-label">Fecha de inicio del evento</label>
+      <input type="datetime-local" formControlName="start_date" id="start_date" class="form-control"
+        [ngClass]="{'is-valid': registerEvent.controls.start_date.valid && (registerEvent.controls.start_date.dirty || registerEvent.controls.start_date.touched),
+                    'is-invalid': registerEvent.controls.start_date.invalid && (registerEvent.controls.start_date.dirty || registerEvent.controls.start_date.touched)}" required>
+      <div class="invalid-feedback">
+        Selecciona la fecha de inicio del evento
+      </div>
+    </div>
+  
+    <!-- Fecha de fin del evento -->
+    <div class="col-md-6">
+      <label for="end_date" class="form-label">Fecha de fin del evento</label>
+      <input type="datetime-local" formControlName="end_date" id="end_date" class="form-control"
+        [ngClass]="{'is-valid': registerEvent.controls.end_date.valid && (registerEvent.controls.end_date.dirty || registerEvent.controls.end_date.touched),
+                    'is-invalid': registerEvent.controls.end_date.invalid && (registerEvent.controls.end_date.dirty || registerEvent.controls.end_date.touched)}" required>
+      <div class="invalid-feedback">
+        Selecciona la fecha de fin del evento
+      </div>
+    </div>
+  
+  
+  
+    <!-- Público objetivo -->
+    <div class="col-md-6">
+      <label for=" for_whom" class="form-label">Quien puede participar</label>
+      <select formControlName="for_whom" id="for_whom" class="form-select"
+        [ngClass]="{'is-valid': registerEvent.controls.for_whom.valid && (registerEvent.controls.for_whom.dirty || registerEvent.controls.for_whom.touched),
+                    
+    'is-invalid': registerEvent.controls.for_whom.invalid && (registerEvent.controls.for_whom.dirty || registerEvent.controls.for_whom.touched)}" required>
+       <option value="1">Todas las edades</option>
+        <option value="2">A partir de 14 años</option>
+        <option value="3">A partir de 18 años</option>
+      </select>
+      <div class="invalid-feedback">
+        Selecciona el público objetivo del evento
+      </div>
+    </div>
+  
+    <!-- Precio por persona -->
+    <div class="col-md-6">
+      <label for="price_per_person" class="form-label">Precio por persona (si el evento es gratuito indicalo con el numero 0)</label>
+      <input type="number" formControlName="price_per_person" id="price_per_person" class="form-control"
+        [ngClass]="{'is-valid': registerEvent.controls.price_per_person.valid && (registerEvent.controls.price_per_person.dirty || registerEvent.controls.price_per_person.touched),
+                    'is-invalid': registerEvent.controls.price_per_person.invalid && (registerEvent.controls.price_per_person.dirty || registerEvent.controls.price_per_person.touched)}" required>
+      <div class="invalid-feedback">
+        Ingresa el precio por persona
+      </div>
+    </div>
+  
+    <!-- Materiales necesarios -->
+    <div class="col-12">
+      <label for="material" class="form-label">Materiales necesarios que hay que traer para el evento (maximo 600 caracteres)</label>
+      <textarea formControlName="material" id="material" class="form-control"
+        [ngClass]="{'is-valid':registerEvent.controls.material.valid && (registerEvent.controls.material.dirty || registerEvent.controls.material.touched),
+                    'is-invalid':registerEvent.controls.material.invalid && (registerEvent.controls.material.dirty || registerEvent.controls.material.touched)}" rows="5" required></textarea>
+      <div class="invalid-feedback">
+        Ingresa los materiales necesarios para el evento
+      </div>
+    </div>
+        
+        <div class="col-12">
+          <button class="btn btn-primary" type="submit">Siguiente</button>
+        </div>
+      </form>
+  </div>
+  </div>

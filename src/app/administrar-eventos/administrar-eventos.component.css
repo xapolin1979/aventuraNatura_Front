@@ -16,7 +16,7 @@
     height: auto;
     width: 10%;
     height: auto;
-   background-color:#1d6e40;
+   background-color:rgb(11, 94, 215); 
     transition: 0.5s;
    display: flex;
    flex-wrap: wrap;
@@ -28,22 +28,25 @@ padding: 20px;
     text-decoration: none;
     color: white;
     display: block;
-    margin-top: 20px;
+    margin-top: 15px;
     transition: 0.3s;
     font-family: "Work Sans", sans-serif;
    cursor: pointer;
   }
   .sidebar h6{
-    color: #ffffff;
+    color:white;
     display: block;
     transition: 0.3s;
-    margin-bottom: 20px;
-    font-family: "Work Sans", sans-serif;
+    margin-bottom: 50px;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 1.5em;
   }
   .sidebar p:hover {
     color:#ff6619;
   }
-  
+  .sidebar img{
+    width: 25px;
+} 
 
   
   @media screen and (max-width: 600px) {
