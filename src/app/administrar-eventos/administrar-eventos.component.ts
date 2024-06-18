@@ -13,8 +13,8 @@ import { CommonModule } from '@angular/common';
   styleUrl: './administrar-eventos.component.css'
 })
 export class AdministrarEventosComponent {
-  createEvent:boolean=false;
-  updateEvent:boolean=true;
+  createEvent:boolean=true;
+  updateEvent:boolean=false;
   participants:boolean=false;
   calendar:boolean=false;
   finance:boolean=false;
