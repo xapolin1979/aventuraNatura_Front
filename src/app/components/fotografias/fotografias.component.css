@@ -1,0 +1,67 @@
+.container-fluid{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 20px;
+}
+#formFotos{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+     padding: 20px;
+}
+.crearEvento{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-bottom: 50px;
+    font-family: "Work Sans", sans-serif;
+}
+.subir{
+    margin-top: 30px;
+}
+h3 {
+    color:#000000;
+    font-size: 2.5em;
+    font-family: "Bebas Neue", sans-serif;
+    padding: 20px;
+  }
+  .imagenes{
+    display: flex;
+    flex-wrap: wrap;
+  }
+.imgTarget img{
+width: 200px;
+height: auto;
+margin: 20px;
+}
+
+.imgTarget p{
+    text-align: center;
+    color:red;
+    cursor: pointer;
+  }
+  .subirFotos{
+    margin-right: 10px;
+  }
+  h5{
+    margin-top: 20px;
+  }
+@media screen and (max-width: 1050px){
+
+    .container-fluid{
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        padding: 20px;
+    }
+
+}

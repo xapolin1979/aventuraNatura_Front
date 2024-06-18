@@ -5,10 +5,29 @@
         <h3>Cambiar la ubicacción </h3>
        </div>
         <div class="botones">
-        <button class="btn btn-warning">Cambiar ubicación</button>
+        <button class="btn btn-warning" (click)="editarUbicacion(this.geoLocation)">Cambiar ubicación</button>
         <button class="btn btn-info " (click)="onVolver()">Volver al evento</button>
        
         </div> 
      </div>
         <div id="map-mapbox"></div>
+  </div>
+
+
+
+  <div class="modal alerta" [style.display]="editadoCorrectamente ? 'block' : 'none'" >
+    <div class="modal-dialog">
+      <div class="modal-content modalLoginSuccess">
+        <div class="modal-header">
+          <h5 class="modal-title">Cambios realizados correctamente </h5>
+          <button type="button" class="btn-close" (click)="cerrarModal()"></button>
+        </div>
+        <div class="modal-body ">
+          <img src="../../assets/img/AVENTURA2.png" alt="">
+       
+          <p>Has cambiado la ubicación de tu evento correctamente.<br> Los cambios se han guardado con éxito.</p>
+        </div>
+  
+      </div>
+    </div>
   </div>

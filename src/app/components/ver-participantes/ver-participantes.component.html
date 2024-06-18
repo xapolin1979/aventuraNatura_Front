@@ -17,7 +17,7 @@
             <th scope="col">Telefono</th>
             <th scope="col">personas</th>
             <th scope="col">Editar</th>
-            <th scope="col">Borrar</th>
+            <th scope="col" >Borrar</th>
           </tr>
         </thead>
         <tbody>
@@ -28,15 +28,112 @@
             <td>{{ participante.email }}</td>
             <td>{{ participante.phone }}</td>
             <td>{{ participante.persons }}</td>
-            <td><button class="btn btn-warning">Editar</button></td>
-            <td><button class="btn btn-danger">Borrar</button></td>
+            <td><button class="btn btn-warning" (click)="abrirModal(participante.id_participants)">Editar</button></td>
+            <td><button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="borrar(participante.id_participants)">Borrar</button></td>
           </tr>
         </tbody>
       </table>
       <div class="volver">
-        <button class="btn btn-info" (click)="onVolver()">Volver al Evento</button>
+        <button class="btn btn-info m-3" (click)="onVolver()">Volver al Evento</button>
       </div>
     </div>
   
   </div>
  
+
+  <div class="modal alerta" [style.display]="editadoCorrectamente ? 'block' : 'none'" >
+    <div class="modal-dialog">
+      <div class="modal-content modalLoginSuccess">
+        <div class="modal-header">
+          <h5 class="modal-title">Editar participante </h5>
+        </div>
+        <div class="modal-body ">
+          <form class="row g-3 p-3 needs-validation" [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate >
+            <div class="col-sm-12 col-md-6">
+              <label for="name" class="form-label">Nombre</label>
+              <input type="text" formControlName="name" id="name" class="form-control"
+                [ngClass]="{'is-valid': registerForm.controls.name.valid && (registerForm.controls.name.dirty || registerForm.controls.name.touched),
+                            'is-invalid': registerForm.controls.name.invalid && (registerForm.controls.name.dirty || registerForm.controls.name.touched)}"
+                required>
+              <div class="invalid-feedback">
+                Escribe tu nombre
+              </div>
+            </div>
+            <div class=" col-sm-12 col-md-6">
+                <label for="surname" class="form-label">Apellidos</label>
+                <input type="text" formControlName="surname" id="surname" class="form-control"
+                  [ngClass]="{'is-valid': registerForm.controls.surname.valid && (registerForm.controls.surname.dirty || registerForm.controls.surname.touched),
+                              'is-invalid': registerForm.controls.surname.invalid && (registerForm.controls.surname.dirty || registerForm.controls.surname.touched)}"
+                  required>
+                <div class="invalid-feedback">
+                  Escribe tus apellidos
+                </div>
+              </div>
+            
+            <div class="col-sm-12 col-md-6">
+              <label for="email" class="form-label">Email</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text" id="inputGroupPrepend3">{{ logoEmail }}</span>
+                <input type="email" formControlName="email" id="email" class="form-control"
+                  [ngClass]="{'is-valid': registerForm.controls.email.valid && (registerForm.controls.email.dirty || registerForm.controls.email.touched),
+                              'is-invalid': registerForm.controls.email.invalid && (registerForm.controls.email.dirty || registerForm.controls.email.touched)}"
+                  required>
+                <div id="emailFeedback" class="invalid-feedback">
+                  Por favor ingresa un correo electrónico válido.
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-sm-12 col-md-6">
+              <label for="phone" class="form-label">Teléfono</label>
+              <input type="text" formControlName="phone" id="phone" class="form-control" 
+                [ngClass]="{'is-valid': registerForm.controls.phone.valid && (registerForm.controls.phone.dirty || registerForm.controls.phone.touched),
+                            'is-invalid': registerForm.controls.phone.invalid && (registerForm.controls.phone.dirty || registerForm.controls.phone.touched)}"
+                required>
+              <div id="phoneFeedback" class="invalid-feedback">
+                Por favor proporciona un número de teléfono válido.
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <label for="persons" class="form-label">Número de asistentes</label>
+                <input type="number" formControlName="persons" id="persons" class="form-control"
+                  [ngClass]="{'is-valid': registerForm.controls.persons.valid && (registerForm.controls.persons.dirty || registerForm.controls.persons.touched),
+                              'is-invalid': registerForm.controls.persons.invalid && (registerForm.controls.persons.dirty || registerForm.controls.persons.touched)}"
+                  required>
+                <div class="invalid-feedback">
+                  Escribe tu nombre
+                </div>
+              </div>
+            
+            
+            <div class="col-12">
+              <button class="btn btn-primary" type="submit">Editar</button>
+              <button class="btn btn-danger m-3" (click)="cerrar()" >Cancelar</button>
+            </div>
+          </form>
+  
+
+      
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Borrar participante</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>¿Está seguro de que desea borrar este participante?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="borrarParticipante()">Borrar</button>
+        </div>
+      </div>
+    </div>
+  </div>

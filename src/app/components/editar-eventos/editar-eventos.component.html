@@ -1,11 +1,11 @@
-@if(!iraParticipantes && !mostrarUbicacion && !mostrarEditar){
+@if(!iraParticipantes && !mostrarUbicacion && !mostrarEditar && !mostrarFotos){
 
 <div class="container-fluid p-0">
   <div class="ContainEvent">
     <div class="buscar">
       <h3>Tus eventos creados</h3>
       <div class="filtros">
-        <input type="text" [(ngModel)]="filtroNombre" placeholder="Buscar por Titulo">
+        <input type="text" [(ngModel)]="filtroNombre" placeholder="Buscar por Evento">
         <button class="btn btn-primary ordenar" (click)="cambiarOrden()">Ordenar Alfabéticamente</button>
       </div>
     </div>
@@ -36,10 +36,10 @@
               <div class="dropdown-menu" [attr.aria-labelledby]="'dropdownAcciones' + i">
                 <button class="dropdown-item " (click)="recogerIdEvent(evento.id_event)">Editar Evento</button>
                 <button class="dropdown-item " (click)="recogerIdEventoUbicacion(evento.id_event)">Cambiar Ubicación</button>
-                <button class="dropdown-item" >Fotos</button>
+                <button class="dropdown-item"  (click)="recogerIdFoto(evento.id_event)">Fotos</button>
                 <button class="dropdown-item" (click)="recogerIdEvento(evento.id_event)">Ver Participantes</button>
                
-                <button class="dropdown-item borrarEvent">Borrar Evento</button>
+                <button class="dropdown-item borrarEvent" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="borrar(evento.id_event)">Borrar Evento</button>
               </div>
             </div>
           </td>
@@ -50,14 +50,34 @@
 </div>
 
 }
-@if(iraParticipantes && !mostrarUbicacion && !mostrarEditar){
+@if(iraParticipantes && !mostrarUbicacion && !mostrarEditar && !mostrarFotos){
   <app-ver-participantes [event_id]="enviarId"  (volver)="cambiarVista()"></app-ver-participantes>
 } 
-@if(mostrarUbicacion && iraParticipantes && !mostrarEditar){
+@if(mostrarUbicacion && iraParticipantes && !mostrarEditar && !mostrarFotos){
   <app-ubicacion [ubicaccion_id]="enviarId"  (volver)="cambiarUbicacion()"></app-ubicacion>
 }
-@if(mostrarEditar && !iraParticipantes && !mostrarUbicacion){
+@if(mostrarEditar && !iraParticipantes && !mostrarUbicacion && !mostrarFotos){
   <app-upload-event [editar_id]="enviarId"  (volver)="cambiarEvento()"></app-upload-event>
 }
+@if(!mostrarEditar && !iraParticipantes && !mostrarUbicacion && mostrarFotos){
+  <app-fotografias [fotografia_id]="enviarId"  (volver)="cambiarFoto()"></app-fotografias>
+}
 
-<app-fotografias></app-fotografias>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Borrar participante</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>¿Está seguro de que desea borrar este participante?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" >Cancelar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="borrarEvento()">Borrar</button>
+      </div>
+    </div>
+  </div>
+</div>

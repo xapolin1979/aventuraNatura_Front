@@ -33,3 +33,27 @@
   
     margin: 10px;
 }
+
+.alerta {
+    display: none; 
+    position: fixed;
+    z-index: 1050;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+   
+  }
+.modal-body img{
+    width: 30%;
+  }
+  .modalLoginSuccess{
+    background-color: rgb(209, 231, 221);
+  
+  }
+  .modal-header{
+    border-bottom: 1px solid black;
+  }

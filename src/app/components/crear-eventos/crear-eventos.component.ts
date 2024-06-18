@@ -274,11 +274,12 @@ export class CrearEventosComponent implements OnInit {
 
   finalizarCreacionDelEvento() {
    this.creadoCorrectamente = true;
-   setTimeout(() => {
-    this.creadoCorrectamente = false;
-   },3000);
-    this.registerEvent.reset();
+ 
+  }
 
+  cerrarModal(){
+    this.creadoCorrectamente = false;
+    this.registerEvent.reset();
     if (this.marker) {
       this.marker.remove();
     }
@@ -288,6 +289,7 @@ export class CrearEventosComponent implements OnInit {
     this.mapBoxEvento = false;
     this.fotosEvento = false;
   }
+
 }
 
 

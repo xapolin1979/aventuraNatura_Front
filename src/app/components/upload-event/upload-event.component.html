@@ -1,11 +1,12 @@
 <div class="container-fluid containerFormulario" >
   
 
-    <div class="formulario"[style.display]="! nextCreateEvent ? 'block' : 'none'" >
+    <div class="formulario" >
       
       <form class="row g-3" [formGroup]="registerEvent" (ngSubmit)=" onSubmitEvent()">
         <div class="titulo_form">
           <h3>Editar el Evento</h3>
+          <button class=" btn btn-info" data-bs-toggle="modal" data-bs-target="#modalCancelarEvento" (click)="onVolver()">Volver a eventos</button>
         </div>
             <!-- Titulo del del evento -->
         <div class="col-md-6">
@@ -140,8 +141,29 @@
     </div>
         
         <div class="col-12">
-          <button class="btn btn-primary" type="submit">Siguiente</button>
+          <button class="btn btn-primary" type="submit">Editar Evento</button>
         </div>
       </form>
   </div>
   </div>
+
+
+
+
+  
+<div class="modal alerta" [style.display]="editadoCorrectamente ? 'block' : 'none'" >
+  <div class="modal-dialog">
+    <div class="modal-content modalLoginSuccess">
+      <div class="modal-header">
+        <h5 class="modal-title">Cambios realizados correctamente </h5>
+        <button type="button" class="btn-close" (click)="cerrarModal()"></button>
+      </div>
+      <div class="modal-body ">
+        <img src="../../assets/img/AVENTURA2.png" alt="">
+     
+        <p>Has editado tu evento correctamente.<br> Los cambios se han guardado con éxito.</p>
+      </div>
+
+    </div>
+  </div>
+</div>

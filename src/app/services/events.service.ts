@@ -28,7 +28,7 @@ export class EventsService {
 
  
   updateEvent(id: number, evento: any): Observable<any> {
-    return this.http.put<any>(`${this.url}/${id}`, evento);
+    return this.http.patch<any>(`${this.url}/${id}`, evento);
   }
 
   

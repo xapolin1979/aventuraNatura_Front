@@ -2,7 +2,7 @@ import { Component,Input,Output, EventEmitter} from '@angular/core';
 import { environment } from '../../../environments/environments.map-box';
 import mapboxgl from 'mapbox-gl';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
-
+import { EventsService } from '../../services/events.service';
 @Component({
   selector: 'app-ubicacion',
   standalone: true,
@@ -16,10 +16,9 @@ export class UbicacionComponent {
   map: any;
   geoLocation?: number[];
   marker: any;
-  localizacionEvento: boolean = false;
-
-
-
+  cambiarEvento:any;
+  editadoCorrectamente:boolean = false;
+ constructor(public eventsService: EventsService) {}
 
   ngOnChanges(): void {
     if (this.ubicaccion_id !== undefined) {
@@ -35,17 +34,27 @@ export class UbicacionComponent {
       zoom: 6,
     });
 
-    this.addGeocoder();
-/* 
-    this.userService.getUser().subscribe({
-      next: (response) => {
-        this.id_user = response.data.id_user;
-        console.log('ID del usuario: ' + response.data.id_user);
-      },
-      error: (error) => {
-        console.log('Usuario no encontrado: ' + error);
-      },
-    }); */
+
+   this.eventsService.getEventId(this.ubicaccion_id).subscribe({
+     next: (response) => {
+      this.cambiarEvento=response.data;
+       console.log( this.cambiarEvento);
+       const markerCoordinates = [this.cambiarEvento.lng, this.cambiarEvento.lat];
+       this.marker = new mapboxgl.Marker()
+         .setLngLat(markerCoordinates)
+         .addTo(this.map);
+ 
+       // Añadir el geocodificador después de colocar el marcador inicial
+       this.addGeocoder();
+     },
+     error: (error) => {
+       console.log('No se puede ver los eventos', error)
+     }
+   })
+    
+
+
+
   }
 
   addGeocoder(): void {
@@ -72,6 +81,8 @@ export class UbicacionComponent {
       this.marker = this.addMarker(lngLat[0], lngLat[1]);
     });
   }
+
+  
   addMarker(lng: number, lat: number): void {
     const marker = new mapboxgl.Marker({ draggable: false })
       .setLngLat([lng, lat])
@@ -81,26 +92,61 @@ export class UbicacionComponent {
       const newLngLat = marker.getLngLat();
       this.geoLocation = [newLngLat.lng, newLngLat.lat];
       console.log(this.geoLocation);
-      this.registrarEvento(this.geoLocation);
+      this.editarUbicacion(this.geoLocation);
     });
     return marker;
   }
-  registrarEvento(geolocation: any): void {
+
+
+
+
+  editarUbicacion(geolocation: any): void {
+    console.log('Geolocalización recibida:', geolocation);
+  
     if (!geolocation || geolocation.length < 2) {
       console.log('Faltan coordenadas de geolocalización');
-      this.localizacionEvento = true;
-      setTimeout(() => {
-        this.localizacionEvento = false;
-      }, 4000);
       return;
     }
+  
+    // Convertir las coordenadas a números y asegurarse de que sean válidas
+    const lat = parseFloat(geolocation[1]);
+    const lng = parseFloat(geolocation[0]);
+  
+    if (isNaN(lat) || isNaN(lng)) {
+      console.log('Coordenadas no válidas:', lat, lng);
+      return;
+    }
+  
+    // Actualizar las coordenadas en cambiarEvento
+    this.cambiarEvento.lat = lat;
+    this.cambiarEvento.lng = lng;
+    console.log('cambiarEvento después de actualizar:', this.cambiarEvento);
 
+    this.eventsService.updateEvent(this.ubicaccion_id, this.cambiarEvento).subscribe({
+      next: (response) => {
+        console.log('Ubicación actualizada con exito:', response);
+        this.editadoCorrectamente=true;
+      },  
+      error: (error) => {     
+        console.log('Error al actualizar la ubicación:', error);      
+      }
+
+  });
 }
-
+  
 
 
 onVolver() {
   this.volver.emit();
 }
+
+
+
+cerrarModal() {
+  this.editadoCorrectamente=false;
+  this.onVolver();
+  window.location.reload()
+}
+
 
 }

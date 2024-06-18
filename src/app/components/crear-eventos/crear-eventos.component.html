@@ -224,10 +224,13 @@
 <div class="modal alerta" [style.display]="creadoCorrectamente ? 'block' : 'none'" >
   <div class="modal-dialog">
     <div class="modal-content modalLoginSuccess">
+      <div class="modal-header">
+        <h5 class="modal-title">Evento Creado</h5>
+        <button type="button" class="btn-close" (click)="cerrarModal()"></button>
+      </div>
       <div class="modal-body ">
         <img src="../../assets/img/AVENTURA2.png" alt="">
-        <h5 class="modal-title">Felicidades </h5>
-        <p>Has creado tu evento correctamente.</p>
+        <p>Felicidades has creado tu evento correctamente.</p>
       </div>
 
     </div>

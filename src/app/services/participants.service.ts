@@ -15,4 +15,11 @@ export class ParticipantsService {
   inscribirParticipante(evento: any): Observable<any> {
     return this.http.post<any>(this.url, evento);
   }
+  actualizarParticipante(id: number, participante: any): Observable<any> {
+    return this.http.patch<any>(`${this.url}/${id}`, participante);
+  }
+
+  borrarParticipante(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.url}/${id}`);
+  }
 }

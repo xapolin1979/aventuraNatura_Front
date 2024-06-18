@@ -21,7 +21,9 @@ export class EditarEventosComponent {
   iraParticipantes:boolean = false;
   iraEventos:boolean = false;
   mostrarUbicacion = false;
-  mostrarEditar = false;
+  mostrarEditar:boolean = false;
+  mostrarFotos :boolean= false;
+  idDelEvento:any;
   niveles:any = {
     1: 'Baja',
     2: 'Media',
@@ -50,6 +52,7 @@ edades:any = {
 
 
   }
+  
   formatDate(date: string): string {
     const options: Intl.DateTimeFormatOptions = {
       year: 'numeric',
@@ -106,6 +109,10 @@ recogerIdEvent(id:number){
   this.enviarId=id;
   this.cambiarEvento();
 }
+recogerIdFoto(id:number){
+  this.enviarId=id;
+  this.cambiarFoto();
+}
 
 
 cambiarVista(): void {
@@ -121,6 +128,33 @@ cambiarEvento(){
   this.iraEventos = !this.iraEventos;
   this.mostrarEditar = !this.mostrarEditar;
 }
+cambiarFoto(){
+  this.mostrarFotos = !this.mostrarFotos;
+}
+
+
+borrar(id_participant: number): void {
+  this.idDelEvento = id_participant;
+
+}
+
+borrarEvento(): void {
+  if (this.idDelEvento !== null) {
+    this.EventsService.deleteEvent(this.idDelEvento).subscribe({
+      next: (response) => {
+        console.log('Evento borrado exitosamente', response);
+        this.idDelEvento = null; 
+        window.location.reload();
+      },
+      error: (error) => {
+        console.error('Error al borrar el evento', error);
+      }
+    });
+  } else {
+    console.error('No se ha seleccionado un eventopara borrar');
+  }
+}
+
 
 
 

@@ -26,11 +26,7 @@
   
 }
 
-input{
-    width: 230px;
-    height: 40px;
-    margin: 20px;
-}
+
 .ordenar{
 margin: 20px;
 }
@@ -77,5 +73,7 @@ color: #ff6619;
         margin-bottom: 20px;
       
     }
-
+    input{
+        margin: 20px;
+    }
 }

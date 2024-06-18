@@ -1,1 +1,28 @@
-<p>fotografias works!</p>
+
+<div class="container-fluid p-0">
+    <h3>Borrar o subir fotografías</h3>
+<div id="formFotos">
+    <form [formGroup]="insertarPhotos" (ngSubmit)="subirFoto()">
+     <div class="form-group col-12">
+       <label for="photo" class="form-label">Foto (opcional)</label>
+       <input type="file" id="photo" formControlName="photo" class="form-control" (change)="onFileSelected($event)" multiple name="file">
+     </div>
+     <div class="col-12 subir">
+         <button type="submit" class="btn btn-primary">Subir Imagen</button>
+     </div>
+     </form>
+     <h5>Imagenes del evento</h5>
+     <div class="imagenes" >
+   
+       <div class="imgTarget" *ngFor="let photos of verFotos">
+         <img  src="http://localhost:3001/uploads/{{photos.photo}}" alt="">
+         <p (click)="eliminarFoto(photos.id_photos)">Eliminar</p>
+       </div>
+      
+     </div> 
+    <div class="crearEvento">
+       <button class=" btn btn-info"  (click)="onVolver()">Volver a eventos</button>
+     
+    </div>
+</div>
+</div>
