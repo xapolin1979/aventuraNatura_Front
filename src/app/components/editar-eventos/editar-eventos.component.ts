@@ -31,7 +31,7 @@ export class EditarEventosComponent {
 };
 edades:any = {
   1: 'Todas las edades',
-  2: 'A partir de 12 años',
+  2: 'A partir de 14 años',
   3: 'A partir de 18 años'
 };
 
@@ -40,18 +40,26 @@ edades:any = {
 
   ngOnInit(): void {
     
-    this.EventsService.getEvent().subscribe({
-      next: (response) => {
-        this.eventos = [...response.data];
-        console.log(this.eventos)
-      },
-      error: (error) => {
-        console.log('No se puede ver los eventos',error)
-      }
-    })
-
+   this.refrescar()
 
   }
+ 
+refrescar(){
+  this.EventsService.getEvent().subscribe({
+    next: (response) => {
+      this.eventos = [...response.data];
+      console.log(this.eventos)
+    },
+    error: (error) => {
+      console.log('No se puede ver los eventos',error)
+    }
+  })
+
+
+}
+
+
+
   
   formatDate(date: string): string {
     const options: Intl.DateTimeFormatOptions = {

@@ -184,7 +184,7 @@
             <div class="imagenes" >
               <div class="imgTarget" *ngFor="let photos of verFotos">
                 <img  src="http://localhost:3001/uploads/{{photos.photo}}" alt="">
-                <p (click)="eliminarFoto(photos.id_photos)">Eliminar</p>
+                <img (click)="eliminarFoto(photos.id_photos)" class="basura" src="../../../assets/img/basura.png" alt=""> 
               </div>
              
             </div> 

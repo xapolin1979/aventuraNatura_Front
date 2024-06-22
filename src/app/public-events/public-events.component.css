@@ -71,12 +71,12 @@ select{
 .cardsContainer{
     width: 100%;
     height: auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: start;
-   margin-top: 50px;
+    columns: 5 300px;
+    column-gap: 20px;
+    padding: 30px;
+    background-color: rgb(239, 239, 239);
    font-family: Arial, Helvetica, sans-serif;
+  
 }
 
 a{
@@ -84,15 +84,19 @@ a{
 }
 
 .card{
-    margin: 30px;
+    width: 100% !important;
     border:none;
-    background-color: #EFEFEF;
+    background-color:rgb(255, 255, 255) ;
      cursor: pointer;
   --bs-card-border-radius:none;
   transition:0.5s; 
+  margin-bottom: 20px;
+  break-inside: avoid;
+
+
 }
 .card:hover{
-    box-shadow: 0px 0px 10px grey;;
+    box-shadow: 0px 0px 10px rgb(30, 30, 30);
 }
 .card-img, .card-img-top {
     border-top-left-radius: 0px;
@@ -102,12 +106,12 @@ a{
     
     color: black;
     font-family: "Bebas Neue", sans-serif;
-    font-size: 1.2em;
+    font-size: 1.8em;
 }
 .card h6{
     color:#ff6619;
     font-family: "Bebas Neue", sans-serif;
-    font-size: 1.8em;
+    font-size: 1.5em;
 }
 @media screen and (max-width: 1050px){
 

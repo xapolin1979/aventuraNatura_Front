@@ -12,6 +12,7 @@ import { EventsService } from '../../services/events.service';
 export class UploadEventComponent {
   @Input() editar_id: any;
   @Output() volver = new EventEmitter<void>();
+  @Output() eventoActualizado = new EventEmitter<void>(); 
   editadoCorrectamente:boolean = false;
   registerEvent = new FormGroup({
     name_event: new FormControl('', Validators.required),
@@ -107,6 +108,7 @@ export class UploadEventComponent {
       next: (response) => {
         console.log('Evento actualizado correctamente:', response);
         this.editadoCorrectamente = true;
+        this.eventoActualizado.emit();
       },
       error: (error) => {
         console.log('Error al actualizar el evento:', error);
@@ -122,7 +124,7 @@ export class UploadEventComponent {
   cerrarModal() {
     this.editadoCorrectamente=false;
     this.onVolver();
-    window.location.reload()
+   
   }
 
 }

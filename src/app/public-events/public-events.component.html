@@ -18,8 +18,8 @@
             </select>
             
               
-            <button type="button" (click)=" ordenarData()" class="btn btn-link">Fecha</button>
-            <button type="button" (click)=" ordenarPrecio()" class="btn btn-link">Precio</button>
+            <button type="button" (click)=" ordenarData()" class="btn btn-link"><img src="../../assets/img/ordenar.png" alt=""> Fecha</button>
+            <button type="button" (click)=" ordenarPrecio()" class="btn btn-link"><img src="../../assets/img/ordenar.png" alt=""> Precio</button>
           
           </div>
       </div>
@@ -29,14 +29,14 @@
 
 
 <div class="container-fluid cardsContainer">
-<div class="contenedorCards" *ngFor="let eventos of datosEventos">
-  <a href="/event/{{eventos.id_event}}">
+
+  <a href="/event/{{eventos.id_event}}" *ngFor="let eventos of datosEventos">
         <div class="card" style="width: 18rem;">
             <img mat-card-image  class="card-img-top"  src="http://localhost:3001/uploads/{{eventos.Photos[0].photo}}" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">{{eventos.Category.name}}</h5>
                 <h6 class="card-title">{{eventos.User.name}}</h6>
-                <p class="card-text">{{eventos.name_event}}<br>{{formatDate(eventos.start_date)}} h
+                <p class="card-text"><b>{{eventos.name_event}}</b><br>{{formatDate(eventos.start_date)}} h
                    @if(eventos.price_per_person !=0){
                       <p> precio: {{eventos.price_per_person}} eur</p> 
                   }
@@ -47,6 +47,6 @@
             </div>
         </div>
       </a>
-  </div>
+
     
 </div>

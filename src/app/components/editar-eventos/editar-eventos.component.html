@@ -57,7 +57,7 @@
   <app-ubicacion [ubicaccion_id]="enviarId"  (volver)="cambiarUbicacion()"></app-ubicacion>
 }
 @if(mostrarEditar && !iraParticipantes && !mostrarUbicacion && !mostrarFotos){
-  <app-upload-event [editar_id]="enviarId"  (volver)="cambiarEvento()"></app-upload-event>
+  <app-upload-event [editar_id]="enviarId"  (volver)="cambiarEvento()" (eventoActualizado)="refrescar()"></app-upload-event>
 }
 @if(!mostrarEditar && !iraParticipantes && !mostrarUbicacion && mostrarFotos){
   <app-fotografias [fotografia_id]="enviarId"  (volver)="cambiarFoto()"></app-fotografias>
@@ -68,15 +68,15 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Borrar participante</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Borrar Evento</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p>¿Está seguro de que desea borrar este participante?</p>
+        <p>¿Está seguro de que desea borrar este evento?</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" >Cancelar</button>
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="borrarEvento()">Borrar</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="borrarEvento()">Borrar</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Cancelar</button>
       </div>
     </div>
   </div>

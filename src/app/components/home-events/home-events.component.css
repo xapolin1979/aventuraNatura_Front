@@ -5,7 +5,7 @@
     justify-content: center;
     align-items: center;
     padding: 30px;
- 
+ background-color: #EFEFEF;
 }
 
 .eventosDestacados{
@@ -54,14 +54,14 @@
 .card{
     margin: 30px;
     border:none;
-    background-color: #EFEFEF;
+    background-color: white;
      cursor: pointer;
   --bs-card-border-radius:none;
   transition: 0.5s;
   font-family: "Work Sans", sans-serif;
 }
 .card:hover{
-    box-shadow: 0px 0px 10px grey;;
+    box-shadow: 0px 0px 10px rgb(30, 30, 30);
 }
 .card-img, .card-img-top {
     border-top-left-radius: 0px;
@@ -71,12 +71,12 @@
 
     color: black;
     font-family: "Bebas Neue", sans-serif;
-    font-size: 1.2em;
+    font-size: 1.8em;
 }
 .card h6{
     color:#ff6619;
     font-family: "Bebas Neue", sans-serif;
-    font-size: 1.8em;
+    font-size: 1.5em;
     
 }
 a{

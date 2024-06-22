@@ -3,8 +3,9 @@
       <div class="buscar">
         <h3>Participantes del evento</h3>
         <div class="filtros">
-          <input type="text" [(ngModel)]="filtroNombre" placeholder="Buscar por Titulo">
-          <button class="btn btn-primary ordenar" (click)="cambiarOrden()">Ordenar Alfabéticamente</button>
+          <input type="text" class="filtrar" [(ngModel)]="filtroNombre" placeholder="Buscar por Titulo">
+          <button class="btn btn-primary filtrar" (click)="cambiarOrden()">Ordenar Alfabéticamente</button>
+          <button class="btn btn-info filtrar" (click)="onVolver()">Volver al Evento</button>
         </div>
       </div>
       <table class="table table-striped">
@@ -33,9 +34,7 @@
           </tr>
         </tbody>
       </table>
-      <div class="volver">
-        <button class="btn btn-info m-3" (click)="onVolver()">Volver al Evento</button>
-      </div>
+   
     </div>
   
   </div>
@@ -107,8 +106,8 @@
             
             
             <div class="col-12">
-              <button class="btn btn-primary" type="submit">Editar</button>
-              <button class="btn btn-danger m-3" (click)="cerrar()" >Cancelar</button>
+              <button class="btn btn-primary" type="submit">Guardar</button>
+              <button class="btn btn-secondary m-3" (click)="cerrar()" >Cancelar</button>
             </div>
           </form>
   
@@ -131,8 +130,8 @@
           <p>¿Está seguro de que desea borrar este participante?</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="borrarParticipante()">Borrar</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="borrarParticipante()">Borrar</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
         </div>
       </div>
     </div>

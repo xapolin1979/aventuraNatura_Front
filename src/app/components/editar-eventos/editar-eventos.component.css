@@ -52,8 +52,9 @@ span{
    font-weight: bolder;
 }
 h6{
-color: #ff6619;
-    font-size: 1.1em;
+
+     color: #ff6619;
+    font-size: 1.2em;
 }
 
 @media screen and (max-width: 980px){

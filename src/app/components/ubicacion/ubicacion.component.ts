@@ -145,7 +145,7 @@ onVolver() {
 cerrarModal() {
   this.editadoCorrectamente=false;
   this.onVolver();
-  window.location.reload()
+ 
 }
 
 

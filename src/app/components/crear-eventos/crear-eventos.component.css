@@ -63,7 +63,7 @@ h3 {
 
 .containerFotos {
     width: 100%;
-    height: auto;
+    min-height: 100vh;
     display: flex ;
     flex-direction: column;
     justify-content: start;
@@ -72,7 +72,7 @@ h3 {
   }
   #formFotos{
     width: 100%;
-    height: 80vh;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -93,28 +93,32 @@ h3 {
   }
 
   .imagenes{
-    width: 100%;
-    height: 200px;
-   display: flex;
-   flex-wrap: wrap;
-   justify-content: start;
-   align-items: start;
-   margin-top: 50px;
-  
+    display: flex;
+    flex-wrap: wrap;
   }
+  .imgTarget{
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+    margin: 10px;
+    box-shadow: 0px 0px 10px grey;
+  }
+.imgTarget img{
+max-width: 200px;
+height: auto;
 
-  .imgTarget p{
-    text-align: center;
-    color:red;
+}
+
+
+  .imgTarget .basura{
+    max-width: 20px;
+    background-position: center;
     cursor: pointer;
   }
-  
-.imagenes img{
-    width: 200px;
-    height: auto;
-   margin: 5px;
-   position: relative;
-}
 
 .crearEvento{
     width: 100%;

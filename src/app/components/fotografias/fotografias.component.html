@@ -1,6 +1,9 @@
 
 <div class="container-fluid p-0">
+  <div class="titulo">
     <h3>Borrar o subir fotografías</h3>
+    <button class=" btn btn-info m-3"  (click)="onVolver()">Volver a eventos</button>
+    </div>
 <div id="formFotos">
     <form [formGroup]="insertarPhotos" (ngSubmit)="subirFoto()">
      <div class="form-group col-12">
@@ -16,13 +19,10 @@
    
        <div class="imgTarget" *ngFor="let photos of verFotos">
          <img  src="http://localhost:3001/uploads/{{photos.photo}}" alt="">
-         <p (click)="eliminarFoto(photos.id_photos)">Eliminar</p>
+        <img (click)="eliminarFoto(photos.id_photos)" class="basura" src="../../../assets/img/basura.png" alt=""> 
        </div>
       
      </div> 
-    <div class="crearEvento">
-       <button class=" btn btn-info"  (click)="onVolver()">Volver a eventos</button>
-     
-    </div>
+ 
 </div>
 </div>

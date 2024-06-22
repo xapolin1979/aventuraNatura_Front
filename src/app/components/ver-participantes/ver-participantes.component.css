@@ -29,11 +29,6 @@
 
 
 
-.volver{
-    width: 100%;
-}
-
-
 h3{
     margin: 20px;
     color: #000000;
@@ -73,9 +68,7 @@ h3{
     background-image: none;
   
 }
-.ordenar{
-    margin: 15px;
-}
+
 .filtros{
     width: auto;
     height: auto;
@@ -85,7 +78,9 @@ h3{
     align-items: center;
   
 }
-
+.filtrar{
+    margin: 10px;
+}
 
   .modal-header{
     border-bottom: 1px solid black;
@@ -104,11 +99,9 @@ h3{
         width: auto;
         height: auto;
         display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
         justify-content: space-between;
         align-items: center;
-        border:1px solid red;
+      padding: 20px;
     }
 }
 
