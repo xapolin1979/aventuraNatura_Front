@@ -1,9 +1,13 @@
+
+ 
+  <h2 class="crearEventoTitle"> Tus Eventos</h2>
 @if(!iraParticipantes && !mostrarUbicacion && !mostrarEditar && !mostrarFotos){
 
 <div class="container-fluid p-0">
+
   <div class="ContainEvent">
     <div class="buscar">
-      <h3>Tus eventos creados</h3>
+      <h3>Eventos creados</h3>
       <div class="filtros">
         <input type="text" [(ngModel)]="filtroNombre" placeholder="Buscar por Evento">
         <button class="btn btn-primary ordenar" (click)="cambiarOrden()">Ordenar Alfabéticamente</button>

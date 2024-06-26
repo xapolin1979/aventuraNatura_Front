@@ -1,6 +1,5 @@
-<div class="container-fluid containerFormulario" >
-  
-
+<div class="container-fluid containerFormulario p-0" >
+  <h3 class="crearEventoTitle"> Crear Evento</h3>
   <div class="formulario"[style.display]="! nextCreateEvent ? 'block' : 'none'" >
     
     <form class="row g-3" [formGroup]="registerEvent" (ngSubmit)=" onSubmitEvent()">
@@ -147,8 +146,7 @@
 </div>
 </div>
 
-<div class="container-fluid containerMapbox" [style.display]="mapBoxEvento ? 'block' : 'none'" >
-
+<div class="container-fluid containerMapbox p-0" [style.display]="mapBoxEvento ? 'block' : 'none'" >
   <div class="titulo">
     <div class="tipografia">
       <h4>Paso 2</h4>

@@ -39,11 +39,13 @@ registerForm = new FormGroup({
   persons: new FormControl('', Validators.required),
   aceptarTerminos: new FormControl(false, Validators.requiredTrue),
 });
-
+plazasDisponibles:any;
 personasApuntadas:any;
 disponibilidad:any;
 modal:boolean=false;
-
+modalPlazas:boolean=true;
+plazasAgotadas: boolean = false;
+noHayPlazas: boolean = false;
 constructor(private route: ActivatedRoute ,private eventosGeneralService:EventosGeneralService,private participantsService:ParticipantsService) { }
 
 ngOnInit(): void {
@@ -102,10 +104,10 @@ onSubmit() {
 
       // Verificar disponibilidad de plazas
       const maxPersonas = Number(this.infoEvento.max_persons);
-      const plazasDisponibles = maxPersonas - sumaInscritos;
+      this.plazasDisponibles = maxPersonas - sumaInscritos;
       
-      if (plazasDisponibles <= 0) {
-        alert('No quedan plazas disponibles para este evento.');
+      if (this.plazasDisponibles <= 0) {
+        this.noHayPlazas =true
         this.registerForm.reset();
         return;
       }
@@ -120,8 +122,8 @@ onSubmit() {
         persons: this.registerForm.value.persons,
       };
 
-      if (inscritos.persons > plazasDisponibles) {
-        alert(`Solo quedan ${plazasDisponibles} plazas para apuntarse al evento.`);
+      if (inscritos.persons >this.plazasDisponibles) {
+      this.plazasAgotadas=true;
         return;
       }
 
@@ -138,7 +140,10 @@ onSubmit() {
       });
     
 }
-
+alertClose(){
+  this.plazasAgotadas=false;
+  this.noHayPlazas =false;
+}
 
 formatDate(date: string): string {
   const options: Intl.DateTimeFormatOptions = {

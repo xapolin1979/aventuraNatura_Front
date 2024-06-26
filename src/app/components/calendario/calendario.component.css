@@ -1,0 +1,40 @@
+
+.container-fluid{
+   
+    background-color: white;
+
+}
+
+h3{
+    width: 100%;
+    color:#ff6619;
+    font-size: 3em;
+    font-family: "Bebas Neue", sans-serif;
+    background-color: black;
+    padding: 30px;
+}
+#calendario{
+padding: 30px;
+}
+.modal{
+    display: none;
+    font-family: "Work Sans", sans-serif;
+    background-color: rgba(0, 0, 0, 0.5);
+    --bs-modal-header-border-color:none;
+    --bs-modal-footer-border-color:none;
+}
+h4{
+    font-family: "Bebas Neue", sans-serif;
+    font-size:2em;
+    color:#ff6619;
+}
+h5{
+    font-family: "Bebas Neue", sans-serif;
+    font-size:1.5em;
+}
+
+@media screen and (max-width: 600px){
+  h3{
+    text-align: center;
+  }
+}

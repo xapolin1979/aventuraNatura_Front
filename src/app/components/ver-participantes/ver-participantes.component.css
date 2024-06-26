@@ -4,7 +4,6 @@
     display: flex;
     justify-content: center;
     align-items: start;
-    background-color: rgb(240, 240, 240);
     overflow: auto;
 }
 

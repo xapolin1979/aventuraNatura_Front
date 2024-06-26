@@ -167,3 +167,37 @@
     </div>
   </div>
 </div>
+
+
+
+<div class="modal alerta" [style.display]="this.plazasAgotadas ? 'block' : 'none'" >
+  <div class="modal-dialog">
+    <div class="modal-content modalLoginDanger">
+      <div class="modal-header">
+        <h5 class="modal-title">Limite de plazas alcanzado</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modalClose()" ></button>
+      </div>
+      <div class="modal-body ">
+        <img src="../../assets/img/AVENTURA2.png" alt="">
+        <p>Solo quedan {{ plazasDisponibles }} plazas disponibles para este evento.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal alerta" [style.display]="this.noHayPlazas ? 'block' : 'none'" >
+  <div class="modal-dialog">
+    <div class="modal-content modalLoginDanger">
+      <div class="modal-header">
+        <h5 class="modal-title">Evento Completo</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modalClose()" ></button>
+      </div>
+      <div class="modal-body ">
+        <img src="../../assets/img/AVENTURA2.png" alt="">
+        <p>No quedan plazas disponibles</p>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+.container-fluid{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+.line, .bar {
+    width: 90%; 
+    max-width: 1000px; 
+    margin: 30px;
+}
+h3{
+    width: 100%;
+    color:#ff6619;
+    font-size: 3em;
+    font-family: "Bebas Neue", sans-serif;
+    background-color: black;
+    padding: 30px;
+}
+@media screen and (max-width: 1050px) {
+h3{
+    text-align: center;
+}
+    .line, .bar {
+        max-width: 700px; 
+    }
+
+}
+@media screen and (max-width: 600px) {
+
+    .line, .bar {
+        max-width: 350px; 
+    }
+
+}

@@ -1,1 +1,28 @@
-<p>calendario works!</p>
+<div class="container-fluid p-0">
+  <h3>Calendario</h3>
+    <full-calendar id="calendario"  [options]="calendarOptions"></full-calendar>
+  </div>
+
+<div class="modal" tabindex="-1" [style.display]="verModal ? 'block' : 'none'" >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">{{this.eventInfo.name_event}}</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="cerrarModal()"></button>
+        </div>
+        <div class="modal-body">
+          <h5>{{this.categoria.name}}</h5>
+          <br>
+          <p><b>Inicio:</b> {{formatDate(this.eventInfo.start_date)}}</p>
+          <p><b>Fin: </b> {{formatDate(this.eventInfo.end_date)}}</p>
+          <p><b>Max:</b> {{this.eventInfo.max_persons}} personas</p>
+          <p><b>Participantes:</b> {{ this.numeroParticipantes}} personas</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="cerrarModal()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+

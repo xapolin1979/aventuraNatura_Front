@@ -4,7 +4,6 @@
     display: flex;
     justify-content: center;
     align-items: start;
-    background-color: rgb(240, 240, 240);
     overflow: auto;
     font-family: "Work Sans", sans-serif;
 }
@@ -14,6 +13,15 @@
     margin-top: 20px;
    
 }
+.crearEventoTitle{
+    width: 100%;
+    color:#ff6619;
+    font-size: 3em;
+    font-family: "Bebas Neue", sans-serif;
+    background-color: black;
+    padding: 30px;
+    margin:none;
+  }
 
 .buscar{
     width: 100%;
