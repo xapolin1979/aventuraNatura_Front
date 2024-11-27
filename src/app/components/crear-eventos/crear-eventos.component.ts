@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule, FormGroup, FormControl, Validators } 
 import { EventsService } from '../../services/events.service';
 import { PhotosService } from '../../services/photos.service';
 import { UserService } from '../../services/user.service';
+import { window } from 'rxjs';
 
 @Component({
   selector: 'app-crear-eventos',
@@ -33,14 +34,14 @@ export class CrearEventosComponent implements OnInit {
   registerEvent = new FormGroup({
     name_event: new FormControl('', Validators.required),
     category_id: new FormControl('', Validators.required),
-    info_event: new FormControl('', Validators.required),
+    info_event: new FormControl('', [Validators.required, Validators.maxLength(300)]),
     difficulty: new FormControl('', Validators.required),
     max_persons: new FormControl('', Validators.required),
     start_date: new FormControl('', Validators.required),
     end_date: new FormControl('', Validators.required),
     for_whom: new FormControl('', Validators.required),
     price_per_person: new FormControl('', Validators.required),
-    material: new FormControl('', Validators.required),
+    material: new FormControl('', [Validators.required, Validators.maxLength(300)]),
   });
 
   insertarPhotos = new FormGroup({
@@ -145,6 +146,8 @@ export class CrearEventosComponent implements OnInit {
   
     const formattedStartDate = this.formatDate(this.registerEvent.value.start_date);
     const formattedEndDate = this.formatDate(this.registerEvent.value.end_date);
+    const lat = parseFloat(geolocation[1].toFixed(8));
+    const lng = parseFloat(geolocation[0].toFixed(8));
   
     const nuevoEvento = {
       user_id: this.id_user,
@@ -154,8 +157,8 @@ export class CrearEventosComponent implements OnInit {
       max_persons: this.registerEvent.value.max_persons,
       start_date: formattedStartDate,
       end_date: formattedEndDate,
-      lat: parseFloat(geolocation[1].toFixed(8)),  
-      lng: parseFloat(geolocation[0].toFixed(8)),
+      lat: lat,  
+      lng: lng,
       info_event: this.registerEvent.value.info_event,
       for_whom: this.registerEvent.value.for_whom,
       price_per_person: this.registerEvent.value.price_per_person,
@@ -173,6 +176,8 @@ export class CrearEventosComponent implements OnInit {
       },
       error: (error) => {
         console.log('Error al crear el evento:', error);
+        alert('Hubo un problema al crear el evento. Intenta nuevamente.');
+      
       },
     });
   }
